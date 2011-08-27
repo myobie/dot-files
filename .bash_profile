@@ -14,6 +14,12 @@ function fancy_directory {
         dir="~${dir:${#HOME}}"
     fi
     
+    export WORK=/Volumes/Work
+    # Substitute a leading path that's in $WORK for "w"
+    if [[ "$WORK" == ${dir:0:${#WORK}} ]] ; then
+        dir="w${dir:${#WORK}}"
+    fi
+    
     # Append a trailing slash if it's not there already.
     if [[ ${dir:${#dir}-1} != "/" ]] ; then 
         dir="$dir"
@@ -49,7 +55,7 @@ export PROMPT_COMMAND="directory_to_titlebar"
 fi
 
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:$PATH"
-PS1='\[\033[00;30m\]➙ `fancy_directory`\[\033[00m\]\n\[\033[00;33m\]$\[\033[00m\] '; export PS1
+PS1='➙ `fancy_directory`\n\[\033[00;33m\]$\[\033[00m\] '; export PS1
 
 # fix rubygems
 # export GEM_HOME="/Library/Ruby/Gems/1.8"
@@ -68,27 +74,8 @@ alias gs="git status"
 alias gall="git add . && git commit -a"
 
 # source ~/.git-completion.sh
-complete -o default -o nospace -F _git gh
+# complete -o default -o nospace -F _git gh
 
-
-
-function enable_macports {
-  # MacPorts Installer addition on 2008-12-17_at_18:44:06: adding an appropriate PATH variable for use with MacPorts.
-  export PATH=/opt/local/bin:/opt/local/sbin:$PATH
-  # Finished adapting your PATH environment variable for use with MacPorts.
-
-
-  # MacPorts Installer addition on 2008-12-17_at_18:44:06: adding an appropriate MANPATH variable for use with MacPorts.
-  export MANPATH=/opt/local/share/man:$MANPATH
-  # Finished adapting your MANPATH environment variable for use with MacPorts.
-  
-  echo 'MacPorts enabled.'
-}
-
-alias kill_boxee="ssh frontrow@appletv.local kill -9 $(ps -ax | grep 'MacOS/Boxee' | awk '{print $1}')"
-
-alias start_postfix="sudo /usr/libexec/postfix/master master"
-alias dovecot="sudo dovecot -F"
 
 export LSCOLORS="exfxcxdxbxegedabagacad"
 export CLICOLOR=true
@@ -138,8 +125,31 @@ END
 
 alias gf="cf && cd \`pbpaste\` && clear && pwd"
 
-alias start_mongo="mongod run --config /usr/local/Cellar/mongodb/1.6.5-x86_64/mongod.conf"
+export EDITOR="vico -w"
+
+# This resolves issues install the mysql, postgres, and other gems with native non universal binary extensions
+# You only want this if you are on Snow Leopard
+export ARCHFLAGS='-arch x86_64'
+
+# History: don't store duplicates
+export HISTCONTROL=erasedups
+# History: 10,000 entries
+export HISTSIZE=10000
+
+# REE for LivingSocial
+export RUBY_HEAP_FREE_MIN=1024
+export RUBY_HEAP_MIN_SLOTS=4000000
+export RUBY_HEAP_SLOTS_INCREMENT=250000
+export RUBY_GC_MALLOC_LIMIT=500000000
+export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1
+
+# bash-completion
+
+if [ -f `brew --prefix`/etc/bash_completion ]; then
+  . `brew --prefix`/etc/bash_completion
+fi
 
 # RVM
+export CC=gcc-4.2
 [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
 
