@@ -54,35 +54,34 @@ if [[ "$TERM" == "xterm" || "$TERM" == "xterm-color" ]] ; then
 export PROMPT_COMMAND="directory_to_titlebar"
 fi
 
+function parse_git_branch {
+  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
+}
+function parse_git_dirty {
+  [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]] && echo " ⨳"
+}
+
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:$PATH"
-PS1='➙ `fancy_directory`\n\[\033[00;33m\]$\[\033[00m\] '; export PS1
+PS1='➙ `fancy_directory`\n$(__git_ps1 "$(parse_git_branch)$(parse_git_dirty) ")\[\033[00;33m\]$\[\033[00m\] '; export PS1
 
-# fix rubygems
-# export GEM_HOME="/Library/Ruby/Gems/1.8"
-# export GEM_PATH="/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8"
+# basic ls
+if [ `uname` = 'Darwin' ]; then
+  alias ls='ls -FG'
+  alias mv='mv -nv'
+else
+  alias ls='ls -p --color'
+  alias mv='mv -v'
+fi
+alias ll='ls -lah'
 
-# make cap1 work too
-alias cap1="`which cap` _1.4.1_" 
 alias gemserv="gem server -d /Library/Ruby/Gems/1.8"
 alias flushdns="dscacheutil -flushcache"
 
-# run specs for project
-alias bac="e bacon spec/*_spec.rb spec/**/*_spec.rb"
-
-# git stuff
-alias gs="git status"
-alias gall="git add . && git commit -a"
-
-# source ~/.git-completion.sh
-# complete -o default -o nospace -F _git gh
-
-
+# colors
 export LSCOLORS="exfxcxdxbxegedabagacad"
 export CLICOLOR=true
 
-
-alias pg_hickey_start="pg_ctl -D /usr/local/var/hickey -l /usr/local/var/hickey/server.log start"
-alias pg_hickey_start="pg_ctl -D /usr/local/var/hickey stop -s -m fast"
+# bundle exec stuff
 
 function r {
   if [ -a .bundle ]
@@ -101,6 +100,41 @@ function e {
   $@
   fi
 }
+
+# via mojombo http://gist.github.com/180587
+function psg {
+  ps wwwaux | egrep "($1|%CPU)" | grep -v grep
+}
+
+# sweetness from tim pease:
+
+p() {
+  if [ -n "$1" ]; then
+    ps -O ppid -U $USER | grep -i "$1" | grep -v grep
+  else
+    ps -O ppid -U $USER
+  fi
+}
+
+pkill() {
+  if [ -z "$1" ]; then
+    echo "Usage: pkill [process name]"
+    return 1
+  fi
+
+  local pid
+  pid=$(p $1 | awk '{ print $1 }')
+
+  if [ -n "$pid" ]; then
+    echo -n "Killing \"$1\" (process $pid)..."
+    kill -9 $pid
+    echo "done."
+  else
+    echo "Process \"$1\" not found."
+  fi
+}
+
+# finder
 
 alias twd=new_terminal_working_directory
 function new_terminal_working_directory() {
@@ -125,10 +159,9 @@ END
 
 alias gf="cf && cd \`pbpaste\` && clear && pwd"
 
-export EDITOR="vico -w"
+export EDITOR="vim"
 
 # This resolves issues install the mysql, postgres, and other gems with native non universal binary extensions
-# You only want this if you are on Snow Leopard
 export ARCHFLAGS='-arch x86_64'
 
 # History: don't store duplicates
@@ -136,18 +169,33 @@ export HISTCONTROL=erasedups
 # History: 10,000 entries
 export HISTSIZE=10000
 
-# REE for LivingSocial
+# REE
 export RUBY_HEAP_FREE_MIN=1024
 export RUBY_HEAP_MIN_SLOTS=4000000
 export RUBY_HEAP_SLOTS_INCREMENT=250000
 export RUBY_GC_MALLOC_LIMIT=500000000
 export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1
 
+# work alias
+alias work="cd /Volumes/Work/"
+
 # bash-completion
 
 if [ -f `brew --prefix`/etc/bash_completion ]; then
   . `brew --prefix`/etc/bash_completion
 fi
+
+# git-completion
+
+if [ -f `brew --prefix`/etc/bash_completion.d/git-completion.bash  ]; then
+  . `brew --prefix`/etc/bash_completion.d/git-completion.bash 
+fi
+
+# test?
+export FAKE_POSTS=true
+
+# node
+export NODE_PATH="/usr/local/lib/node_modules"
 
 # RVM
 export CC=gcc-4.2
