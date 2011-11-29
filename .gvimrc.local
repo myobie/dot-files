@@ -1,0 +1,6 @@
+set guifont=Menlo\ Regular:h15
+set antialias
+set encoding=utf-8
+set lines=46 columns=140
+set guioptions+=LlRrb
+set guioptions-=LlRrb
