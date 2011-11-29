@@ -197,6 +197,11 @@ export FAKE_POSTS=true
 # node
 export NODE_PATH="/usr/local/lib/node_modules"
 
+# extras that shouldn't be in the repo?
+if [ -f ~/.bash_extras  ]; then
+  . ~/.bash_extras
+fi
+
 # RVM
 export CC=gcc-4.2
 [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
