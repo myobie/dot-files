@@ -191,6 +191,12 @@ if [ -f `brew --prefix`/etc/bash_completion.d/git-completion.bash  ]; then
   . `brew --prefix`/etc/bash_completion.d/git-completion.bash 
 fi
 
+# git shortcuts
+
+function search-history {
+  git log --pretty=format:'%h was %an, %ar, message: %s' | grep $@ | less
+}
+
 # test?
 export FAKE_POSTS=true
 
