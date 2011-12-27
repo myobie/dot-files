@@ -13,10 +13,6 @@ if has("gui_macvim")
   " Command-Shift-F for Ack
   map <D-F> :Ack<space>
 
-  " Command-/ to toggle comments
-  map <D-/> <plug>NERDCommenterToggle<CR>
-  imap <D-/> <Esc><plug>NERDCommenterToggle<CR>i
-
 
   " Command-][ to increase/decrease indentation
   vmap <D-]> >gv
