@@ -1,4 +1,28 @@
 set nocompatible
+filetype off
+
+" Vundle
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+" required! 
+Bundle 'gmarik/vundle'
+
+" My Bundles
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-rails.git'
+Bundle 'tpope/vim-surround'
+Bundle 'mileszs/ack.vim'
+Bundle 'ddollar/nerdcommenter'
+Bundle 'mattn/gist-vim'
+Bundle 'robgleeson/hammer.vim'
+Bundle 'kana/vim-textobj-user'
+Bundle 'nelstrom/vim-textobj-rubyblock'
+Bundle 'git://git.wincent.com/command-t.git'
+Bundle 'ZoomWin'
+
+filetype plugin indent on     " required!
 
 set number
 set ruler
@@ -70,9 +94,6 @@ au BufRead,BufNewFile *.txt call s:setupWrapping()
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
-" load the plugin and indent settings for the detected filetype
-filetype plugin indent on
-
 " Opens an edit command with the path of the currently edited file filled in
 " Normal mode: <Leader>e
 map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
@@ -129,6 +150,11 @@ runtime! macros/matchit.vim
 " Show (partial) command in the status line
 set showcmd
 
+" HTML5
+syn keyword htmlTagName contained article aside audio canvas command datalist
+syn keyword htmlTagName contained details embed figcaption figure footer header
+syn keyword htmlTagName contained hgroup keygen mark meter nav output progress
+syn keyword htmlTagName contained rp rt ruby section source summary time video
 
 
 " RANDOM STUFF

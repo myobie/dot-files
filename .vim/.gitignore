@@ -17,3 +17,4 @@ indent
 .VimballRecord
 backup/*.swp
 compiler
+bundle/*
