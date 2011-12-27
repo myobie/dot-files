@@ -50,7 +50,7 @@ function fancy_directory {
     echo "$dir"
 }
 
-if [[ "$TERM" == "xterm" || "$TERM" == "xterm-color" ]] ; then
+if [[ "$TERM" == "xterm" || "$TERM" == "xterm-color" || "$TERM" == "xterm-256color" ]] ; then
 export PROMPT_COMMAND="directory_to_titlebar"
 fi
 

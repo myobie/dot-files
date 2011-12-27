@@ -18,9 +18,9 @@ Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-ragtag'
 Bundle 'tpope/vim-repeat'
+Bundle 'tpope/vim-vividchalk'
 Bundle 'mileszs/ack.vim'
 Bundle 'mattn/gist-vim'
-Bundle 'robgleeson/hammer.vim'
 Bundle 'tsaleh/vim-matchit'
 Bundle 'kana/vim-textobj-user'
 Bundle 'nelstrom/vim-textobj-rubyblock'
@@ -137,7 +137,7 @@ set modeline
 set modelines=10
 
 " Default color scheme
-color desert
+color vividchalk
 
 " Directories for swp files
 set backupdir=~/.vim/backup
