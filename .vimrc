@@ -139,6 +139,18 @@ set modelines=10
 " Default color scheme
 color vividchalk
 
+" Default Font
+set guifont=Menlo\ Regular:h15
+set antialias
+
+" CommandT
+map <leader>t :CommandT<CR>
+imap <leader>t <Esc>:CommandT<CR>
+
+" Adjust viewports to the same size
+map <Leader>= <C-w>=
+imap <Leader>= <Esc> <C-w>=
+
 " Directories for swp files
 set backupdir=~/.vim/backup
 set directory=~/.vim/backup

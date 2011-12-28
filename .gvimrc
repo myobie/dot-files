@@ -32,9 +32,6 @@ if has("gui_macvim")
   map <D-M-Left> <C-w>h
   imap <D-M-Left> <C-w>h
 
-  " Adjust viewports to the same size
-  map <Leader>= <C-w>=
-  imap <Leader>= <Esc> <C-w>=
 endif
 
 " Don't beep
@@ -44,7 +41,7 @@ set visualbell
 set guioptions-=T
 
 " Default gui color scheme
-color desert
+color vividchalk
 
 set guifont=Menlo\ Regular:h15
 set antialias
