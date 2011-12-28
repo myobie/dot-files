@@ -203,6 +203,9 @@ export FAKE_POSTS=true
 # node
 export NODE_PATH="/usr/local/lib/node_modules"
 
+# MacVim's terminal vim has ruby support built in
+alias vi="`brew list macvim | grep "MacOS/Vim"`"
+
 # extras that shouldn't be in the repo?
 if [ -f ~/.bash_extras  ]; then
   . ~/.bash_extras
