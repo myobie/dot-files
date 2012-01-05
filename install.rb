@@ -12,5 +12,5 @@ Dir["{*,.*}"].each do |file|
   end
 end
 
-vim_cmd = "ln -si #{Dir.pwd}/.vim #{home}/.vim"
+vim_cmd = "ln -si #{Dir.pwd}/.vim #{home}/"
 run_cmd vim_cmd
