@@ -179,3 +179,5 @@ syn keyword htmlTagName contained rp rt ruby section source summary time video
 " I must have this shortcut for hash rockets
 imap <C-l> <Space>=><Space>
 
+" Ability to reload externally modified files
+set autoread
