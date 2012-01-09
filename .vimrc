@@ -24,6 +24,7 @@ Bundle 'mattn/gist-vim'
 Bundle 'tsaleh/vim-matchit'
 Bundle 'kana/vim-textobj-user'
 Bundle 'nelstrom/vim-textobj-rubyblock'
+Bundle 'sickill/vim-pasta'
 Bundle 'git://git.wincent.com/command-t.git'
 Bundle 'ZoomWin'
 
