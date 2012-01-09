@@ -60,6 +60,9 @@ function parse_git_branch {
 function parse_git_dirty {
   [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]] && echo " ⨳"
 }
+function parse_git_needs_push {
+  [[ $(git status | grep 'Your branch is ahead') ]] && echo " ↗↗"
+}
 
 function number_of_background_jobs {
   NUMBER_OF_JOBS=$(jobs | wc -l | tr -d ' ')
@@ -67,7 +70,7 @@ function number_of_background_jobs {
 }
 
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:~/bin:$PATH"
-PS1='➙ `fancy_directory`\n$(__git_ps1 "⎇ $(parse_git_branch)$(parse_git_dirty) ")`number_of_background_jobs`\[\033[00;33m\]$\[\033[00m\] '; export PS1
+PS1='➙ `fancy_directory`\n$(__git_ps1 "⎇ $(parse_git_branch)$(parse_git_dirty)$(parse_git_needs_push) ")`number_of_background_jobs`\[\033[00;33m\]$\[\033[00m\] '; export PS1
 
 # basic ls
 if [ `uname` = 'Darwin' ]; then
