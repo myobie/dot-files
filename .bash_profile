@@ -61,7 +61,7 @@ function parse_git_dirty {
   [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]] && echo " ⨳"
 }
 function parse_git_needs_push {
-  [[ $(git status | grep 'Your branch is ahead') ]] && echo " ↗↗"
+  [[ $(git status 2> /dev/null | grep 'Your branch is ahead') ]] && echo " ↗↗"
 }
 
 function number_of_background_jobs {
@@ -219,7 +219,9 @@ if [ -f ~/.bash_extras  ]; then
   . ~/.bash_extras
 fi
 
-# RVM
 export CC=gcc-4.2
-[[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
 
+# rbenv
+export PATH="$HOME/.rbenv/bin:$HOME/.rbenv/shims:$PATH"
+source ~/.rbenv/completions/rbenv.bash
+rbenv rehash
