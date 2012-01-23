@@ -219,7 +219,10 @@ if [ -f ~/.bash_extras  ]; then
   . ~/.bash_extras
 fi
 
-export CC=gcc-4.2
+# export CC=gcc-4.2
+
+# disable control s
+stty stop ''
 
 # rbenv
 export PATH="$HOME/.rbenv/bin:$HOME/.rbenv/shims:$PATH"

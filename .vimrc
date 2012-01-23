@@ -23,6 +23,7 @@ Bundle 'mileszs/ack.vim'
 Bundle 'mattn/gist-vim'
 Bundle 'tsaleh/vim-matchit'
 Bundle 'kana/vim-textobj-user'
+Bundle 'kchmck/vim-coffee-script'
 Bundle 'nelstrom/vim-textobj-rubyblock'
 Bundle 'sickill/vim-pasta'
 Bundle 'git://git.wincent.com/command-t.git'
@@ -106,7 +107,11 @@ map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 
 " Opens a tab edit command with the path of the currently edited file filled in
 " Normal mode: <Leader>t
-map <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
+map <Leader>Te :tabe <C-R>=expand("%:p:h") . "/" <CR>
+
+" Tab Nav
+map <Leader>Tn :tabn
+map <Leader>Tp :tabp
 
 " Inserts the path of the currently edited file into a command
 " Command mode: Ctrl+P
