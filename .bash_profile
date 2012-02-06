@@ -66,11 +66,11 @@ function parse_git_needs_push {
 
 function number_of_background_jobs {
   NUMBER_OF_JOBS=$(jobs | wc -l | tr -d ' ')
-  [[ $NUMBER_OF_JOBS != "0" ]] && echo " $NUMBER_OF_JOBS ↺"
+  [[ $NUMBER_OF_JOBS != "0" ]] && echo " $NUMBER_OF_JOBS ↺ "
 }
 
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:~/bin:$PATH"
-PS1='➙ `fancy_directory`\n$(__git_ps1 "⎇ $(parse_git_branch)$(parse_git_dirty)$(parse_git_needs_push) ")`number_of_background_jobs`\[\033[00;33m\]$\[\033[00m\] '; export PS1
+PS1='➙ `fancy_directory` $(__git_ps1 "⎇ $(parse_git_branch)$(parse_git_dirty)$(parse_git_needs_push) ")`number_of_background_jobs`\[\033[00;33m\]$\[\033[00m\] '; export PS1
 
 # basic ls
 if [ `uname` = 'Darwin' ]; then
@@ -213,6 +213,7 @@ export NODE_PATH="/usr/local/lib/node_modules"
 
 # MacVim's terminal vim has ruby support built in
 alias vi="`brew list macvim | grep "MacOS/Vim"`"
+alias vim="`brew list macvim | grep "MacOS/Vim"`"
 
 # extras that shouldn't be in the repo?
 if [ -f ~/.bash_extras  ]; then
