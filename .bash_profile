@@ -69,7 +69,7 @@ function number_of_background_jobs {
   [[ $NUMBER_OF_JOBS != "0" ]] && echo " $NUMBER_OF_JOBS ↺ "
 }
 
-export PATH="/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:~/bin:$PATH"
+export PATH="/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:~/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:$PATH"
 PS1='➙ `fancy_directory` $(__git_ps1 "⎇ $(parse_git_branch)$(parse_git_dirty)$(parse_git_needs_push) ")`number_of_background_jobs`\[\033[00;33m\]$\[\033[00m\] '; export PS1
 
 # basic ls
@@ -220,7 +220,7 @@ if [ -f ~/.bash_extras  ]; then
   . ~/.bash_extras
 fi
 
-# export CC=gcc-4.2
+export CC=/usr/local/bin/gcc-4.2
 
 # disable control s
 stty stop ''
@@ -229,3 +229,5 @@ stty stop ''
 export PATH="$HOME/.rbenv/bin:$HOME/.rbenv/shims:$PATH"
 source ~/.rbenv/completions/rbenv.bash
 rbenv rehash
+
+alias git=hub
