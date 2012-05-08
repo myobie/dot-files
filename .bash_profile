@@ -220,7 +220,7 @@ if [ -f ~/.bash_extras  ]; then
   . ~/.bash_extras
 fi
 
-export CC=/usr/local/bin/gcc-4.2
+# export CC=/usr/local/bin/gcc-4.2
 
 # disable control s
 stty stop ''
