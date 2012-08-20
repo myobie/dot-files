@@ -147,7 +147,7 @@ set modelines=10
 color vividchalk
 
 " Default Font
-set guifont=Menlo\ Regular:h15
+set guifont=Menlo\ Regular:h12
 set antialias
 
 " CommandT

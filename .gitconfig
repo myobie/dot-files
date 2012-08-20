@@ -3,3 +3,5 @@
 	email = nathan@myobie.com
 [color]
 	ui = true
+[credential]
+	helper = osxkeychain
