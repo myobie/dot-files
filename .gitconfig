@@ -5,3 +5,9 @@
 	ui = true
 [credential]
 	helper = osxkeychain
+[github]
+	user = myobie
+[heroku]
+	account = personal
+[push]
+	default = simple
