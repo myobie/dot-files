@@ -226,7 +226,7 @@ fi
 stty stop ''
 
 # rbenv
-export PATH="$HOME/.rbenv/bin:$HOME/.rbenv/shims:$PATH"
+export PATH="/usr/local/bin:/usr/local/sbin:$HOME/.rbenv/bin:$HOME/.rbenv/shims:$PATH"
 source ~/.rbenv/completions/rbenv.bash
 rbenv rehash
 
