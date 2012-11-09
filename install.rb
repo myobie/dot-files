@@ -6,24 +6,16 @@ def run_cmd(what)
 end
 
 # typing sucks
-def force?; ARGV.include?("force"); end
-
-def path(where); Pathname.new(where).realpath; end
+def path(where); Pathname.new(where); end
 def mkdir(where); run_cmd "mkdir -p #{where}"; end
-def git(repo, where); run_cmd("cd #{where} && git clone #{repo} #{where.basename}"); end
+def git(repo, where); run_cmd("cd #{where} && git clone #{repo}"); end
 def update(where); run_cmd("cd #{where} && git reset --hard HEAD && git pull --rebase"); end
-def symlink(from, to)
-  opts = if force? then "sf" else "si" end
-  cmd = "ln -#{opts} #{from} #{to}"
-  run_cmd cmd
-end
+def symlink(from, to); run_cmd "ln -si #{from} #{to}"; end
 
 # paths
 this_file = Pathname.new(__FILE__)
 pwd = Pathname.pwd
 home = path(File.expand_path("~"))
-dot_vim = home.join(".vim")
-vundle = dot_vim.join("bundle/vundle")
 
 # symlink files
 Dir["{*,.*}"].each do |file|
@@ -34,11 +26,16 @@ Dir["{*,.*}"].each do |file|
 end
 
 # .vim
-mkdir dot_vim.join("backup")
-mkdir dot_vim.join("bundle")
+dot_vim = home.join(".vim")
+bundle = dot_vim.join("bundle")
+backup = dot_vim.join("backup")
+vundle = bundle.join("vundle")
+
+mkdir bundle
+mkdir backup
 
 unless vundle.exist?
-  git "git://github.com/gmarik/vundle.git", vundle
+  git "git://github.com/gmarik/vundle.git", bundle
+else
+  update vundle
 end
-
-update vundle
