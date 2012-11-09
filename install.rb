@@ -10,7 +10,7 @@ def force?; ARGV.include?("force"); end
 
 def path(where); Pathname.new(where).realpath; end
 def mkdir(where); run_cmd "mkdir -p #{where}"; end
-def git(repo, where = nil); run_cmd("cd #{where || pwd} && git clone #{repo}"); end
+def git(repo, where); run_cmd("cd #{where} && git clone #{repo} #{where.basename}"); end
 def update(where); run_cmd("cd #{where} && git reset --hard HEAD && git pull --rebase"); end
 def symlink(from, to)
   opts = if force? then "sf" else "si" end
@@ -42,5 +42,3 @@ unless vundle.exist?
 end
 
 update vundle
-
-symlink pwd.join(".vim"), dot_vim
