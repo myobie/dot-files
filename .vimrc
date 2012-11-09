@@ -27,6 +27,7 @@ Bundle 'kana/vim-textobj-user'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'nelstrom/vim-textobj-rubyblock'
 Bundle 'sickill/vim-pasta'
+Bundle 'gregsexton/gitv'
 Bundle 'git://git.wincent.com/command-t.git'
 Bundle 'ZoomWin'
 
