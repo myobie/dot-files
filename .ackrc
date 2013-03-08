@@ -10,3 +10,6 @@
 --type-add=js=coffee
 --type-add=css=scss
 --type-set=vim=vim
+--type-set=mustache=mustache
+--type-set=rb=rb
+--type-set=erb=erb
