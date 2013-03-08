@@ -190,6 +190,9 @@ if [ -f `brew --prefix`/etc/bash_completion ]; then
   . `brew --prefix`/etc/bash_completion
 fi
 
+# xcode stuff
+alias iphone='open /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications/iPhone\ Simulator.app'
+
 # git-completion
 
 if [ -f `brew --prefix`/etc/bash_completion.d/git-completion.bash  ]; then
