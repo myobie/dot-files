@@ -30,6 +30,7 @@ Bundle 'sickill/vim-pasta'
 Bundle 'gregsexton/gitv'
 Bundle 'git://git.wincent.com/command-t.git'
 Bundle 'ZoomWin'
+Bundle 'airblade/vim-gitgutter'
 
 filetype plugin indent on     " required!
 
