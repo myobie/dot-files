@@ -184,9 +184,6 @@ export RUBY_HEAP_SLOTS_INCREMENT=250000
 export RUBY_GC_MALLOC_LIMIT=500000000
 export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1
 
-# work alias
-alias work="cd /Volumes/Work/"
-
 # bash-completion
 
 if [ -f `brew --prefix`/etc/bash_completion ]; then
