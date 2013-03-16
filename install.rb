@@ -19,6 +19,7 @@ if ARGV.include?("command-t")
     brew uninstall macvim
     brew install macvim --override-system-vim
     ruby extconf.rb
+    make clean
     make
   "
   exit
