@@ -31,6 +31,7 @@ Bundle 'gregsexton/gitv'
 Bundle 'git://git.wincent.com/command-t.git'
 Bundle 'ZoomWin'
 Bundle 'godlygeek/tabular'
+Bundle 'FredKSchott/CoVim'
 
 filetype plugin indent on     " required!
 
