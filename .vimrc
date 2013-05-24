@@ -29,7 +29,6 @@ Bundle 'nelstrom/vim-textobj-rubyblock'
 Bundle 'sickill/vim-pasta'
 Bundle 'gregsexton/gitv'
 Bundle 'git://git.wincent.com/command-t.git'
-Bundle 'ZoomWin'
 Bundle 'godlygeek/tabular'
 Bundle 'FredKSchott/CoVim'
 
@@ -63,16 +62,8 @@ set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*
 " Status bar
 set laststatus=2
 
-" Without setting this, ZoomWin restores windows in a way that causes
-" equalalways behavior to be triggered the next time CommandT is used.
-" This is likely a bludgeon to solve some other issue, but it works
-set noequalalways
-
 " Command-T configuration
 let g:CommandTMaxHeight=20
-
-" ZoomWin configuration
-map <Leader><Leader> :ZoomWin<CR>
 
 " Remember last location in file
 if has("autocmd")
