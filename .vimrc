@@ -19,7 +19,6 @@ Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-ragtag'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-vividchalk'
-Bundle 'mileszs/ack.vim'
 Bundle 'mattn/gist-vim'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'tsaleh/vim-matchit'
@@ -31,6 +30,9 @@ Bundle 'gregsexton/gitv'
 Bundle 'git://git.wincent.com/command-t.git'
 Bundle 'godlygeek/tabular'
 Bundle 'FredKSchott/CoVim'
+Bundle 'rizzatti/funcoo.vim'
+Bundle 'rizzatti/dash.vim'
+Bundle 'rizzatti/greper.vim'
 
 filetype plugin indent on     " required!
 
