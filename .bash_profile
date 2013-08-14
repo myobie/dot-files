@@ -227,3 +227,5 @@ source ~/.rbenv/completions/rbenv.bash
 rbenv rehash
 
 alias git=hub
+
+export JEKYLL_ENV=development
