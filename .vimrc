@@ -33,6 +33,7 @@ Bundle 'FredKSchott/CoVim'
 Bundle 'rizzatti/funcoo.vim'
 Bundle 'rizzatti/dash.vim'
 Bundle 'rizzatti/greper.vim'
+Bundle 'thoughtbot/vim-rspec'
 
 filetype plugin indent on     " required!
 
@@ -181,6 +182,13 @@ syn keyword htmlTagName contained rp rt ruby section source summary time video
 
 " I must have this shortcut for hash rockets
 imap <C-l> <Space>=><Space>
+
+" Rspec.vim mappings
+map <Leader>f :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
+let g:rspec_command = "!bin/rspec {spec}"
 
 " Ability to reload externally modified files
 set autoread
