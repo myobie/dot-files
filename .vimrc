@@ -30,7 +30,6 @@ Bundle 'gregsexton/gitv'
 Bundle 'git://git.wincent.com/command-t.git'
 Bundle 'godlygeek/tabular'
 Bundle 'mileszs/ack.vim'
-Bundle 'FredKSchott/CoVim'
 Bundle 'thoughtbot/vim-rspec'
 
 filetype plugin indent on     " required!
