@@ -29,10 +29,8 @@ Bundle 'sickill/vim-pasta'
 Bundle 'gregsexton/gitv'
 Bundle 'git://git.wincent.com/command-t.git'
 Bundle 'godlygeek/tabular'
+Bundle 'mileszs/ack.vim'
 Bundle 'FredKSchott/CoVim'
-Bundle 'rizzatti/funcoo.vim'
-Bundle 'rizzatti/dash.vim'
-Bundle 'rizzatti/greper.vim'
 Bundle 'thoughtbot/vim-rspec'
 
 filetype plugin indent on     " required!
