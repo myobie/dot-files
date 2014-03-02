@@ -66,7 +66,10 @@ function number_of_background_jobs {
   [[ $NUMBER_OF_JOBS != "0" ]] && echo " $NUMBER_OF_JOBS ↺ "
 }
 
-export PATH="/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/usr/local/share/python:~/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/local/share/npm/bin:$PATH"
+export PATH="/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:~/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/local/share/npm/bin:$PATH"
+export PATH="/Applications/Postgres93.app/Contents/MacOS/bin:$PATH"
+export PATH=$PATH:/usr/local/Cellar/go/1.2/libexec/bin
+export GOPATH=~/.gocode
 PS1='➙ `fancy_directory` $(__git_ps1 "⎇ %s$(parse_git_dirty)$(parse_git_needs_push) ")`number_of_background_jobs`\[\033[00;33m\]$\[\033[00m\] '; export PS1
 
 # basic ls
@@ -173,13 +176,6 @@ export ARCHFLAGS='-arch x86_64'
 export HISTCONTROL=erasedups
 # History: 10,000 entries
 export HISTSIZE=10000
-
-# REE
-export RUBY_HEAP_FREE_MIN=1024
-export RUBY_HEAP_MIN_SLOTS=4000000
-export RUBY_HEAP_SLOTS_INCREMENT=250000
-export RUBY_GC_MALLOC_LIMIT=500000000
-export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1
 
 # bash-completion
 
