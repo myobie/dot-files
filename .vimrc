@@ -19,6 +19,7 @@ Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-ragtag'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-vividchalk'
+Bundle 'tpope/vim-unimpaired'
 Bundle 'mattn/gist-vim'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'tsaleh/vim-matchit'
@@ -176,6 +177,8 @@ syn keyword htmlTagName contained details embed figcaption figure footer header
 syn keyword htmlTagName contained hgroup keygen mark meter nav output progress
 syn keyword htmlTagName contained rp rt ruby section source summary time video
 
+" go
+autocmd FileType go setlocal noexpandtab shiftwidth=4 tabstop=4 softtabstop=4 nolist
 
 " RANDOM STUFF
 
