@@ -34,6 +34,7 @@ Bundle 'mileszs/ack.vim'
 Bundle 'thoughtbot/vim-rspec'
 Bundle 'derekwyatt/vim-scala'
 Bundle 'jnwhiteh/vim-golang'
+Bundle 'zerowidth/vim-copy-as-rtf'
 
 filetype plugin indent on     " required!
 
