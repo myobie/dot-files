@@ -221,4 +221,8 @@ rbenv rehash
 
 alias git=hub
 
+alias work="cd ~/Dropbox/Work"
+alias code="cd ~/Dropbox/Code"
+alias W="cd ~/W/"
+
 export JEKYLL_ENV=development
