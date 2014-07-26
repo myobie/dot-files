@@ -67,7 +67,6 @@ function number_of_background_jobs {
 }
 
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:~/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/local/share/npm/bin:$PATH"
-export PATH="/Applications/Postgres93.app/Contents/MacOS/bin:$PATH"
 export PATH=$PATH:/usr/local/Cellar/go/1.2/libexec/bin
 export GOPATH=~/.gocode
 PS1='➙ `fancy_directory` $(__git_ps1 "⎇ %s$(parse_git_dirty)$(parse_git_needs_push) ")`number_of_background_jobs`\[\033[00;33m\]$\[\033[00m\] '; export PS1
