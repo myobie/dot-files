@@ -62,7 +62,7 @@ set smartcase
 
 " Tab completion
 set wildmode=list:longest,list:full
-set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*
+set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,node_modules
 
 " Status bar
 set laststatus=2
@@ -143,7 +143,7 @@ set modeline
 set modelines=10
 
 " Default color scheme
-color vividchalk
+color default
 
 " Default Font
 set guifont=Menlo\ Regular:h12
