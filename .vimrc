@@ -22,10 +22,9 @@ Plugin 'tpope/vim-vividchalk'
 Plugin 'tpope/vim-unimpaired'
 
 Plugin 'mattn/gist-vim'
-" Plugin 'kchmck/vim-coffee-script'
+Plugin 'kchmck/vim-coffee-script'
 Plugin 'matchit.zip'
 Plugin 'kana/vim-textobj-user'
-Plugin 'kchmck/vim-coffee-script'
 Plugin 'nelstrom/vim-textobj-rubyblock'
 Plugin 'sickill/vim-pasta'
 Plugin 'gregsexton/gitv'
@@ -37,7 +36,9 @@ Plugin 'derekwyatt/vim-scala'
 Plugin 'jnwhiteh/vim-golang'
 Plugin 'zerowidth/vim-copy-as-rtf'
 Plugin 'bogado/file-line'
-" Plugin 'zenorocha/dracula-theme'
+
+Plugin 'myobie/dracula-theme', {'rtp': 'vim/'}
+" Until https://github.com/zenorocha/dracula-theme/pull/70 is merged
 
 call vundle#end()
 filetype plugin indent on
@@ -146,7 +147,8 @@ set modeline
 set modelines=10
 
 " Default color scheme
-color default
+color dracula
+set background=dark
 
 " Default Font
 set guifont=Menlo\ Regular:h12
