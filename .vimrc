@@ -148,7 +148,6 @@ set modelines=10
 
 " Default color scheme
 color dracula
-set background=dark
 
 " Default Font
 set guifont=Menlo\ Regular:h12
