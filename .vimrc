@@ -1,43 +1,46 @@
 set nocompatible
 filetype off
 
-" Vundle
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+if !isdirectory(expand("~/.vim/bundle/Vundle.vim/.git"))
+    !git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+endif
 
-" let Vundle manage Vundle
-" required! 
-Bundle 'gmarik/vundle'
+set rtp+=~/.vim/bundle/Vundle.vim/
+call vundle#begin()
 
-" My Bundles
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-rails.git'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-endwise'
-Bundle 'tpope/vim-commentary'
-Bundle 'tpope/vim-haml'
-Bundle 'tpope/vim-ragtag'
-Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-vividchalk'
-Bundle 'tpope/vim-unimpaired'
-Bundle 'mattn/gist-vim'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'tsaleh/vim-matchit'
-Bundle 'kana/vim-textobj-user'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'nelstrom/vim-textobj-rubyblock'
-Bundle 'sickill/vim-pasta'
-Bundle 'gregsexton/gitv'
-Bundle 'git://git.wincent.com/command-t.git'
-Bundle 'godlygeek/tabular'
-Bundle 'mileszs/ack.vim'
-Bundle 'thoughtbot/vim-rspec'
-Bundle 'derekwyatt/vim-scala'
-Bundle 'jnwhiteh/vim-golang'
-Bundle 'zerowidth/vim-copy-as-rtf'
-Bundle 'bogado/file-line'
+Plugin 'gmarik/Vundle.vim'
 
-filetype plugin indent on     " required!
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-haml'
+Plugin 'tpope/vim-ragtag'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-vividchalk'
+Plugin 'tpope/vim-unimpaired'
+
+Plugin 'mattn/gist-vim'
+" Plugin 'kchmck/vim-coffee-script'
+Plugin 'matchit.zip'
+Plugin 'kana/vim-textobj-user'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'nelstrom/vim-textobj-rubyblock'
+Plugin 'sickill/vim-pasta'
+Plugin 'gregsexton/gitv'
+Plugin 'git://git.wincent.com/command-t.git'
+Plugin 'godlygeek/tabular'
+Plugin 'mileszs/ack.vim'
+Plugin 'thoughtbot/vim-rspec'
+Plugin 'derekwyatt/vim-scala'
+Plugin 'jnwhiteh/vim-golang'
+Plugin 'zerowidth/vim-copy-as-rtf'
+Plugin 'bogado/file-line'
+" Plugin 'zenorocha/dracula-theme'
+
+call vundle#end()
+filetype plugin indent on
 
 set number
 set ruler
@@ -62,7 +65,7 @@ set smartcase
 
 " Tab completion
 set wildmode=list:longest,list:full
-set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,node_modules
+set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,node_modules,target
 
 " Status bar
 set laststatus=2

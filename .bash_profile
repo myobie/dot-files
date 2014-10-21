@@ -226,3 +226,4 @@ alias code="cd ~/Dropbox/Code"
 alias W="cd ~/W/"
 
 export JEKYLL_ENV=development
+export ANDROID_HOME=/usr/local/opt/android-sdk

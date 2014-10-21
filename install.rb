@@ -12,19 +12,6 @@ def git(repo, where); run_cmd("cd #{where} && git clone #{repo}"); end
 def update(where); run_cmd("cd #{where} && git reset --hard HEAD && git pull --rebase"); end
 def symlink(from, to); run_cmd "ln -si #{from} #{to}"; end
 
-if ARGV.include?("command-t")
-  run_cmd "
-    cd ~/.vim/bundle/command-t/ruby/command-t
-    rbenv local system
-    brew uninstall macvim
-    brew install macvim --override-system-vim
-    ruby extconf.rb
-    make clean
-    make
-  "
-  exit
-end
-
 # paths
 this_file = Pathname.new(__FILE__)
 pwd = Pathname.pwd
@@ -47,8 +34,20 @@ vundle = bundle.join("vundle")
 mkdir bundle
 mkdir backup
 
-unless vundle.exist?
-  git "git://github.com/gmarik/vundle.git", bundle
-else
-  update vundle
+# vundle
+system "vim +PluginInstall +qall"
+
+# command-t
+if ARGV.include?("command-t")
+  run_cmd "
+    cd ~/.vim/bundle/command-t/ruby/command-t
+    rbenv local system
+    brew uninstall macvim
+    brew install macvim --override-system-vim
+    ruby extconf.rb
+    make clean
+    make
+  "
+  exit
 end
+
