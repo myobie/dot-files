@@ -147,7 +147,7 @@ set modeline
 set modelines=10
 
 " Default color scheme
-color dracula
+color default
 
 " Default Font
 set guifont=Menlo\ Regular:h12
@@ -176,6 +176,11 @@ runtime! macros/matchit.vim
 
 " Show (partial) command in the status line
 set showcmd
+
+" Mouse for scrolling
+if has("mouse")
+    set mouse=a
+endif
 
 " HTML5
 syn keyword htmlTagName contained article aside audio canvas command datalist
