@@ -1,45 +1,53 @@
 require 'pathname'
 
-def run_cmd(what)
-  puts what
-  `#{what}`
+def run(command)
+  puts "$ #{command}"
+  system command
 end
 
 # typing sucks
-def path(where); Pathname.new(where); end
-def mkdir(where); run_cmd "mkdir -p #{where}"; end
-def git(repo, where); run_cmd("cd #{where} && git clone #{repo}"); end
-def update(where); run_cmd("cd #{where} && git reset --hard HEAD && git pull --rebase"); end
-def symlink(from, to); run_cmd "ln -si #{from} #{to}"; end
+def expand(where); File.expand_path(where) end
+def path(where); Pathname.new(where) end
+def mkdir(where); run "mkdir -p #{where}" end
+def git(repo, where); run "cd #{where} && git clone #{repo}" end
+def update(where); run "cd #{where} && git reset --hard HEAD && git pull --rebase" end
+def dir?(where); File.directory?(where) end
+def symlink(from, to); run "ln -si #{from} #{to}" unless dir?(to) end
 
 # paths
-this_file = Pathname.new(__FILE__)
 pwd = Pathname.pwd
-home = path(File.expand_path("~"))
+home = path(expand("~"))
+
+# test
+def check?(check); [path(".git"), path("."), path(".."), path(__FILE__)].any? {|t| t==check} end
 
 # symlink files
 Dir["{*,.*}"].each do |file|
   file = path(file)
-  unless file.directory? || file == this_file
-    symlink pwd.join(file), home.join(File.basename(file))
+  current = pwd.join(file)
+  basename = File.basename(file)
+  result = home.join(basename)
+
+  unless check?(file)
+    symlink current, result
   end
 end
 
 # .vim
 dot_vim = home.join(".vim")
-bundle = dot_vim.join("bundle")
-backup = dot_vim.join("backup")
-vundle = bundle.join("vundle")
+bundle  = dot_vim.join("bundle")
+backup  = dot_vim.join("backup")
+vundle  = bundle.join("vundle")
 
 mkdir bundle
 mkdir backup
 
 # vundle
-system "vim +PluginInstall +qall"
+run "vim +PluginInstall +qall"
 
 # command-t
 if ARGV.include?("command-t")
-  run_cmd "
+  run "
     cd ~/.vim/bundle/command-t/ruby/command-t
     rbenv local system
     brew uninstall macvim
@@ -48,6 +56,4 @@ if ARGV.include?("command-t")
     make clean
     make
   "
-  exit
 end
-
