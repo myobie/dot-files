@@ -23,6 +23,9 @@ Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-fireplace'
 
 Plugin 'guns/vim-clojure-static'
+Plugin 'guns/vim-clojure-highlight'
+Plugin 'kien/rainbow_parentheses.vim'
+Plugin 'paredit.vim'
 Plugin 'mattn/gist-vim'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'matchit.zip'
@@ -206,6 +209,8 @@ let g:rspec_command = "!bin/rspec {spec}"
 " clojure
 nnoremap <C-e> :Eval<CR>
 nnoremap E :%Eval<CR>
+nnoremap ® :RainbowParenthesesToggle<CR>
+autocmd BufRead,BufNewFile *.cljs setlocal filetype=clojure
 
 " Ability to reload externally modified files
 set autoread
