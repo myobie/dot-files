@@ -20,7 +20,9 @@ Plugin 'tpope/vim-ragtag'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-vividchalk'
 Plugin 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-fireplace'
 
+Plugin 'guns/vim-clojure-static'
 Plugin 'mattn/gist-vim'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'matchit.zip'
@@ -191,8 +193,6 @@ syn keyword htmlTagName contained rp rt ruby section source summary time video
 " go
 autocmd FileType go setlocal noexpandtab shiftwidth=4 tabstop=4 softtabstop=4 nolist
 
-" RANDOM STUFF
-
 " I must have this shortcut for hash rockets
 imap <C-l> <Space>=><Space>
 
@@ -202,6 +202,10 @@ map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
 let g:rspec_command = "!bin/rspec {spec}"
+
+" clojure
+nnoremap <C-e> :Eval<CR>
+nnoremap E :%Eval<CR>
 
 " Ability to reload externally modified files
 set autoread
