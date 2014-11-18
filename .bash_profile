@@ -13,13 +13,7 @@ function fancy_directory {
     if [[ "$HOME" == ${dir:0:${#HOME}} ]] ; then
         dir="~${dir:${#HOME}}"
     fi
-    
-    export WORK=/Volumes/Work
-    # Substitute a leading path that's in $WORK for "w"
-    if [[ "$WORK" == ${dir:0:${#WORK}} ]] ; then
-        dir="w${dir:${#WORK}}"
-    fi
-    
+
     # Append a trailing slash if it's not there already.
     if [[ ${dir:${#dir}-1} != "/" ]] ; then 
         dir="$dir"
@@ -31,14 +25,14 @@ function fancy_directory {
     if [[ "$dir" =~ (~){0,1}/.*(.{${pwd_length}}) ]] ; then  
         local tilde=${BASH_REMATCH[1]}
         local directory=${BASH_REMATCH[2]}
-        
+
         # At this point, $directory is the truncated end-section of the 
         # path.  We will now make it only contain full directory names
         # (e.g. "ibrary/Mail" -> "/Mail").
         if [[ "$directory" =~ [^/]*(.*) ]] ; then
             directory=${BASH_REMATCH[1]} 
         fi
-        
+
         # Ellipsis
         dir="$tilde/...$directory"
     fi
@@ -221,7 +215,6 @@ rbenv rehash
 
 alias git=hub
 
-alias work="cd ~/Dropbox/Work"
 alias code="cd ~/Dropbox/Code"
 alias W="cd ~/W/"
 
