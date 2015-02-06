@@ -24,7 +24,7 @@ I get everything setup for `vundle` and list all the plugins I use. [tpope](http
 The plugins I use the most are:
 
 * `command-t` - still the best fuzzy finder ever made. I know `cntl-p` is the new hotness, but it just doesn’t jive with me. This plugin is notoriously hard to install and there is a special section of my install script just for it.
-* `vim-surround` - without this I would lose my mind. I love being able to swap quote or wrap in parens, etc.
+* `vim-surround` - without this I would lose my mind. I love being able to swap quotes or wrap in parens, etc.
 * `paredit.vim` - changed my life for working in clojure.
 * `vim-ragtag` - when working with html I like to be able to type `h1C-x<Enter>` and it will make `h1` tags on new lines with an indented line in-between.
 
@@ -34,7 +34,7 @@ I’ve commented my `.vimrc` pretty well and here are some highlights:
 * I use Menlo as my typeface. There still is no better programmer font and it’s already installed. (It’s important to me that the * is in the middle and not superscript.)
 * `set backupdir=~/.vim/backup` so there aren’t those `.swp` files everywhere. (Also do `set directory=~/.vim/backup`)
 * Map leader + t to `:CommandT`
-* Map control + l to insert `=>` - this is something I still use because of using TextMate for so long.
+* Map control + l to insert `=>` - this is something I still use because of using TextMate for so long
 * The `setupMarkup` function for editing markdown files is pretty good
 * Gotta add all the ruby files without extensions to appear as ruby files
 * Setting `.json` files to `javascript` is really helpful
@@ -43,7 +43,7 @@ I’ve commented my `.vimrc` pretty well and here are some highlights:
 
 ### `.gvimrc`
 
-I don’t use `MacVim` anymore, but I keep this around just in case.
+I don’t use MacVim anymore, but I keep this around just in case.
 
 ## bash
 
@@ -61,7 +61,7 @@ I’m not using crazy colors or anything, but I do want to know the name of the 
 
 I’ve made three functions to parse if the current branch is dirty and output some unicode char that looks like a snowflake, to parse if the current branch has un-pushed commits and output some unicode arrows pointing up to the git’s in the sky, and one to parse the number of background jobs. The functions are good to output nothing if their conditions are false.
 
-I also prefer to type near a dollar sign, but I also like that dollar sign to be yellow. So I used the color codes stuff to make it yellow in the `PS1`.
+I also prefer to type next to dollar sign and I also like that dollar sign to be yellow.
 
 ### `.bash_profile`
 
@@ -93,7 +93,7 @@ This file is in `.gitignore` because this is where you put `env` vars or other f
 
 Has my name and email (which match what’s on GitHub so my commits are linked to my account), that I want to use colors, that I want to use the OS X keychain to store any credentials, what my github username is (for `hub`), that I want to use my personal heroku account by default (it’s possible to have multiple accounts), and that I like [simple pushes](https://www.youtube.com/watch?v=cMBh8P1m9Wo).
 
-### `.giti	gnore`
+### `.gitignore`
 
 Ignore `.bash_extras`, `.DS_Store` crap files :shakingfist:, and leiningen stuff.
 
@@ -136,3 +136,4 @@ For colors, setting up some file types, etc.
 * Install `brew` and `rbenv` in `install.rb`
 * Find a way to list out what `brew` packages need to be installed and then install them in `install.rb`
 * Install common gems or npm libraries that I use a lot in `install.rb`
+* Install `pow` and setup `nginx` in `install.rb`
