@@ -23,7 +23,7 @@ I get everything setup for `vundle` and list all the plugins I use. [tpope](http
 
 The plugins I use the most are:
 
-* `command-t` - still the best fuzzy finder ever made. I know `cntl-p` is the new hotness, but it just doesn’t jive with me. This plugin is notoriously hard to install and make a special section of my install script just for it.
+* `command-t` - still the best fuzzy finder ever made. I know `cntl-p` is the new hotness, but it just doesn’t jive with me. This plugin is notoriously hard to install and there is a special section of my install script just for it.
 * `vim-surround` - without this I would lose my mind. I love being able to swap quote or wrap in parens, etc.
 * `paredit.vim` - changed my life for working in clojure.
 * `vim-ragtag` - when working with html I like to be able to type `h1C-x<Enter>` and it will make `h1` tags on new lines with an indented line in-between.
