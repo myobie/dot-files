@@ -8,6 +8,7 @@ if [[ $(which hub) ]]; then
 fi
 alias code="cd ~/Dropbox/Code"
 alias W="cd ~/W/"
+alias iA="open -a iA\ Writer"
 
 # random env stuff
 export FAKE_POSTS=true
