@@ -8,7 +8,7 @@ It basically:
 
 1. symlinks every file beginning with `.` into `~` if it doesn’t already exist
 2. creates `.vim/bundle` and `.vim/backup`
-3. runs vbundle`’s install function
+3. runs `vundle`’s install function
 4. if “command-t” is present in `ARGV`, it will try to setup `command-t` correctly. This can only be done after `rbenv` is installed.
 
 ## `vim`
