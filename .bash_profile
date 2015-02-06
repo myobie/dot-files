@@ -3,7 +3,9 @@
 
 export EDITOR="vim"
 alias flushdns="dscacheutil -flushcache"
-alias git=hub
+if [[ $(which hub) ]]; then
+  alias git=hub
+fi
 alias code="cd ~/Dropbox/Code"
 alias W="cd ~/W/"
 
