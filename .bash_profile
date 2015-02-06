@@ -37,7 +37,7 @@ export PATH=$PATH:/usr/local/opt/go/libexec/bin
 export GOPATH=~/.gocode
 
 # haskell
-export PATH=$PATH:~/.cabal/bin:/Users/myobie/Library/Haskell/bin/
+export PATH=$PATH:~/.cabal/bin:/Users/myobie/Library/Haskell/bin
 
 # ruby
 
