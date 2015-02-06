@@ -1,5 +1,5 @@
-. .fancy_directory.sh
-. .ps1.sh
+. ~/.fancy_directory.sh
+. ~/.ps1.sh
 
 export EDITOR="vim"
 alias flushdns="dscacheutil -flushcache"
