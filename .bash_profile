@@ -2,13 +2,28 @@
 . ~/.ps1.sh
 
 export EDITOR="vim"
+
 alias flushdns="dscacheutil -flushcache"
+
 if [[ $(which hub) ]]; then
   alias git=hub
 fi
+
 alias code="cd ~/Dropbox/Code"
 alias W="cd ~/W/"
 alias iA="open -a iA\ Writer"
+alias iphone='open /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications/iPhone\ Simulator.app'
+
+if [ `uname` = 'Darwin' ]; then
+  alias ls='ls -FG'
+  alias mv='mv -nv'
+else
+  alias ls='ls -p --color'
+  alias mv='mv -v'
+fi
+
+alias ll='ls -lah'
+
 
 # random env stuff
 export FAKE_POSTS=true
@@ -21,16 +36,6 @@ export HISTSIZE=10000
 
 # PATH
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:~/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/local/share/npm/bin:$PATH"
-
-# basic ls
-if [ `uname` = 'Darwin' ]; then
-  alias ls='ls -FG'
-  alias mv='mv -nv'
-else
-  alias ls='ls -p --color'
-  alias mv='mv -v'
-fi
-alias ll='ls -lah'
 
 # go
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
@@ -87,14 +92,6 @@ pkill() {
 if [ -f `brew --prefix`/etc/bash_completion ]; then
   . `brew --prefix`/etc/bash_completion
 fi
-
-# xcode stuff
-alias iphone='open /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications/iPhone\ Simulator.app'
-
-# git-completion
-# if [ -f `brew --prefix`/etc/bash_completion.d/git-completion.bash  ]; then
-#   . `brew --prefix`/etc/bash_completion.d/git-completion.bash
-# fi
 
 # git shortcuts
 function search-history {
