@@ -11,7 +11,7 @@ fi
 
 alias code="cd ~/Dropbox/Code"
 alias W="cd ~/W/"
-alias iA="open -a iA\ Writer"
+alias iA="open -a iA\ Writer\ Pro"
 alias iphone='open /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications/iPhone\ Simulator.app'
 
 if [ `uname` = 'Darwin' ]; then
@@ -23,7 +23,6 @@ else
 fi
 
 alias ll='ls -lah'
-
 
 # random env stuff
 export FAKE_POSTS=true
