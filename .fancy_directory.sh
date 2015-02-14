@@ -47,3 +47,7 @@ function fancy_directory {
 if [[ "$TERM" == "xterm" || "$TERM" == "xterm-color" || "$TERM" == "xterm-256color" ]] ; then
 export PROMPT_COMMAND="directory_to_titlebar"
 fi
+
+if [[ "$0" == "$BASH_SOURCE" ]]; then
+  fancy_directory
+fi
