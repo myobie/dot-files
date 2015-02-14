@@ -38,7 +38,7 @@ Plugin 'godlygeek/tabular'
 Plugin 'mileszs/ack.vim'
 Plugin 'thoughtbot/vim-rspec'
 Plugin 'derekwyatt/vim-scala'
-Plugin 'jnwhiteh/vim-golang'
+Plugin 'fatih/vim-go'
 Plugin 'zerowidth/vim-copy-as-rtf'
 Plugin 'bogado/file-line'
 
