@@ -1,4 +1,5 @@
 require 'pathname'
+require 'shellwords'
 
 def run(command)
   puts "$ #{command}"
@@ -13,6 +14,8 @@ def git(repo, where); run "cd #{where} && git clone #{repo}" end
 def update(where); run "cd #{where} && git reset --hard HEAD && git pull --rebase" end
 def dir?(where); File.directory?(where) end
 def symlink(from, to); run "ln -si #{from} #{to}" unless dir?(to) end
+def installed?(what); success?("which #{Shellwords::escape(what)}") end
+def success?(what); run(what)&& $?.success? end
 
 # paths
 pwd = Pathname.pwd
@@ -20,6 +23,19 @@ home = path(expand("~"))
 
 # test
 def check?(check); [path(".git"), path("."), path(".."), path(__FILE__)].any? {|t| t==check} end
+
+# brew
+unless installed?("brew")
+  run 'ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"'
+end
+
+# install hub and git
+unless success?("brew doctor") || ARGV.include?("skip-brew-doctor")
+  exit 1
+end
+
+run "brew update"
+run "brew install bash-completion hub git rbenv ruby-build"
 
 # symlink files
 Dir["{*,.*}"].each do |file|
@@ -57,3 +73,10 @@ if ARGV.include?("command-t")
     make
   "
 end
+
+# ruby 2
+run "rbenv install 2.2.2"
+run "rbenv global 2.2.2"
+
+# misc
+run "brew install tree wget watch tmux"

@@ -106,5 +106,5 @@ fi
 stty stop ''
 
 # rbenv
-export PATH="$HOME/.rbenv/shims:$PATH"
+export RBENV_ROOT=/usr/local/var/rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
