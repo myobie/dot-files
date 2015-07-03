@@ -97,6 +97,26 @@ function search-history {
   git log --pretty=format:'%h was %an, %ar, message: %s' | grep $@ | less
 }
 
+function clone {
+  org=$(echo $1 | awk -F/ '{ print $1 }')
+  mkdir -p ~/src/github.com/$org
+  path=~/src/github.com/$1
+  git clone $@ $path
+  cd $path
+}
+
+function to {
+  query=$1
+  result=$(ruby -e 'print 3.times.reduce(["#{ENV.fetch("HOME")}/src"]) { |acc, _| acc.flat_map { |d| Dir["#{d}/**"] } }.select { |d| d.split("/").last =~ /^#{ARGV.first}/ }.first || exit(1)' $1)
+
+  if [[ $? == 0 ]]; then
+    cd $result
+  else
+    echo "No matching directory"
+    return 1
+  fi
+}
+
 # extras that shouldn't be in the repo?
 if [ -f ~/.bash_extras  ]; then
   . ~/.bash_extras
