@@ -34,7 +34,16 @@ export HISTCONTROL=erasedups
 export HISTSIZE=10000
 
 # PATH
-export PATH="/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:~/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/local/share/npm/bin:$PATH"
+xcode-path() {
+  which xcode-select 2>&1 > /dev/null
+  if [[ "$?" == "0" ]]; then
+    echo $(xcode-select -p)
+  else
+    echo "/Applications/Xcode.app/Contents/Developer"
+  fi
+}
+
+export PATH="/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:~/bin:$(xcode-path)/usr/bin:/usr/local/share/npm/bin:$PATH"
 
 # go
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
