@@ -47,7 +47,7 @@ export PATH="/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:~/bin:$(xcode-p
 
 # go
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
-export GOPATH=~/src
+export GOPATH=~
 
 # haskell
 export PATH=$PATH:~/.cabal/bin:/Users/myobie/Library/Haskell/bin
