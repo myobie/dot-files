@@ -71,7 +71,7 @@ set smartcase
 
 " Tab completion
 set wildmode=list:longest,list:full
-set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,node_modules,target
+set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,node_modules,target,_build,deps
 
 " Status bar
 set laststatus=2

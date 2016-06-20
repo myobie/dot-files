@@ -22,7 +22,7 @@ pwd = Pathname.pwd
 home = path(expand("~"))
 
 # test
-def check?(check); [path(".git"), path("."), path(".."), path(__FILE__)].any? {|t| t==check} end
+def check?(check); [path("README.md"), path(".git"), path("."), path(".."), path(__FILE__)].any? {|t| t==check} end
 
 # brew
 unless installed?("brew")
@@ -75,8 +75,8 @@ if ARGV.include?("command-t")
 end
 
 # ruby 2
-run "rbenv install 2.2.2"
-run "rbenv global 2.2.2"
+run "rbenv install 2.3.0"
+run "rbenv global 2.3.0"
 
 # misc
 run "brew install tree wget watch tmux"
