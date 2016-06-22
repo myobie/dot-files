@@ -155,7 +155,7 @@ set modelines=10
 color default
 
 " Default Font
-set guifont=Menlo\ Regular:h12
+set guifont=SF\ Mono\ Regular:h12
 set antialias
 
 " CommandT

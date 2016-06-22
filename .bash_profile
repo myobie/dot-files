@@ -1,5 +1,5 @@
-. ~/.fancy_directory.sh
-. ~/.ps1.sh
+. ~/.fancy_directory.bash
+. ~/.ps1.bash
 
 export EDITOR="vim"
 
