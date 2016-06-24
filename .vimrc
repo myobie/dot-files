@@ -41,6 +41,7 @@ Plugin 'derekwyatt/vim-scala'
 Plugin 'fatih/vim-go'
 Plugin 'zerowidth/vim-copy-as-rtf'
 Plugin 'bogado/file-line'
+Plugin 'scrooloose/syntastic'
 
 Plugin 'myobie/dracula-theme', {'rtp': 'vim/'}
 " Until https://github.com/zenorocha/dracula-theme/pull/70 is merged
@@ -135,8 +136,7 @@ vmap <C-Up> [egv
 vmap <C-Down> ]egv
 
 " Enable syntastic syntax checking
-let g:syntastic_enable_signs=1
-let g:syntastic_quiet_warnings=1
+let g:syntastic_javascript_checkers = ['standard']
 
 " gist-vim defaults
 if has("mac")
@@ -169,9 +169,6 @@ imap <Leader>= <Esc> <C-w>=
 " Directories for swp files
 set backupdir=~/.vim/backup
 set directory=~/.vim/backup
-
-" Turn off jslint errors by default
-" let g:JSLintHighlightErrorLine = 0
 
 " MacVIM shift+arrow-keys behavior (required in .vimrc)
 let macvim_hig_shift_movement = 1

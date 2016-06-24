@@ -9,6 +9,10 @@ if [[ $(which hub) ]]; then
   alias git=hub
 fi
 
+if [[ -d ~/src/github.com/dokku/dokku/ ]]; then
+  alias dokku="~/src/github.com/dokku/dokku/contrib/dokku_client.sh"
+fi
+
 alias code="cd ~/Dropbox/Code"
 alias W="cd ~/W/"
 alias iA="open -a iA\ Writer\ Pro"
@@ -47,7 +51,7 @@ export PATH="/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:~/bin:$(xcode-p
 
 # go
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
-export GOPATH=~/src
+export GOPATH=~
 
 # haskell
 export PATH=$PATH:~/.cabal/bin:/Users/myobie/Library/Haskell/bin
