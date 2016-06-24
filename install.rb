@@ -35,7 +35,8 @@ unless success?("brew doctor") || ARGV.include?("skip-brew-doctor")
 end
 
 run "brew update"
-run "brew install bash-completion hub git rbenv ruby-build"
+run "brew install bash-completion hub git rbenv ruby-build node"
+run "npm install -g standard"
 
 # symlink files
 Dir["{*,.*}"].each do |file|
@@ -53,7 +54,6 @@ end
 dot_vim = home.join(".vim")
 bundle  = dot_vim.join("bundle")
 backup  = dot_vim.join("backup")
-vundle  = bundle.join("vundle")
 
 mkdir bundle
 mkdir backup
