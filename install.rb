@@ -35,7 +35,7 @@ unless success?("brew doctor") || ARGV.include?("skip-brew-doctor")
 end
 
 run "brew update"
-run "brew install bash-completion hub git rbenv ruby-build node"
+run "brew install tidy-html5 bash-completion hub git rbenv ruby-build node tree wget watch tmux"
 run "npm install -g standard"
 
 # symlink files
@@ -77,6 +77,3 @@ end
 # ruby 2
 run "rbenv install 2.3.0"
 run "rbenv global 2.3.0"
-
-# misc
-run "brew install tree wget watch tmux"
