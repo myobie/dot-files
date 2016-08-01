@@ -42,9 +42,7 @@ Plugin 'fatih/vim-go'
 Plugin 'zerowidth/vim-copy-as-rtf'
 Plugin 'bogado/file-line'
 Plugin 'scrooloose/syntastic'
-
-Plugin 'myobie/dracula-theme', {'rtp': 'vim/'}
-" Until https://github.com/zenorocha/dracula-theme/pull/70 is merged
+Plugin 'elixir-lang/vim-elixir'
 
 call vundle#end()
 filetype plugin indent on
@@ -137,6 +135,7 @@ vmap <C-Down> ]egv
 
 " Enable syntastic syntax checking
 let g:syntastic_javascript_checkers = ['standard']
+let g:syntastic_enable_elixir_checker = 1
 
 " gist-vim defaults
 if has("mac")
