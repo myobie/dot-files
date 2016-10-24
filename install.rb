@@ -75,5 +75,5 @@ if ARGV.include?("command-t")
 end
 
 # ruby 2
-run "rbenv install 2.3.0"
-run "rbenv global 2.3.0"
+run "rbenv install 2.3.1"
+run "rbenv global 2.3.1"
