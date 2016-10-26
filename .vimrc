@@ -43,6 +43,10 @@ Plugin 'zerowidth/vim-copy-as-rtf'
 Plugin 'bogado/file-line'
 Plugin 'scrooloose/syntastic'
 Plugin 'elixir-lang/vim-elixir'
+Plugin 'isRuslan/vim-es6'
+
+" Plugin 'myobie/dracula-theme', {'rtp': 'vim/'}
+" Until https://github.com/zenorocha/dracula-theme/pull/70 is merged
 
 call vundle#end()
 filetype plugin indent on
@@ -101,9 +105,6 @@ au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru}    set f
 " md, markdown, and mk are markdown and define buffer-local preview
 au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn} call s:setupMarkup()
 
-" add json syntax highlighting
-au BufNewFile,BufRead *.json set ft=javascript
-
 au BufRead,BufNewFile *.txt call s:setupWrapping()
 
 " allow backspacing over everything in insert mode
@@ -134,6 +135,10 @@ vmap <C-Up> [egv
 vmap <C-Down> ]egv
 
 " Enable syntastic syntax checking
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['standard']
 let g:syntastic_enable_elixir_checker = 1
 
