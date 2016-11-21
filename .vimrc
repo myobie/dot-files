@@ -44,6 +44,7 @@ Plugin 'bogado/file-line'
 Plugin 'scrooloose/syntastic'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'isRuslan/vim-es6'
+Plugin 'rizzatti/dash.vim'
 
 " Plugin 'myobie/dracula-theme', {'rtp': 'vim/'}
 " Until https://github.com/zenorocha/dracula-theme/pull/70 is merged
