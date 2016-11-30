@@ -45,6 +45,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'isRuslan/vim-es6'
 Plugin 'rizzatti/dash.vim'
+Plugin 'keith/swift.vim'
 
 " Plugin 'myobie/dracula-theme', {'rtp': 'vim/'}
 " Until https://github.com/zenorocha/dracula-theme/pull/70 is merged
@@ -197,6 +198,9 @@ syn keyword htmlTagName contained rp rt ruby section source summary time video
 
 " go
 autocmd FileType go setlocal noexpandtab shiftwidth=4 tabstop=4 softtabstop=4 nolist
+
+" swfit
+autocmd FileType swift setlocal noexpandtab shiftwidth=4 tabstop=4 softtabstop=4 nolist
 
 " I must have this shortcut for hash rockets
 imap <C-l> <Space>=><Space>
