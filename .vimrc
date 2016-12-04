@@ -142,6 +142,8 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['standard']
+let g:syntastic_html_checkers = []
+let g:syntastic_enable_html_checker = 0
 let g:syntastic_enable_elixir_checker = 1
 
 " gist-vim defaults
@@ -195,6 +197,7 @@ syn keyword htmlTagName contained article aside audio canvas command datalist
 syn keyword htmlTagName contained details embed figcaption figure footer header
 syn keyword htmlTagName contained hgroup keygen mark meter nav output progress
 syn keyword htmlTagName contained rp rt ruby section source summary time video
+syn keyword htmlTagName contained template
 
 " go
 autocmd FileType go setlocal noexpandtab shiftwidth=4 tabstop=4 softtabstop=4 nolist
