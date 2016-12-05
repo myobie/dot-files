@@ -1,3 +1,5 @@
+#!/bin/bash
+
 function directory_to_titlebar {
   printf "\033]0;%s\007" `fancy_directory`
 }

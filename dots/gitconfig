@@ -1,0 +1,19 @@
+[user]
+	name = myobie
+	email = me@nathanherald.com
+[color]
+	ui = true
+[credential]
+	helper = osxkeychain
+[github]
+	user = myobie
+[heroku]
+	account = personal
+[push]
+	default = simple
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
+[alias]
+  difff = diff -W --minimal --word-diff=color

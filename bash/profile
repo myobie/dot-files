@@ -1,5 +1,7 @@
-. ~/.fancy_directory.bash
-. ~/.ps1.bash
+#!/bin/bash
+
+. ~/.dot-files/bash/fancy_directory.bash
+. ~/.dot-files/bash/ps1.bash
 
 export EDITOR="vim"
 
@@ -49,6 +51,9 @@ xcode-path() {
 
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:~/bin:$(xcode-path)/usr/bin:/usr/local/share/npm/bin:$PATH"
 
+# heroku
+export PATH="/usr/local/heroku/bin:$PATH"
+
 # go
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
 export GOPATH=~
@@ -56,10 +61,11 @@ export GOPATH=~
 # haskell
 export PATH=$PATH:~/.cabal/bin:/Users/myobie/Library/Haskell/bin
 
-# ruby
-
 # This resolves issues install the mysql, postgres, and other gems with native non universal binary extensions
 export ARCHFLAGS='-arch x86_64'
+
+# fzf
+export FZF_DEFAULT_COMMAND='ag -g ""'
 
 # node
 export NODE_PATH="/usr/local/lib/node_modules"
