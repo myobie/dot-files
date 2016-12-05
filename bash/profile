@@ -3,22 +3,13 @@
 . ~/.dot-files/bash/fancy_directory.bash
 . ~/.dot-files/bash/ps1.bash
 
-export EDITOR="vim"
+export EDITOR="nvim"
 
 alias flushdns="dscacheutil -flushcache"
 
 if [[ $(which hub) ]]; then
   alias git=hub
 fi
-
-if [[ -d ~/src/github.com/dokku/dokku/ ]]; then
-  alias dokku="~/src/github.com/dokku/dokku/contrib/dokku_client.sh"
-fi
-
-alias code="cd ~/Dropbox/Code"
-alias W="cd ~/W/"
-alias iA="open -a iA\ Writer\ Pro"
-alias iphone='open /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications/iPhone\ Simulator.app'
 
 if [ `uname` = 'Darwin' ]; then
   alias ls='ls -FG'
@@ -31,8 +22,6 @@ fi
 alias ll='ls -lah'
 
 # random env stuff
-export FAKE_POSTS=true
-export JEKYLL_ENV=development
 export ANDROID_HOME=/usr/local/opt/android-sdk
 # History: don't store duplicates
 export HISTCONTROL=erasedups

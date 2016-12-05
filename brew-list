@@ -1,4 +1,4 @@
-ack
+ag
 bash-completion
 elixir
 envchain
@@ -9,7 +9,6 @@ jq
 neovim/neovim/neovim
 node
 postgresql
-pt
 python macvim --with-override-system-vim
 python3
 rbenv
