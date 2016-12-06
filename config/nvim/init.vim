@@ -1,6 +1,6 @@
 " basics
 set encoding=utf-8
-set mouse=""
+set mouse=a
 set ruler
 set number
 set title
@@ -89,8 +89,9 @@ Plug 'junegunn/fzf.vim'
 Plug 'neomake/neomake'
   " Run Neomake when I save any buffer
   augroup localneomake
-    autocmd! BufWritePost * Neomake
+    autocmd! BufWritePost *.js Neomake
   augroup END
+  let g:neomake_javascript_enabled_makers = ['standard']
 
 Plug 'ludovicchabant/vim-gutentags'
   let g:gutentags_cache_dir = '~/.tags_cache'
@@ -101,6 +102,8 @@ call plug#end()
 set background=dark
 color default
 syntax enable
+set ttyfast
+set ttimeoutlen=10
 
 " ruby
 au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru}    set ft=ruby
@@ -110,3 +113,7 @@ autocmd FileType go setlocal noexpandtab shiftwidth=4 tabstop=4 softtabstop=4 no
 
 " swfit
 autocmd FileType swift setlocal noexpandtab shiftwidth=4 tabstop=4 softtabstop=4 nolist
+
+" js/on
+autocmd BufNewFile,BufRead *.js set ft=javascript
+autocmd BufNewFile,BufRead *.json set ft=javascript

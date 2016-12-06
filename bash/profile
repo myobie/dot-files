@@ -4,6 +4,8 @@
 . ~/.dot-files/bash/ps1.bash
 
 export EDITOR="nvim"
+alias vim="nvim"
+alias vi="nvim"
 
 alias flushdns="dscacheutil -flushcache"
 
