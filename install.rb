@@ -7,7 +7,7 @@ end
 
 if $upgrade
   list = gather("brew-list").flatten.map { |item| item.split(" ").first }
-  brew.upgrade list
+  brew.upgrade list.join(" ")
 else
   easy, individual = gather("brew-list")
 
@@ -41,7 +41,7 @@ Dir["dots/*"].each do |file|
   from = $pwd.join(file)
   to = $home.join(".#{basename(file)}")
 
-  symlink from, to 
+  symlink from, to
 end
 
 # symlink ~/.config files
@@ -57,6 +57,10 @@ Dir["config/*/**"].each do |file|
   mkdir dirname(to)
   symlink from, to
 end
+
+# services
+brew.restart 'postgresql'
+brew.restart 'redis'
 
 # vim-plug
 plug.update_self
