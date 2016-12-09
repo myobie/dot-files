@@ -21,9 +21,9 @@ symlink $pwd.join("bash", "profile"), $home.join(".bash_profile")
 
 # npm
 if $upgrade
-  npm.update
+  yarn.upgrade gather!("npm-list")
 else
-  npm.install gather!("npm-list")
+  yarn.add gather!("npm-list")
 end
 
 # ruby
@@ -70,4 +70,8 @@ if $upgrade
 else
   plug.install
 end
+
+# deoplete needs python3
+run "pip3 install --upgrade pip"
+run "pip3 install neovim"
 

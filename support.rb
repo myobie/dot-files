@@ -96,11 +96,11 @@ module Brew
 end
 def brew; Brew end
 
-module Npm
-  def self.install(what); success? "npm install -g #{what}" end
-  def self.update; success? "npm update -g" end
+module Yarn
+  def self.add(what); success? "yarn global add #{what}" end
+  def self.upgrade(what); success? "yarn global upgrade #{what}" end
 end
-def npm; Npm end
+def yarn; Yarn end
 
 module Rbenv
   def self.setup(version)
