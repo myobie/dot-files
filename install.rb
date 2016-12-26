@@ -27,7 +27,7 @@ else
 end
 
 # ruby
-rbenv.setup "2.3.x"
+rbenv.setup "2.4.x"
 
 gem_list = gather!("gem-list")
 if $upgrade
