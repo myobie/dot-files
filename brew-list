@@ -1,11 +1,13 @@
-ag
 bash-completion
 elixir
 envchain
 git
+git-lfs
 go
 hub
+hugo
 jq
+mas
 neovim/neovim/neovim
 node
 postgresql
@@ -15,6 +17,7 @@ rbenv
 redis
 ruby-build
 sqlite
+the_silver_searcher
 tidy-html5
 tmux
 tree
