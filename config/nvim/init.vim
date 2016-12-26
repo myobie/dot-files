@@ -4,6 +4,7 @@ set mouse=a
 set ruler
 set number
 set title
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1 " I beam during insert mode
 
 " whitespace
 set nowrap
