@@ -62,6 +62,9 @@ end
 brew.restart "postgresql"
 brew.restart "redis"
 
+# git lfs
+run "git lfs install"
+
 # vim-plug
 plug.update_self
 
@@ -71,7 +74,9 @@ else
   plug.install
 end
 
-# deoplete needs python3
+# neovim needs python support
 run "pip3 install --upgrade pip"
 run "pip3 install neovim"
+run "pip2 install --upgrade pip"
+run "pip2 install neovim"
 
