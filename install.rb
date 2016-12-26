@@ -59,8 +59,8 @@ Dir["config/*/**"].each do |file|
 end
 
 # services
-brew.restart 'postgresql'
-brew.restart 'redis'
+brew.restart "postgresql"
+brew.restart "redis"
 
 # vim-plug
 plug.update_self
