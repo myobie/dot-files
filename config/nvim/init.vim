@@ -6,6 +6,10 @@ set number
 set title
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1 " I beam during insert mode
 
+" sometimes when switching open buffers I lose syntax highlighting and set
+" hidden somehow fixes that
+set hidden
+
 " whitespace
 set nowrap
 set tabstop=2
