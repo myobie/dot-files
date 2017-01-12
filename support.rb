@@ -19,6 +19,10 @@ OptionParser.new do |opts|
     $upgrade = !!v
   end
 
+  opts.on("--[no]-skip-brew", "Skip all brew related activities") do |v|
+    $skip_brew = !!v
+  end
+
   opts.on("-h", "--help", "Prints this help") do
     puts opts
     exit
@@ -90,9 +94,10 @@ end
 def get; Git end
 
 module Brew
-  def self.install(what); success? "brew install #{what}" end
-  def self.upgrade(what); success? "brew upgrade #{what}" end
-  def self.restart(what); success? "brew services restart #{what}" end
+  def self.run(what); $skip_brew or success?(what) end
+  def self.install(what); run("brew install #{what}") end
+  def self.upgrade(what); run("brew upgrade #{what}") end
+  def self.restart(what); run("brew services restart #{what}") end
 end
 def brew; Brew end
 
