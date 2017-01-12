@@ -98,7 +98,7 @@ pkill() {
 }
 
 # bash-completion
-if [ -n "$(which brew)" ]; then
+if which brew > /dev/null; then
   if [ -f `brew --prefix`/etc/bash_completion ]; then
     . `brew --prefix`/etc/bash_completion
   fi
@@ -138,5 +138,6 @@ fi
 stty stop ''
 
 # rbenv
-export RBENV_ROOT=/usr/local/var/rbenv
+RBENV_ROOT=${RBENV_ROOT:-"/usr/local/var/rbenv"}
+export RBENV_ROOT
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
