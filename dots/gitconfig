@@ -12,8 +12,9 @@
 [push]
 	default = simple
 [filter "lfs"]
-	clean = git-lfs clean %f
-	smudge = git-lfs smudge %f
 	required = true
+	process = git-lfs filter-process
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
 [alias]
   difff = diff -W --minimal --word-diff=color
