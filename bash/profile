@@ -138,6 +138,4 @@ fi
 stty stop ''
 
 # rbenv
-RBENV_ROOT=${RBENV_ROOT:-"/usr/local/var/rbenv"}
-export RBENV_ROOT
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
