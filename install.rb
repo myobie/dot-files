@@ -44,6 +44,9 @@ Dir["dots/*"].each do |file|
   symlink from, to
 end
 
+mkdir $home.join(".ssh")
+symlink $pwd.join("ssh/config"), $home.join(".ssh/config")
+
 # symlink ~/.config files
 cpath = expand("~/.config")
 mkdir path(cpath).join("nvim", "backup")
