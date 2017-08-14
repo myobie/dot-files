@@ -23,6 +23,9 @@ fi
 
 alias ll='ls -lah'
 
+# Load up ssh keys
+ssh-add -A
+
 # random env stuff
 export ANDROID_HOME=/usr/local/opt/android-sdk
 # History: don't store duplicates

@@ -4,6 +4,7 @@ set mouse=a
 set ruler
 set number
 set title
+set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
 
 " sometimes when switching open buffers I lose syntax highlighting and set
 " hidden somehow fixes that
