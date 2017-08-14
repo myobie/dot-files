@@ -4,7 +4,6 @@ set mouse=a
 set ruler
 set number
 set title
-let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1 " I beam during insert mode
 
 " sometimes when switching open buffers I lose syntax highlighting and set
 " hidden somehow fixes that
@@ -65,7 +64,15 @@ Plug 'tpope/vim-ragtag' " HTML tags
 Plug 'tpope/vim-fugitive' " git support
 Plug 'tomtom/tcomment_vim' " gc
 Plug 'isRuslan/vim-es6' " regular javascript plug is missing newest features
+Plug 'slashmili/alchemist.vim' " elixir server for metadata
+Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'mattn/webapi-vim'
+Plug 'mileszs/ack.vim'
+Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
+
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
 
 Plug 'mattn/gist-vim'
   let g:gist_open_browser_after_post = 1
@@ -94,8 +101,9 @@ Plug 'junegunn/fzf.vim'
 Plug 'neomake/neomake'
   " Run Neomake when I save any buffer
   augroup localneomake
-    autocmd! BufWritePost *.js Neomake
+    autocmd! BufWritePost * Neomake
   augroup END
+  let g:neomake_markdown_enabled_makers = [] " markdown is too strict
   let g:neomake_javascript_enabled_makers = ['standard']
 
 Plug 'ludovicchabant/vim-gutentags'

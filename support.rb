@@ -94,10 +94,9 @@ end
 def get; Git end
 
 module Brew
-  def self.run(what); $skip_brew or success?(what) end
-  def self.install(what); run("brew install #{what}") end
-  def self.upgrade(what); run("brew upgrade #{what}") end
-  def self.restart(what); run("brew services restart #{what}") end
+  def self.install(what); success?("brew install #{what}") end
+  def self.upgrade(what); success?("brew upgrade #{what}") end
+  def self.restart(what); success?("brew services restart #{what}") end
 end
 def brew; Brew end
 
