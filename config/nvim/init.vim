@@ -106,6 +106,7 @@ Plug 'neomake/neomake'
   augroup END
   let g:neomake_markdown_enabled_makers = [] " markdown is too strict
   let g:neomake_javascript_enabled_makers = ['standard']
+  let g:neomake_json_enabled_makers = []
 
 Plug 'ludovicchabant/vim-gutentags'
   let g:gutentags_cache_dir = '~/.tags_cache'
@@ -130,4 +131,4 @@ autocmd FileType swift setlocal noexpandtab shiftwidth=4 tabstop=4 softtabstop=4
 
 " js/on
 autocmd BufNewFile,BufRead *.js set ft=javascript
-autocmd BufNewFile,BufRead *.json set ft=javascript
+autocmd BufNewFile,BufRead *.json set ft=json
