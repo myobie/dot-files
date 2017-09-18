@@ -1,6 +1,8 @@
 bash-completion
 elixir
 envchain
+forego
+fzf
 git
 git-lfs
 go
@@ -10,13 +12,17 @@ jq
 mas
 neovim/neovim/neovim
 node
+packer
 postgresql
 python macvim --with-override-system-vim
 python3
+rabbitmq
 rbenv
 redis
+ripgrep
 ruby-build
 sqlite
+terraform
 the_silver_searcher
 tidy-html5
 tmux
@@ -24,4 +30,3 @@ tree
 watch
 wget
 wrk
-yarn
