@@ -120,7 +120,7 @@ clone() {
   cd $path
 }
 
-to() {
+src() {
   local dir
 
   if [[ "$@" == "" ]]; then
