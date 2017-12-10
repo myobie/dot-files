@@ -69,7 +69,7 @@ export LSCOLORS="exfxcxdxbxegedabagacad"
 export CLICOLOR=true
 
 # via mojombo http://gist.github.com/180587
-function psg {
+psg() {
   ps wwwaux | egrep "($1|%CPU)" | grep -v grep
 }
 
@@ -108,11 +108,11 @@ if which brew > /dev/null; then
 fi
 
 # git shortcuts
-function search-history {
+search-history() {
   git log --pretty=format:'%h was %an, %ar, message: %s' | grep $@ | less
 }
 
-function clone {
+clone() {
   org=$(echo $1 | awk -F/ '{ print $1 }')
   mkdir -p ~/src/github.com/$org
   path=~/src/github.com/$1
@@ -120,16 +120,16 @@ function clone {
   cd $path
 }
 
-function to {
-  query=$1
-  result=$(ruby -e 'print 3.times.reduce(["#{ENV.fetch("HOME")}/src"]) { |acc, _| acc.flat_map { |d| Dir["#{d}/**"] } }.select { |d| d.split("/").last =~ /^#{ARGV.first}/ }.first || exit(1)' $1)
+to() {
+  local dir
 
-  if [[ $? == 0 ]]; then
-    cd $result
+  if [[ "$@" == "" ]]; then
+    dir=$(fd -t d -d 6 . ~/src 2> /dev/null | fzf +m)
   else
-    echo "No matching directory"
-    return 1
+    dir=$(fd -t d -d 6 . ~/src 2> /dev/null | fzf +m -f "$@" | head -n 1)
   fi
+
+  cd "$dir"
 }
 
 # extras that shouldn't be in the repo?
