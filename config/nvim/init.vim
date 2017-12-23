@@ -132,3 +132,5 @@ autocmd FileType swift setlocal noexpandtab shiftwidth=4 tabstop=4 softtabstop=4
 " js/on
 autocmd BufNewFile,BufRead *.js set ft=javascript
 autocmd BufNewFile,BufRead *.json set ft=json
+
+lang en_US
