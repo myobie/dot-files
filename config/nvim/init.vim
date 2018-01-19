@@ -107,6 +107,7 @@ Plug 'neomake/neomake'
   let g:neomake_markdown_enabled_makers = [] " markdown is too strict
   let g:neomake_javascript_enabled_makers = ['standard']
   let g:neomake_json_enabled_makers = []
+  let g:neomake_html_enabled_makers = []
 
 Plug 'ludovicchabant/vim-gutentags'
   let g:gutentags_cache_dir = '~/.tags_cache'
@@ -121,7 +122,7 @@ set ttyfast
 set ttimeoutlen=10
 
 " ruby
-au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru}    set ft=ruby
+au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru} set ft=ruby
 
 " go
 autocmd FileType go setlocal noexpandtab shiftwidth=4 tabstop=4 softtabstop=4 nolist
@@ -132,5 +133,6 @@ autocmd FileType swift setlocal noexpandtab shiftwidth=4 tabstop=4 softtabstop=4
 " js/on
 autocmd BufNewFile,BufRead *.js set ft=javascript
 autocmd BufNewFile,BufRead *.json set ft=json
+autocmd BufNewFile,BufRead *.exs set ft=elixir
 
 lang en_US
