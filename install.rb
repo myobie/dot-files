@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 require_relative 'support'
 
 # brew
@@ -27,7 +29,7 @@ else
 end
 
 # ruby
-rbenv.setup "2.4.x"
+rbenv.setup "2.5.x"
 
 gem_list = gather!("gem-list")
 if $upgrade
