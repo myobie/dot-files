@@ -18,3 +18,5 @@
 	required = true
 [alias]
   difff = diff -W --minimal --word-diff=color
+[merge]
+	conflictstyle = diff3
