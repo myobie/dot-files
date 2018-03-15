@@ -117,7 +117,7 @@ call plug#end()
 " font and colors
 set background=dark
 color default
-syntax enable
+syntax on
 set ttyfast
 set ttimeoutlen=10
 
@@ -133,6 +133,9 @@ autocmd FileType swift setlocal noexpandtab shiftwidth=4 tabstop=4 softtabstop=4
 " js/on
 autocmd BufNewFile,BufRead *.js set ft=javascript
 autocmd BufNewFile,BufRead *.json set ft=json
+autocmd BufNewFile,BufRead *.exs set ft=elixir
+
+" elixir scripts/on
 autocmd BufNewFile,BufRead *.exs set ft=elixir
 
 lang en_US
