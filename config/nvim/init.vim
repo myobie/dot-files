@@ -71,8 +71,9 @@ Plug 'mattn/webapi-vim'
 Plug 'mileszs/ack.vim'
 Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
 
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
+" ack.vim should use ripgrep
+if executable("rg")
+  let g:ackprg = 'rg --vimgrep --no-heading'
 endif
 
 Plug 'mattn/gist-vim'
@@ -108,9 +109,6 @@ Plug 'neomake/neomake'
   let g:neomake_javascript_enabled_makers = ['standard']
   let g:neomake_json_enabled_makers = []
   let g:neomake_html_enabled_makers = []
-
-Plug 'ludovicchabant/vim-gutentags'
-  let g:gutentags_cache_dir = '~/.tags_cache'
 
 call plug#end()
 
