@@ -15,7 +15,7 @@ neovim/neovim/neovim
 node
 packer
 postgresql
-python macvim --with-override-system-vim
+python
 python3
 rabbitmq
 rbenv
