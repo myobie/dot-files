@@ -15,7 +15,16 @@ else
 
   brew.install easy.join(" ")
 
-  individual.map { |item| brew.install item }
+  if individual
+    individual.map { |item| brew.install item }
+  end
+end
+
+# elixir
+if $upgrade
+  run "mix local.hex --force"
+else
+  run "mix local.hex --if-missing"
 end
 
 # bash
@@ -24,9 +33,9 @@ symlink $pwd.join("bash", "rc"), $home.join(".bashrc")
 
 # npm
 if $upgrade
-  yarn.upgrade gather!("npm-list")
+  npm.upgrade gather!("npm-list")
 else
-  yarn.add gather!("npm-list")
+  npm.install gather!("npm-list")
 end
 
 # ruby

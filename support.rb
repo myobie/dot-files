@@ -106,6 +106,12 @@ module Yarn
 end
 def yarn; Yarn end
 
+module NPM
+  def self.install(what); success? "npm install -g #{what}" end
+  def self.upgrade(what); success? "npm upgrade -g #{what}" end
+end
+def npm; NPM end
+
 module Rbenv
   def self.setup(version)
     versions = `ruby-build --definitions`
