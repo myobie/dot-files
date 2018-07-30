@@ -18,6 +18,9 @@ set expandtab
 set shiftwidth=2
 set list listchars=tab:\ \ ,trail:·
 
+" for wrapper things like markdown
+command! -nargs=* Wrap set wrap linebreak nolist
+
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
@@ -75,6 +78,9 @@ Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/sy
 if executable("rg")
   let g:ackprg = 'rg --vimgrep --no-heading'
 endif
+
+Plug 'mhinz/vim-mix-format'
+  let g:mix_format_on_save = 1
 
 Plug 'mattn/gist-vim'
   let g:gist_open_browser_after_post = 1
@@ -135,5 +141,8 @@ autocmd BufNewFile,BufRead *.exs set ft=elixir
 
 " elixir scripts/on
 autocmd BufNewFile,BufRead *.exs set ft=elixir
+
+" markdown
+autocmd FileType markdown setlocal wrap linebreak
 
 lang en_US
