@@ -71,13 +71,16 @@ Plug 'isRuslan/vim-es6' " regular javascript plug is missing newest features
 Plug 'slashmili/alchemist.vim' " elixir server for metadata
 Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'mattn/webapi-vim'
-Plug 'mileszs/ack.vim'
 Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
 
-" ack.vim should use ripgrep
-if executable("rg")
-  let g:ackprg = 'rg --vimgrep --no-heading'
-endif
+" typescript
+Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
+
+Plug 'mileszs/ack.vim'
+  " ack.vim should use ripgrep
+  if executable("rg")
+    let g:ackprg = 'rg --vimgrep --no-heading'
+  endif
 
 Plug 'mhinz/vim-mix-format'
   let g:mix_format_on_save = 1

@@ -1,2 +1,5 @@
 standard
 neovim
+typescript
+tslint
+ts-server
