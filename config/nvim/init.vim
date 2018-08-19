@@ -60,6 +60,8 @@ if !has("python3")
   echo "install python3 with brew"
 endif
 
+" TODO: add echos for npm, pip for python2, and gem
+
 call plug#begin()
 
 Plug 'sheerun/vim-polyglot' " lots of languages
