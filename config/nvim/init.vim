@@ -77,6 +77,7 @@ Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/sy
 
 " typescript
 Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
+  let g:nvim_typescript#diagnosticsEnable=0
 
 Plug 'mileszs/ack.vim'
   " ack.vim should use ripgrep
