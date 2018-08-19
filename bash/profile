@@ -3,8 +3,8 @@
 . ~/.dot-files/bash/fancy_directory.bash
 . ~/.dot-files/bash/ps1.bash
 
-alias vim="MIX_ENV=test nvim"
-alias vi="MIX_ENV=test nvim"
+alias vim="nvim"
+alias vi="nvim"
 export EDITOR="nvim"
 
 alias flushdns="dscacheutil -flushcache"
