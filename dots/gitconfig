@@ -1,6 +1,7 @@
 [user]
 	name = Nathan Herald
 	email = me@nathanherald.com
+	signingkey = 24EFC6A6CBAA2430
 [color]
 	ui = true
 [credential]
@@ -20,3 +21,5 @@
   difff = diff -W --minimal --word-diff=color
 [merge]
 	conflictstyle = diff3
+[commit]
+	gpgsign = true

@@ -99,3 +99,9 @@ Turns on completion, which is amazing. Also changes the prompt to the simple ver
 
 I like to split horizontally with `|` and vertically with `-`. It makes more sense to me. I also added `vim`-like bindings for moving between windows (hjkl). And I finally got the mouse scrolling to work, so I can enable scroll mode and actually go back in time to find something.
 
+## No automated yet (GPG)
+
+```
+echo "pinentry-program /usr/local/bin/pinentry-mac" >> ~/.gnupg/gpg-agent.conf
+killall gpg-agent
+```

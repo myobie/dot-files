@@ -74,6 +74,7 @@ Plug 'slashmili/alchemist.vim' " elixir server for metadata
 Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'mattn/webapi-vim'
 Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
+Plug 'b4b4r07/vim-hcl'
 
 " typescript
 Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
@@ -122,6 +123,8 @@ Plug 'neomake/neomake'
   let g:neomake_json_enabled_makers = []
   let g:neomake_html_enabled_makers = []
 
+let $MIX_ENV = 'edit'
+
 call plug#end()
 
 " font and colors
@@ -143,7 +146,6 @@ autocmd FileType swift setlocal noexpandtab shiftwidth=4 tabstop=4 softtabstop=4
 " js/on
 autocmd BufNewFile,BufRead *.js set ft=javascript
 autocmd BufNewFile,BufRead *.json set ft=json
-autocmd BufNewFile,BufRead *.exs set ft=elixir
 
 " elixir scripts/on
 autocmd BufNewFile,BufRead *.exs set ft=elixir

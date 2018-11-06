@@ -6,6 +6,7 @@ forego
 fzf
 git
 git-lfs
+gpg
 go
 hub
 hugo
@@ -14,6 +15,7 @@ mas
 neovim/neovim/neovim
 node
 packer
+pinentry-mac
 postgresql
 python
 python3
