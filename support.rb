@@ -11,10 +11,6 @@ OptionParser.new do |opts|
     $test = !!v
   end
 
-  opts.on("-v", "--[no-]verbose", "Run verbosely") do |v|
-    $verbose = !!v
-  end
-
   opts.on("-u", "--upgrade", "Upgrade any out of date packages") do |v|
     $upgrade = !!v
   end
@@ -38,11 +34,9 @@ $home = path(expand("~"))
 def run(command)
   if $test
     puts "$ #{command}"
-  elsif $verbose
+  else
     puts "$ #{command}"
     system command
-  else
-    system command, [:out, :err] => "/dev/null"
   end
 end
 
@@ -55,9 +49,7 @@ def installed?(what); success? "which #{Shellwords::escape(what)}" end
 def success?(what); run(what) && ($test || $?.success?) end
 
 def mkdir(where)
-  if $test || $verbose
-    puts "mkdir: #{where}"
-  end
+  puts "mkdir: #{where}"
 
   unless $test
     FileUtils.mkdir_p(where)
@@ -65,9 +57,7 @@ def mkdir(where)
 end
 
 def symlink(from, to)
-  if $test || $verbose
-    puts "symlink: #{from} → #{to}"
-  end
+  puts "symlink: #{from} → #{to}"
 
   unless $test
     File.symlink(from, to) unless exists?(to)
@@ -149,11 +139,7 @@ module Plug
   end
 
   def self.flags
-    if $verbose
-      "#fLo"
-    else
-      "sfLo"
-    end
+    "#fLo"
   end
 
   def self.update_self

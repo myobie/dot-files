@@ -22,7 +22,7 @@ end
 
 # elixir
 if $upgrade
-  run "mix local.hex --force"
+  run "echo 'Y' | mix local.hex --if-missing"
 else
   run "mix local.hex --if-missing"
 end
