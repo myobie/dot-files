@@ -22,9 +22,9 @@ end
 
 # elixir
 if $upgrade
-  run "echo 'Y' | mix local.hex --if-missing"
+  run "echo 'Y' | mix local.hex --force"
 else
-  run "mix local.hex --if-missing"
+  run "echo 'Y' | mix local.hex --if-missing"
 end
 
 # bash
@@ -39,7 +39,7 @@ else
 end
 
 # ruby
-rbenv.setup "2.5.x"
+# rbenv.setup "2.5.x"
 
 gem_list = gather!("gem-list")
 if $upgrade
@@ -58,6 +58,17 @@ end
 
 mkdir $home.join(".ssh")
 symlink $pwd.join("ssh/config"), $home.join(".ssh/config")
+
+# gpg config
+Dir["gnupg/*"].each do |file|
+  next if dir? file
+
+  from = $pwd.join(file)
+  to = $home.join(".#{file}")
+
+  mkdir dirname(to)
+  symlink from, to
+end
 
 # symlink ~/.config files
 cpath = expand("~/.config")
@@ -78,7 +89,7 @@ brew.restart "postgresql"
 brew.restart "redis"
 
 # git lfs
-run "git lfs install"
+run "git lfs install --system"
 
 # vim-plug
 plug.update_self
@@ -94,4 +105,3 @@ run "pip3 install --upgrade pip"
 run "pip3 install neovim"
 run "pip2 install --upgrade pip"
 run "pip2 install neovim"
-
