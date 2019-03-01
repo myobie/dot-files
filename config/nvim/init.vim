@@ -75,6 +75,7 @@ Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'mattn/webapi-vim'
 Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
 Plug 'b4b4r07/vim-hcl'
+Plug 'jph00/swift-apple'
 
 " typescript
 Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
