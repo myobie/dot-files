@@ -39,7 +39,7 @@ else
 end
 
 # ruby
-rbenv.setup "2.5.x"
+rbenv.setup "2.6.x"
 
 gem_list = gather!("gem-list")
 if $upgrade
