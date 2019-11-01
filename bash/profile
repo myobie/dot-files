@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
 . ~/.dot-files/bash/fancy_directory.bash
 . ~/.dot-files/bash/ps1.bash
 
