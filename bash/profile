@@ -47,6 +47,9 @@ xcode-path() {
 
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:~/bin:$(xcode-path)/usr/bin:/usr/local/share/npm/bin:$PATH"
 
+# Xcode
+alias ddd="rm -rf ~/Library/Developer/Xcode/DerivedData/*"
+
 # heroku
 export PATH="/usr/local/heroku/bin:$PATH"
 

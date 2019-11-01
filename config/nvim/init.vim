@@ -124,9 +124,9 @@ Plug 'neomake/neomake'
   let g:neomake_json_enabled_makers = []
   let g:neomake_html_enabled_makers = []
 
-let $MIX_ENV = 'edit'
-
 call plug#end()
+
+let $MIX_ENV = 'edit'
 
 " font and colors
 set background=dark
