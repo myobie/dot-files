@@ -1,7 +1,7 @@
 [user]
 	name = Nathan Herald
 	email = me@nathanherald.com
-	signingkey = 24EFC6A6CBAA2430
+	signingkey = 27E298B5DD024D4A5DB81CCD24EFC6A6CBAA2430
 [color]
 	ui = true
 [credential]
@@ -25,3 +25,5 @@
 	gpgsign = true
 [fetch]
 	prune = true
+[gpg]
+	program = /usr/local/bin/gpg
