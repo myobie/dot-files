@@ -1,12 +1,35 @@
-function parse_git_dirty {
-  if [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working tree clean" ]]; then
-    echo " dirty"
+# Inspired by https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh
+function count_git_ahead_behind {
+  local count
+  local commits
+
+  if commits="$(git rev-list --left-right @{upstream}...HEAD 2>/dev/null)"
+  then
+    local commit behind=0 ahead=0
+    for commit in $commits
+    do
+      case "${commit}" in
+        "<"*) ((behind++)) ;;
+        *)    ((ahead++))  ;;
+      esac
+    done
+    count="${behind}	${ahead}"
+  else
+    count=""
   fi
-}
-function parse_git_needs_push {
-  if [[ $(git status 2> /dev/null | grep 'Your branch is ahead') ]]; then
-    echo " ahead"
-  fi
+
+  case "$count" in
+  "") # no upstream
+    echo -n "" ;;
+  "0	0") # equal to upstream
+    echo -n "" ;;
+  "0	"*) # ahead of upstream
+    echo -n " ${count#0	}↑" ;;
+  *"	0") # behind upstream
+    echo -n " ${count%	0}↓" ;;
+  *)	    # diverged from upstream
+    echo -n " ${count#*	}↓ ${count%	*}↑" ;;
+  esac
 }
 
 function number_of_background_jobs {
@@ -16,4 +39,6 @@ function number_of_background_jobs {
   fi
 }
 
-PS1='`fancy_directory` $(__git_ps1 "git(%s$(parse_git_dirty)$(parse_git_needs_push)) ")`number_of_background_jobs`\[\033[00;33m\]$\[\033[00m\] '; export PS1
+export GIT_PS1_SHOWDIRTYSTATE=true
+
+PS1='`fancy_directory` $(__git_ps1 "git(%s$(count_git_ahead_behind)) ")`number_of_background_jobs`\[\033[00;33m\]$\[\033[00m\] '; export PS1
