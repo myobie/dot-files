@@ -71,6 +71,7 @@ export NODE_PATH="/usr/local/lib/node_modules"
 
 # elixir
 export ERL_AFLAGS="-kernel shell_history enabled"
+export PATH="$PATH:/Users/myobie/.mix/escripts"
 
 # colors
 export LSCOLORS="exfxcxdxbxegedabagacad"

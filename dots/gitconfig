@@ -27,3 +27,7 @@
 	prune = true
 [gpg]
 	program = /usr/local/bin/gpg
+[mergetool]
+	keepBackup = true
+[pull]
+	rebase = true
