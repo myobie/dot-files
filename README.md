@@ -7,7 +7,7 @@ This is what I use when I setup a new computer. There are some nice ruby functio
 It basically:
 
 1. symlinks important files
-2. Installs ruby, elixir, redis, etc
+2. Installs elixir, postgres, ruby, etc
 3. creates `.vim/backup` to store `.swp` files
 4. runs `vim-plug`’s install function
 
@@ -23,6 +23,8 @@ The plugins I use the most are:
 * `vim-surround` - without this I would lose my mind. I love being able to swap quotes or wrap in parens, etc.
 * `vim-ragtag` - when working with html I like to be able to type `h1C-x<Enter>` and it will make `h1` tags on new lines with an indented line in-between.
 * `vim-polyglot` - becuase I am not too lazy to go find all the different plugins I need for every language
+* `vim-ale` – best lint + fix + completion provider I've used so far
+* `vim-asyncomplete` – I like this completion better than what comes with Ale, but it just uses Ale as it's provider
 
 #### Other highlights
 
@@ -30,8 +32,8 @@ The plugins I use the most are:
 * Map leader + t to `:FZF`
 * Map control + l to insert `=>` - this is something I still use because of using TextMate for so long
 * Gotta add all the ruby files without extensions to appear as ruby files
-* Setting `.json` files to `javascript` is really helpful
 * `set backspace=indent,eol,start` so one can backspace in a sane way
+* I'm trying to use as many language servers as makes sense
 
 #### Related
 
@@ -85,19 +87,13 @@ Has my name and email (which match what’s on GitHub so my commits are linked t
 
 ### `.gitignore`
 
-Ignore `.bash_extras`, `.DS_Store` crap files :shakingfist:, and leiningen stuff.
+Ignore `.bash_extras`, `.DS_Store` crap files :shakingfist:, etc.
 
 ## `ruby`
 
 ### `.irbrc`
 
 Turns on completion, which is amazing. Also changes the prompt to the simple version, which is way better. Stores a history in a file, uses deadline, and uses auto indent (which means in blocks it’s indented which is cool). It also uses a constant to know if it’s been loaded before so it only ever runs once, which I had never thought of until I saw this online somewhere years ago (sorry, I forgot where).
-
-## `tmux`
-
-### `.tmux.conf`
-
-I like to split horizontally with `|` and vertically with `-`. It makes more sense to me. I also added `vim`-like bindings for moving between windows (hjkl). And I finally got the mouse scrolling to work, so I can enable scroll mode and actually go back in time to find something.
 
 ## No automated yet (GPG)
 
