@@ -1,5 +1,7 @@
+bash-language-server
+jsonlint
+prettier-standard
 standard
-neovim
 typescript
 tslint
 ts-server

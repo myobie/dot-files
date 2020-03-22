@@ -38,6 +38,9 @@ else
   npm.install gather!("npm-list")
 end
 
+# go things
+run "GO111MODULE=on go get mvdan.cc/sh/v3/cmd/shfmt"
+
 # ruby
 rbenv.setup "2.6.x"
 
@@ -72,7 +75,6 @@ end
 
 # symlink ~/.config files
 cpath = expand("~/.config")
-mkdir path(cpath).join("nvim", "backup")
 
 Dir["config/*/**"].each do |file|
   next if dir? file
@@ -83,6 +85,9 @@ Dir["config/*/**"].each do |file|
   mkdir dirname(to)
   symlink from, to
 end
+
+# vim
+mkdir $home.join(".vim").join("backup")
 
 # services
 brew.restart "postgresql"
@@ -99,9 +104,3 @@ if $upgrade
 else
   plug.install
 end
-
-# neovim needs python support
-run "pip3 install --upgrade pip"
-run "pip3 install neovim"
-run "pip2 install --upgrade pip"
-run "pip2 install neovim"

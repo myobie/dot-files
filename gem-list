@@ -2,4 +2,3 @@ bundler
 json
 rake
 sqlite3
-neovim

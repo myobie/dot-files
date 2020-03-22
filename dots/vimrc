@@ -1,10 +1,13 @@
+if &compatible
+  set nocompatible
+endif
+
 " basics
 set encoding=utf-8
 set mouse=a
 set ruler
 set number
 set title
-set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
 
 " sometimes when switching open buffers I lose syntax highlighting and set
 " hidden somehow fixes that
@@ -46,8 +49,8 @@ if has("autocmd")
 endif
 
 " directories for swp files
-set backupdir=~/.config/nvim/backup
-set directory=~/.config/nvim/backup
+set backupdir=~/.vim/backup
+set directory=~/.vim/backup
 
 " I must have this shortcut for hash rockets
 imap <C-l> <Space>=><Space>
@@ -55,12 +58,12 @@ imap <C-l> <Space>=><Space>
 " reload externally modified files
 set autoread
 
-" need python3 support
-if !has("python3")
-  echo "install python3 with brew"
+" If plug isn't installed, then install it
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
-
-" TODO: add echos for npm, pip for python2, and gem
 
 call plug#begin()
 
@@ -69,26 +72,19 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-ragtag' " HTML tags
 Plug 'tpope/vim-fugitive' " git support
 Plug 'tomtom/tcomment_vim' " gc
-Plug 'isRuslan/vim-es6' " regular javascript plug is missing newest features
-Plug 'slashmili/alchemist.vim' " elixir server for metadata
 Plug 'powerman/vim-plugin-AnsiEsc'
-Plug 'mattn/webapi-vim'
-Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
 Plug 'b4b4r07/vim-hcl'
 Plug 'jph00/swift-apple'
 
-" typescript
-Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
-  let g:nvim_typescript#diagnosticsEnable=0
+Plug 'fatih/vim-go'
+  let g:go_def_mode='gopls'
+  let g:go_info_mode='gopls'
 
 Plug 'mileszs/ack.vim'
   " ack.vim should use ripgrep
   if executable("rg")
     let g:ackprg = 'rg --vimgrep --no-heading'
   endif
-
-Plug 'mhinz/vim-mix-format'
-  let g:mix_format_on_save = 1
 
 Plug 'mattn/gist-vim'
   let g:gist_open_browser_after_post = 1
@@ -98,13 +94,62 @@ Plug 'mattn/gist-vim'
     let g:gist_clip_command = 'pbcopy'
   endif
 
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  let g:deoplete#enable_at_startup = 1
-  if !exists('g:deoplete#omni#input_patterns')
-    let g:deoplete#omni#input_patterns = {}
-  endif
-  " use tab for completion
-  inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+Plug 'GrzegorzKozub/vim-elixirls', { 'do': ':ElixirLsCompileSync' }
+
+Plug 'dense-analysis/ale'
+  let g:ale_completion_enabled = 1
+
+  " move to the next ALE warning / error
+  nnoremap ]r :ALENextWrap<CR>
+  " move to the previous ALE warning / error
+  nnoremap [r :ALEPreviousWrap<CR>
+
+  " TODO
+  " * css
+  " * markdown
+  " * ruby
+  " * sql
+  " * text
+  " * typescript
+  " * yaml
+
+  let g:ale_linters = {
+  \  'sh': ['language_server', 'shell'],
+  \  'elixir': ['elixir-ls'],
+  \  'html': ['tidy'],
+  \  'javascript': ['standard', 'tsserver'],
+  \  'json': ['jsonlint'],
+  \  'go': ['gofmt', 'gobuild', 'gopls'],
+  \}
+
+  let g:ale_fixers = {
+  \  'sh': ['shfmt'],
+  \  'elixir': ['mix_format'],
+  \  'javascript': ['prettier-standard'],
+  \  'json': ['jq'],
+  \  'typescript': ['prettier', 'tslint'],
+  \  'terraform': ['terraform'],
+  \  'go': ['gofmt', 'gomod'],
+  \}
+
+  " Use Google's style for shell files
+  let g:ale_sh_shfmt_options = '-i 2 -ci'
+  " Use the elixir-ls compiled by vim-elixirls
+  let g:ale_elixir_elixir_ls_release = expand('~/.vim/plugged/vim-elixirls/elixir-ls/release/')
+  " There is currently a problem when first launching the elixir language server
+  " that ALE warns that 'using List as String' which is super annoying
+
+  let g:ale_linters_explicit = 1
+  let g:ale_fix_on_save = 1
+  let g:ale_completion_enabled = 0
+
+" I like asyncomplete better than ALE's completion, ALE's seems jittery and
+" shows the info window too often
+Plug 'prabirshrestha/asyncomplete.vim'
+  " Use ALE's function for asyncomplete defaults
+  au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#ale#get_source_options({
+      \ 'priority': 10,
+      \ }))
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -114,23 +159,11 @@ Plug 'junegunn/fzf.vim'
     au FileType fzf :tnoremap <buffer> <c-k> <c-k>
   augroup END
 
-Plug 'neomake/neomake'
-  " Run Neomake when I save any buffer
-  augroup localneomake
-    autocmd! BufWritePost * Neomake
-  augroup END
-  let g:neomake_markdown_enabled_makers = [] " markdown is too strict
-  let g:neomake_javascript_enabled_makers = ['standard']
-  let g:neomake_json_enabled_makers = []
-  let g:neomake_html_enabled_makers = []
-
 call plug#end()
 
-let $MIX_ENV = 'edit'
-
 " font and colors
-set background=dark
-color default
+" set background=dark
+" color default
 syntax on
 set ttyfast
 set ttimeoutlen=10
@@ -144,17 +177,17 @@ autocmd FileType go setlocal noexpandtab shiftwidth=4 tabstop=4 softtabstop=4 no
 " swfit
 autocmd FileType swift setlocal noexpandtab shiftwidth=4 tabstop=4 softtabstop=4 nolist
 
-" js/on
+" js
 autocmd BufNewFile,BufRead *.js set ft=javascript
 autocmd BufNewFile,BufRead *.json set ft=json
 
-" elixir scripts/on
+" elixir scripts
 autocmd BufNewFile,BufRead *.exs set ft=elixir
 
 " markdown
 autocmd FileType markdown setlocal wrap linebreak
 
 " terminal
-autocmd TermOpen * setlocal nonumber norelativenumber
+" autocmd TermOpen * setlocal nonumber norelativenumber
 
 lang en_US

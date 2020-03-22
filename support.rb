@@ -143,11 +143,11 @@ module Plug
   end
 
   def self.update_self
-    success? "curl -#{flags} ~/.config/nvim/autoload/plug.vim --create-dirs #{url}"
+    success? "curl -#{flags} ~/.vim/autoload/plug.vim --create-dirs #{url}"
   end
 
-  def self.install; success? 'nvim +PlugInstall +qall' end
-  def self.update; success? 'nvim +PlugUpdate +qall' end
+  def self.install; success? 'vim +PlugInstall +qall' end
+  def self.update; success? 'vim +PlugUpdate +qall' end
 end
 def plug; Plug end
 

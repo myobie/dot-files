@@ -5,9 +5,9 @@ export BASH_SILENCE_DEPRECATION_WARNING=1
 . ~/.dot-files/bash/fancy_directory.bash
 . ~/.dot-files/bash/ps1.bash
 
-alias vim="nvim"
-alias vi="nvim"
-export EDITOR="nvim"
+alias vim="vim"
+alias vi="vim"
+export EDITOR="vim"
 
 alias flushdns="dscacheutil -flushcache"
 

@@ -1,6 +1,6 @@
 # myobie’s .dot-files
 
-## `install.rb`
+## `./install.rb`
 
 This is what I use when I setup a new computer. There are some nice ruby functions in `support.rb` to do common tasks so it’s worth a look.
 
@@ -8,14 +8,14 @@ It basically:
 
 1. symlinks important files
 2. Installs ruby, elixir, redis, etc
-3. creates `.config/nvim/backup` to store `.swp` files
+3. creates `.vim/backup` to store `.swp` files
 4. runs `vim-plug`’s install function
 
-## `neovim`
+## `vim` 8
 
 I use `vim-plug` to manage my vim plugins.
 
-### `init.vim`
+### `.vimrc`
 
 The plugins I use the most are:
 
@@ -35,7 +35,7 @@ The plugins I use the most are:
 
 #### Related
 
-* I use Menlo as my typeface. There still is no better programmer font and it’s already installed. (It’s important to me that the * is in the middle and not superscript.)
+* I use SF Mono as my typeface. There still is no better programmer font and it’s already installed. (It’s important to me that the * is in the middle and not superscript.)
 
 ## bash
 
@@ -59,7 +59,7 @@ I also prefer to type next to dollar sign and I also like that dollar sign to be
 
 I am still trying to organize this file and I may pull it further apart into more files. But for now, it has sections for:
 
-* `EDITOR` (which is, of course, nvim)
+* `EDITOR` (which is, of course, vim)
 * aliases (the best is `git=hub`)
 * `env` vars
 * `PATH`
