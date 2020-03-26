@@ -151,6 +151,10 @@ Plug 'prabirshrestha/asyncomplete.vim'
       \ 'priority': 10,
       \ }))
 
+  inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+  inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+  inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
+
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
   nnoremap <silent> <leader>t :FZF<cr>
