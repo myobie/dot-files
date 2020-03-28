@@ -76,6 +76,10 @@ Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'b4b4r07/vim-hcl'
 Plug 'jph00/swift-apple'
 
+" line stuff up
+Plug 'tommcdo/vim-lion'
+  let g:lion_squeeze_spaces = 1
+
 Plug 'fatih/vim-go'
   let g:go_def_mode='gopls'
   let g:go_info_mode='gopls'
