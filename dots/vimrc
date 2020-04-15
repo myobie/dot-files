@@ -38,6 +38,9 @@ nnoremap <cr> :nohlsearch<cr>
 set laststatus=2
 set showcmd
 
+" don't show press ENTER…
+set shortmess=a
+
 " tab completion
 set wildmode=list:longest,list:full
 set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,node_modules,target,_build,deps
