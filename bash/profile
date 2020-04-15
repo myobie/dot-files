@@ -15,7 +15,7 @@ if [[ $(which hub) ]]; then
   alias git=hub
 fi
 
-if [ `uname` = 'Darwin' ]; then
+if [ $(uname) = 'Darwin' ]; then
   alias ls='ls -FG'
   alias mv='mv -nv'
 else
@@ -37,7 +37,7 @@ export HISTSIZE=10000
 
 # PATH
 xcode-path() {
-  which xcode-select 2>&1 > /dev/null
+  which xcode-select 2>&1 >/dev/null
   if [[ "$?" == "0" ]]; then
     echo $(xcode-select -p)
   else
@@ -110,9 +110,9 @@ pkill() {
 }
 
 # bash-completion
-if which brew > /dev/null; then
-  if [ -f `brew --prefix`/etc/bash_completion ]; then
-    . `brew --prefix`/etc/bash_completion
+if which brew >/dev/null; then
+  if [ -f $(brew --prefix)/etc/bash_completion ]; then
+    . $(brew --prefix)/etc/bash_completion
   fi
 fi
 
@@ -133,9 +133,9 @@ src() {
   local dir
 
   if [[ "$@" == "" ]]; then
-    dir=$(fd -t d -d 6 . ~/src 2> /dev/null | fzf +m)
+    dir=$(fd -t d -d 6 . ~/src 2>/dev/null | fzf +m)
   else
-    dir=$(fd -t d -d 6 . ~/src 2> /dev/null | fzf +m -f "$@" | head -n 1)
+    dir=$(fd -t d -d 6 . ~/src 2>/dev/null | fzf +m -f "$@" | head -n 1)
   fi
 
   cd "$dir"
@@ -147,7 +147,7 @@ export-gpg-key() {
 }
 
 # extras that shouldn't be in the repo?
-if [ -f ~/.bash_extras  ]; then
+if [ -f ~/.bash_extras ]; then
   . ~/.bash_extras
 fi
 
@@ -155,4 +155,4 @@ fi
 stty stop ''
 
 # rbenv
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+if which rbenv >/dev/null; then eval "$(rbenv init -)"; fi
