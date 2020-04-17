@@ -40,6 +40,7 @@ set showcmd
 
 " don't show press ENTER…
 set shortmess=a
+set cmdheight=2
 
 " tab completion
 set wildmode=list:longest,list:full
@@ -138,6 +139,10 @@ Plug 'dense-analysis/ale'
   \  'terraform': ['terraform'],
   \  'go': ['gofmt', 'gomod'],
   \}
+
+  noremap <leader>h :ALEHover<CR>
+  noremap <leader>re :ALERename<CR>
+  noremap <leader>n :ALENextWrap<CR>
 
   " Use Google's style for shell files
   let g:ale_sh_shfmt_options = '-i 2 -ci'
