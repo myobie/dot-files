@@ -4,7 +4,7 @@ endif
 
 " basics
 set encoding=utf-8
-set mouse=a
+set mouse=r
 set ruler
 set number
 set title
