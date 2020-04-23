@@ -3,6 +3,24 @@ require "shellwords"
 require "optparse"
 require "fileutils"
 require "open3"
+require "tempfile"
+require "yaml"
+
+def read_yaml(file)
+  YAML.load(File.read(file))
+end
+
+def prepend_file(file, content)
+  File.open(file, 'r') do |original|
+    File.unlink(file)
+    File.open(file, 'w') do |f|
+      f.puts content
+      original.each_line do |line|
+        f.puts line
+      end
+    end
+  end
+end
 
 OptionParser.new do |opts|
   opts.banner = "Usage: .install.rb [options]"
