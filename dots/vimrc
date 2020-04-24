@@ -207,6 +207,6 @@ autocmd BufNewFile,BufRead *.exs set ft=elixir
 autocmd FileType markdown setlocal wrap linebreak
 
 " terminal
-" autocmd TermOpen * setlocal nonumber norelativenumber
+autocmd TerminalOpen * setlocal nonumber norelativenumber
 
 lang en_US
