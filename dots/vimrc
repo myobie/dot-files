@@ -129,6 +129,7 @@ Plug 'dense-analysis/ale'
   \  'javascript': ['standard', 'tsserver'],
   \  'json': ['jsonlint'],
   \  'go': ['gofmt', 'gobuild', 'gopls'],
+  \  'rust': ['cargo', 'rls']
   \}
 
   let g:ale_fixers = {

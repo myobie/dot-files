@@ -24,6 +24,7 @@ rbenv
 redis
 ripgrep
 ruby-build
+rustup-init
 sqlite
 terraform
 tidy-html5

@@ -73,6 +73,9 @@ export NODE_PATH="/usr/local/lib/node_modules"
 export ERL_AFLAGS="-kernel shell_history enabled"
 export PATH="$PATH:/Users/myobie/.mix/escripts"
 
+# rust
+export PATH="$PATH:/Users/myobie/.cargo/bin"
+
 # colors
 export LSCOLORS="exfxcxdxbxegedabagacad"
 export CLICOLOR=true

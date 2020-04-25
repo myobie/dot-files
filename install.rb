@@ -86,6 +86,9 @@ Dir["config/*/**"].each do |file|
   symlink from, to
 end
 
+# rust
+system "rustup-init -y --no-modify-path"
+
 # vim
 mkdir $home.join(".vim").join("backup")
 
