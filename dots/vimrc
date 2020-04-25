@@ -103,7 +103,7 @@ Plug 'mattn/gist-vim'
     let g:gist_clip_command = 'pbcopy'
   endif
 
-Plug 'GrzegorzKozub/vim-elixirls', { 'do': ':ElixirLsCompileSync' }
+Plug 'myobie/vim-elixirls', { 'do': ':ElixirLsCompileSync' }
 
 Plug 'dense-analysis/ale'
   let g:ale_completion_enabled = 1
@@ -145,6 +145,8 @@ Plug 'dense-analysis/ale'
   noremap <leader>h :ALEHover<CR>
   noremap <leader>re :ALERename<CR>
   noremap <leader>n :ALENextWrap<CR>
+  noremap <leader>] :ALEGoToDefinition<CR>
+  noremap <leader>\ :ALEFindReferences<CR>
 
   " Use Google's style for shell files
   let g:ale_sh_shfmt_options = '-i 2 -ci'
@@ -152,6 +154,7 @@ Plug 'dense-analysis/ale'
   let g:ale_elixir_elixir_ls_release = expand('~/.vim/plugged/vim-elixirls/elixir-ls/release/')
   " There is currently a problem when first launching the elixir language server
   " that ALE warns that 'using List as String' which is super annoying
+  let g:ale_elixir_elixir_ls_config = {'elixirLS': {'dialyzerEnabled': v:true}}
 
   let g:ale_linters_explicit = 1
   let g:ale_fix_on_save = 1
