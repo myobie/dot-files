@@ -129,7 +129,7 @@ Plug 'dense-analysis/ale'
   \  'javascript': ['standard', 'tsserver'],
   \  'json': ['jsonlint'],
   \  'go': ['gofmt', 'gobuild', 'gopls'],
-  \  'rust': ['cargo', 'rls']
+  \  'rust': ['rls']
   \}
 
   let g:ale_fixers = {
@@ -155,6 +155,7 @@ Plug 'dense-analysis/ale'
   " There is currently a problem when first launching the elixir language server
   " that ALE warns that 'using List as String' which is super annoying
   let g:ale_elixir_elixir_ls_config = {'elixirLS': {'dialyzerEnabled': v:true}}
+  let g:ale_rust_rls_toolchain = 'stable'
 
   let g:ale_linters_explicit = 1
   let g:ale_fix_on_save = 1
