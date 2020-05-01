@@ -180,6 +180,7 @@ Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
   nnoremap <silent> <leader>t :FZF<cr>
+  nnoremap <silent> <leader>b :Buffers<cr>
   augroup localfzf
     au FileType fzf :tnoremap <buffer> <c-j> <c-j>
     au FileType fzf :tnoremap <buffer> <c-k> <c-k>
