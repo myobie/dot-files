@@ -76,6 +76,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-ragtag' " HTML tags
 Plug 'tpope/vim-fugitive' " git support
 Plug 'tpope/vim-rhubarb' " github support for vim-fugitive
+Plug 'tpope/vim-dadbod' " DB console
 Plug 'tomtom/tcomment_vim' " gc
 Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'b4b4r07/vim-hcl'
