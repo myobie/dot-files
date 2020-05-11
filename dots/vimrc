@@ -4,10 +4,13 @@ endif
 
 " basics
 set encoding=utf-8
-set mouse=r
 set ruler
 set number
 set title
+
+if has("mouse")
+    set mouse=a
+endif
 
 " sometimes when switching open buffers I lose syntax highlighting and set
 " hidden somehow fixes that
@@ -71,6 +74,7 @@ endif
 
 call plug#begin()
 
+Plug 'myobie/vim-toothpaste'
 Plug 'sheerun/vim-polyglot' " lots of languages
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-ragtag' " HTML tags
