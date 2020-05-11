@@ -127,10 +127,11 @@ Plug 'dense-analysis/ale'
   \  'sh': ['language_server', 'shell'],
   \  'elixir': ['elixir-ls'],
   \  'html': ['tidy'],
-  \  'javascript': ['standard', 'tsserver'],
+  \  'javascript': ['prettier-standard', 'tsserver'],
   \  'json': ['jsonlint'],
   \  'go': ['gofmt', 'gobuild', 'gopls'],
-  \  'rust': ['rls', 'rustc']
+  \  'rust': ['rls', 'rustc'],
+  \  'typescript': ['prettier-standard', 'tslint', 'tsserver', 'tsc'],
   \}
 
   let g:ale_fixers = {
@@ -138,7 +139,7 @@ Plug 'dense-analysis/ale'
   \  'elixir': ['mix_format'],
   \  'javascript': ['prettier-standard'],
   \  'json': ['jq'],
-  \  'typescript': ['prettier', 'tslint'],
+  \  'typescript': ['prettier-standard', 'tslint'],
   \  'terraform': ['terraform'],
   \  'go': ['gofmt', 'gomod'],
   \}
