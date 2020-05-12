@@ -42,7 +42,7 @@ end
 run "GO111MODULE=on go get mvdan.cc/sh/v3/cmd/shfmt"
 
 # ruby
-rbenv.setup "2.6.x"
+rbenv.setup "2.7.x"
 
 gem_list = gather!("gem-list")
 if $upgrade
