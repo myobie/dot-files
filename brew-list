@@ -7,11 +7,12 @@ forego
 fzf
 git
 git-lfs
-gpg
 go
+gpg
 hub
 hugo
 jq
+macvim
 mas
 node
 packer
@@ -30,7 +31,6 @@ terraform
 tidy-html5
 tmux
 tree
-vim
 watch
 wget
 wrk
