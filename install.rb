@@ -55,3 +55,4 @@ brew.restart "redis"
 # git lfs
 run "git lfs install --system"
 
+require_relative 'install_vim'
