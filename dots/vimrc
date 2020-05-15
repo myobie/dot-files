@@ -85,6 +85,7 @@ Plug 'tomtom/tcomment_vim' " gc
 Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'b4b4r07/vim-hcl'
 Plug 'jph00/swift-apple'
+Plug 'rizzatti/dash.vim'
 
 " line stuff up
 Plug 'tommcdo/vim-lion'
