@@ -9,7 +9,8 @@ set number
 set title
 
 if has("mouse")
-    set mouse=a
+  set mouse=a
+  set ttymouse=sgr
 endif
 
 " sometimes when switching open buffers I lose syntax highlighting and set
@@ -76,6 +77,10 @@ call plug#begin()
 
 Plug 'myobie/vim-toothpaste'
 Plug 'sheerun/vim-polyglot' " lots of languages
+  let g:javascript_plugin_jsdoc = 1 " highlight jsdocs
+
+  set re=0 " Use the latest regular expressions
+
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-ragtag' " HTML tags
 Plug 'tpope/vim-fugitive' " git support
@@ -125,7 +130,6 @@ Plug 'dense-analysis/ale'
   " * ruby
   " * sql
   " * text
-  " * typescript
   " * yaml
 
   let g:ale_linters = {
@@ -164,9 +168,11 @@ Plug 'dense-analysis/ale'
   let g:ale_elixir_elixir_ls_config = {'elixirLS': {'dialyzerEnabled': v:true}}
   let g:ale_rust_rls_toolchain = 'stable'
 
+  " let g:ale_lint_on_text_changed = 'never'
   let g:ale_linters_explicit = 1
   let g:ale_fix_on_save = 1
   let g:ale_completion_enabled = 0
+  let g:ale_set_balloon = 1
 
 " I like asyncomplete better than ALE's completion, ALE's seems jittery and
 " shows the info window too often
@@ -196,11 +202,12 @@ Plug 'junegunn/fzf.vim'
 call plug#end()
 
 " font and colors
-" set background=dark
-" color default
 syntax on
 set ttyfast
 set ttimeoutlen=10
+
+set background=dark
+color toothpaste
 
 " ruby
 au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru} set ft=ruby

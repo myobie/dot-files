@@ -4,7 +4,7 @@ if has('gui')
   color toothpaste
 
   if has("gui_macvim")
-    " ...
+    " …
   endif
 endif
 
