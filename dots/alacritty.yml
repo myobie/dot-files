@@ -1,3 +1,12 @@
+window:
+  dimensions:
+    columns: 130
+    rows: 60
+  padding:
+    x: 10
+    y: 10
+  decorations: buttonless
+
 font:
   size: 16.0
   normal:
