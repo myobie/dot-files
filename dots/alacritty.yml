@@ -1,2 +1,29 @@
 font:
   size: 16.0
+  normal:
+    family: SFMono-Regular
+  bold:
+    family: SFMono-Bold
+  italic:
+    family: SFMono-Italic
+  bold_italic:
+    family: SFMono-BoldItalic
+
+colors:
+  primary:
+    background: '#222E33'
+    foreground: '#DAE3E8'
+
+  selection:
+    text: '#DAE3E8'
+    background: '#49483E'
+
+mouse:
+  hide_when_typing: true
+
+key_bindings:
+  - { key: N, mods: Command, action: SpawnNewInstance }
+  - { key: Up, mods: Alt, chars: "\x1b[A" }
+  - { key: Right, mods: Alt, chars: "\x1bf" }
+  - { key: Down, mods: Alt, chars: "\x1b[B" }
+  - { key: Left, mods: Alt, chars: "\x1bb" }
