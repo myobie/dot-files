@@ -9,6 +9,7 @@ alias vim="vim"
 alias vi="vim"
 export EDITOR="vim"
 
+alias cls='printf "\033c"'
 alias flushdns="dscacheutil -flushcache"
 
 if [[ $(which hub) ]]; then
