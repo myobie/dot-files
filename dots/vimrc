@@ -44,7 +44,12 @@ set showcmd
 
 " don't show press ENTER…
 set shortmess=a
-set cmdheight=2
+set cmdheight=1
+
+" spellcheck
+let g:lexical#spelllang = ['en_us',]
+command Sp setlocal spell
+command Spoff setlocal nospell
 
 " tab completion
 set wildmode=list:longest,list:full
@@ -78,8 +83,19 @@ call plug#begin()
 Plug 'myobie/vim-toothpaste'
 Plug 'sheerun/vim-polyglot' " lots of languages
   let g:javascript_plugin_jsdoc = 1 " highlight jsdocs
-
   set re=0 " Use the latest regular expressions
+
+Plug 'kana/vim-textobj-user'
+Plug 'reedes/vim-textobj-quote'
+  augroup textobj_quote
+    autocmd!
+    autocmd FileType markdown call textobj#quote#init()
+    autocmd FileType textile call textobj#quote#init()
+    autocmd FileType text call textobj#quote#init({'educate': 0})
+  augroup END
+
+  map <silent> <leader>qc <Plug>ReplaceWithCurly
+  map <silent> <leader>qs <Plug>ReplaceWithStraight
 
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-ragtag' " HTML tags
@@ -136,19 +152,19 @@ Plug 'dense-analysis/ale'
   \  'sh': ['language_server', 'shell'],
   \  'elixir': ['elixir-ls'],
   \  'html': ['tidy'],
-  \  'javascript': ['prettier-standard', 'tsserver'],
+  \  'javascript': ['eslint', 'tsserver'],
   \  'json': ['jsonlint'],
   \  'go': ['gofmt', 'gobuild', 'gopls'],
   \  'rust': ['rls', 'rustc'],
-  \  'typescript': ['prettier-standard', 'tslint', 'tsserver', 'tsc'],
+  \  'typescript': ['eslint', 'tsserver', 'tsc'],
   \}
 
   let g:ale_fixers = {
   \  'sh': ['shfmt'],
   \  'elixir': ['mix_format'],
-  \  'javascript': ['prettier-standard'],
+  \  'javascript': ['eslint'],
   \  'json': ['jq'],
-  \  'typescript': ['prettier-standard', 'tslint'],
+  \  'typescript': ['eslint'],
   \  'terraform': ['terraform'],
   \  'go': ['gofmt', 'gomod'],
   \}

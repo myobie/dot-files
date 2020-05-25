@@ -13,6 +13,19 @@ else
   plug.install
 end
 
+# spelling related stuff
+run %q[vim "+set spell" +spelldump +2,2d "+sav! /tmp/spelldump.txt" +qall]
+run %q[sed -i '' -e $'1s;^;/encoding=utf-8\\\\\n;' /tmp/spelldump.txt]
+
+spell_dir = $home.join(".vim").join("spell")
+spell_file = spell_dir.join("en.utf-8.add")
+
+mkdir spell_dir
+run %Q[cat /tmp/spelldump.txt | sed "s/'/’/g" > #{spell_file}]
+run %Q[vim "+mkspell! #{spell_file}" +qall]
+
+run "rm /tmp/spelldump.txt"
+
 # configure vim-rhubarb
 netrc = Pathname.new("~/.netrc").expand_path
 netrc_contents = netrc.read
