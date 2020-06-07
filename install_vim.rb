@@ -28,6 +28,7 @@ run "rm /tmp/spelldump.txt"
 
 # configure vim-rhubarb
 netrc = Pathname.new("~/.netrc").expand_path
+run "touch #{netrc}"
 netrc_contents = netrc.read
 
 if netrc.each_line.grep("api.github.com").empty?
