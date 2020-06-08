@@ -52,6 +52,7 @@ command Sp setlocal spell
 command Spoff setlocal nospell
 
 " tab completion
+" set wildmenu
 set wildmode=list:longest,list:full
 set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,node_modules,target,_build,deps
 
