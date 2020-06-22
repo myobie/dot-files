@@ -95,7 +95,9 @@ Ignore `.bash_extras`, `.DS_Store` crap files :shakingfist:, etc.
 
 Turns on completion, which is amazing. Also changes the prompt to the simple version, which is way better. Stores a history in a file, uses deadline, and uses auto indent (which means in blocks it’s indented which is cool). It also uses a constant to know if it’s been loaded before so it only ever runs once, which I had never thought of until I saw this online somewhere years ago (sorry, I forgot where).
 
-## No automated yet (GPG)
+## Not yet automated
+
+### GPG
 
 ```
 echo "pinentry-program /usr/local/bin/pinentry-mac" >> ~/.gnupg/gpg-agent.conf
