@@ -10,6 +10,7 @@ set title
 
 if has("mouse")
   set mouse=a
+  set sidescroll=1
   set ttymouse=sgr
 endif
 
