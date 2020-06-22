@@ -2,10 +2,6 @@
 
 require_relative 'support'
 
-require_relative 'install_bash'
-
-run "chsh -s /bin/bash"
-
 # brew
 unless installed?("brew")
   run 'ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"'
@@ -24,6 +20,7 @@ else
   end
 end
 
+require_relative 'install_bash'
 require_relative 'install_dots'
 require_relative 'install_elixir'
 
