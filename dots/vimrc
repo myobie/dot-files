@@ -165,9 +165,9 @@ Plug 'myobie/ale', { 'branch': 'dprint-fixer' }
   let g:ale_fixers = {
   \  'sh': ['shfmt'],
   \  'elixir': ['mix_format'],
-  \  'javascript': ['dprint'],
+  \  'javascript': ['eslint'],
   \  'json': ['jq'],
-  \  'typescript': ['dprint'],
+  \  'typescript': ['eslint'],
   \  'terraform': ['terraform'],
   \  'go': ['gofmt', 'gomod'],
   \}
