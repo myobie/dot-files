@@ -135,7 +135,7 @@ Plug 'mattn/gist-vim'
 
 Plug 'myobie/vim-elixirls', { 'do': ':ElixirLsCompileSync' }
 
-Plug 'myobie/ale', { 'branch': 'dprint-fixer' }
+Plug 'myobie/ale', { 'branch': 'yarn-berry' }
   let g:ale_completion_enabled = 1
 
   " move to the next ALE warning / error
@@ -160,6 +160,7 @@ Plug 'myobie/ale', { 'branch': 'dprint-fixer' }
   \  'go': ['gofmt', 'gobuild', 'gopls'],
   \  'rust': ['rls', 'rustc'],
   \  'typescript': ['eslint', 'tsserver', 'tsc'],
+  \  'typescriptreact': ['eslint', 'tsserver', 'tsc']
   \}
 
   let g:ale_fixers = {
@@ -168,6 +169,7 @@ Plug 'myobie/ale', { 'branch': 'dprint-fixer' }
   \  'javascript': ['eslint'],
   \  'json': ['jq'],
   \  'typescript': ['eslint'],
+  \  'typescriptreact': ['eslint'],
   \  'terraform': ['terraform'],
   \  'go': ['gofmt', 'gomod'],
   \}
