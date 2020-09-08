@@ -26,6 +26,8 @@ fi
 
 alias ll='ls -lah'
 
+# Setup Secretive
+export SSH_AUTH_SOCK=/Users/myobie/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
 # Load up ssh keys
 ssh-add -A
 
