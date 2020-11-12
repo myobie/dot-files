@@ -49,7 +49,6 @@ system "rustup-init -y --no-modify-path"
 
 # services
 brew.restart "postgresql"
-brew.restart "redis"
 
 # git lfs
 run "git lfs install --system"

@@ -1,8 +1,5 @@
 bash-language-server
 jsonlint
-prettier-standard
 standard
 typescript
-tslint
 eslint
-ts-server
