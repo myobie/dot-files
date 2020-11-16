@@ -13,7 +13,6 @@ git-crypt
 git-lfs
 go
 gnupg
-heroku
 hub
 hugo
 jq
@@ -30,7 +29,6 @@ ripgrep
 ruby-build
 rustup-init
 s3cmd
-secretive
 sqlite
 terraform
 tidy-html5
