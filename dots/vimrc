@@ -223,10 +223,6 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
   nnoremap <silent> <leader>t :FZF<cr>
   nnoremap <silent> <leader>b :Buffers<cr>
-  augroup localfzf
-    au FileType fzf :tnoremap <buffer> <c-j> <c-j>
-    au FileType fzf :tnoremap <buffer> <c-k> <c-k>
-  augroup END
 
 call plug#end()
 
@@ -260,6 +256,6 @@ autocmd BufNewFile,BufRead *.exs set ft=elixir
 autocmd FileType markdown setlocal wrap linebreak
 
 " terminal
-autocmd TerminalOpen * setlocal nonumber norelativenumber
+autocmd TerminalWinOpen * setlocal nonumber norelativenumber
 
 lang en_US
