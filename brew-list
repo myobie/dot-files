@@ -3,6 +3,7 @@ bash-completion
 bat
 consul
 deno
+doctl
 elixir
 fd
 ffmpeg
