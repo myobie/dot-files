@@ -192,9 +192,9 @@ Plug 'dense-analysis/ale'
   let g:ale_sh_shfmt_options = '-i 2 -ci'
   " Use the elixir-ls compiled by vim-elixirls
   let g:ale_elixir_elixir_ls_release = expand('~/.vim/plugged/vim-elixirls/elixir-ls/release/')
-  " There is currently a problem when first launching the elixir language server
-  " that ALE warns that 'using List as String' which is super annoying
-  let g:ale_elixir_elixir_ls_config = {'elixirLS': {'dialyzerEnabled': v:true}}
+  " Setting the MIX_ENV to shared because sometimes things aren't in test
+  " which is the default
+  let g:ale_elixir_elixir_ls_config = {'elixirLS': {'dialyzerEnabled': v:true, 'mixEnv': 'shared'}}
   let g:ale_rust_rls_toolchain = 'stable'
 
   " let g:ale_lint_on_text_changed = 'never'
