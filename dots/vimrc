@@ -141,9 +141,9 @@ Plug 'mattn/gist-vim'
     let g:gist_clip_command = 'pbcopy'
   endif
 
-Plug 'myobie/vim-elixirls', { 'do': ':ElixirLsCompileSync' }
+Plug 'GrzegorzKozub/vim-elixirls'
 
-Plug 'myobie/ale', { 'branch': 'yarn-berry' }
+Plug 'dense-analysis/ale'
   let g:ale_completion_enabled = 1
 
   " move to the next ALE warning / error
