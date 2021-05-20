@@ -119,6 +119,11 @@ Plug 'b4b4r07/vim-hcl'
 Plug 'jph00/swift-apple'
 Plug 'rizzatti/dash.vim'
 
+" File explorer
+Plug 'preservim/nerdtree'
+  " Exit if NERDTree is the only window left
+  autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+
 " line stuff up
 Plug 'tommcdo/vim-lion'
   let g:lion_squeeze_spaces = 1

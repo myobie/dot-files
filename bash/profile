@@ -31,6 +31,9 @@ export SSH_AUTH_SOCK=/Users/myobie/Library/Containers/com.maxgoedjen.Secretive.S
 # Load up ssh keys
 ssh-add -A
 
+# Setup tailscale
+alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
+
 # random env stuff
 export ANDROID_HOME=/usr/local/opt/android-sdk
 # History: don't store duplicates
