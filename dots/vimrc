@@ -146,7 +146,7 @@ Plug 'mattn/gist-vim'
     let g:gist_clip_command = 'pbcopy'
   endif
 
-Plug 'GrzegorzKozub/vim-elixirls'
+Plug 'myobie/vim-elixirls'
 
 Plug 'dense-analysis/ale'
   let g:ale_completion_enabled = 1
@@ -237,7 +237,7 @@ set ttyfast
 set ttimeoutlen=10
 
 set background=dark
-color toothpaste
+" color toothpaste
 
 hi CursorLine term=bold,underline cterm=bold,underline gui=bold,underline ctermbg=0 guibg=#222e33
 hi CursorLineNr term=bold cterm=None
