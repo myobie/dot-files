@@ -1,6 +1,23 @@
 #!/bin/bash
 
+# I really want to use bash I'm sure
 export BASH_SILENCE_DEPRECATION_WARNING=1
+# History: don't store duplicates
+export HISTCONTROL=erasedups
+# History: 10,000 entries
+export HISTSIZE=10000
+
+xcode-path() {
+  which xcode-select 2>&1 >/dev/null
+  if [[ "$?" == "0" ]]; then
+    echo $(xcode-select -p)
+  else
+    echo "/Applications/Xcode.app/Contents/Developer"
+  fi
+}
+
+export SDKROOT="$(xcrun --sdk macosx --show-sdk-path)"
+export PATH="/opt/homebrew/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:~/bin:$(xcode-path)/usr/bin:/usr/local/share/npm/bin:$PATH"
 
 . ~/.dot-files/bash/fancy_directory.bash
 . ~/.dot-files/bash/ps1.bash
@@ -12,7 +29,7 @@ export EDITOR="vim"
 alias cls='printf "\033c"'
 alias flushdns="dscacheutil -flushcache"
 
-if [[ $(which hub) ]]; then
+if [[ -n "$(which hub)" ]]; then
   alias git=hub
 fi
 
@@ -26,33 +43,12 @@ fi
 
 alias ll='ls -lah'
 
-# Setup Secretive
 export SSH_AUTH_SOCK=/Users/myobie/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
-# Load up ssh keys
-ssh-add -A
+# ssh-add -A
 
-# Setup tailscale
 alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
 
-# random env stuff
 export ANDROID_HOME=/usr/local/opt/android-sdk
-# History: don't store duplicates
-export HISTCONTROL=erasedups
-# History: 10,000 entries
-export HISTSIZE=10000
-
-# PATH
-xcode-path() {
-  which xcode-select 2>&1 >/dev/null
-  if [[ "$?" == "0" ]]; then
-    echo $(xcode-select -p)
-  else
-    echo "/Applications/Xcode.app/Contents/Developer"
-  fi
-}
-
-export PATH="/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:~/bin:$(xcode-path)/usr/bin:/usr/local/share/npm/bin:$PATH"
-export SDKROOT="$(xcrun --sdk macosx --show-sdk-path)"
 
 # Xcode
 alias ddd="rm -rf ~/Library/Developer/Xcode/DerivedData/*"

@@ -4,7 +4,7 @@ require_relative 'support'
 
 # brew
 unless installed?("brew")
-  run 'ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"'
+  run '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
 end
 
 if $upgrade
