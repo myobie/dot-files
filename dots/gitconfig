@@ -31,7 +31,7 @@
 [fetch]
 	prune = true
 [gpg]
-	program = /usr/local/bin/gpg
+	program = gpg
 [mergetool]
 	keepBackup = true
 [pull]
