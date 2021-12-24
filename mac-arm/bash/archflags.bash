@@ -1,0 +1,1 @@
+export ARCHFLAGS='-arch arm64'

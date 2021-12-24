@@ -1,0 +1,12 @@
+--sort-files
+--color
+--follow
+--ignore-dir=log
+--ignore-dir=tmp
+--ignore-dir=coverage
+--ignore-dir=doc
+--ignore-dir=pkg
+--ignore-dir=dist
+--type-add=css=scss
+--type-set=vim=vim
+--type-set=mustache=mustache
