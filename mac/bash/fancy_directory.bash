@@ -48,8 +48,6 @@ if [[ "$TERM" == "xterm" || "$TERM" == "xterm-color" || "$TERM" == "xterm-256col
 export PROMPT_COMMAND="directory_to_titlebar"
 fi
 
-export fancy_directory
-
 if [[ "$0" == "$BASH_SOURCE" ]]; then
   fancy_directory
 fi

@@ -44,13 +44,13 @@ export GIT_PS1_SHOWDIRTYSTATE=true
 PS1='`number_of_background_jobs`\[\033[00;33m\]$\[\033[00m\] '
 
 if [[ "$(type -t __git_ps1)" == "function" ]]; then
-  PS1='$(__git_ps1 "git(%s$(count_git_ahead_behind)) ")'+PS1
+  PS1="\$(__git_ps1 \"git(%s\$(count_git_ahead_behind)) \")${PS1}"
 fi
 
 if [[ "$(type -t fancy_directory)" == "function" ]]; then
-  PS1='`fancy_directory` '+PS1
+  PS1="\`fancy_directory\` ${PS1}"
 else
-  PS1='`pwd` '+PS1
+  PS1="\`pwd\` ${PS1}"
 fi
 
 export PS1

@@ -3,8 +3,6 @@ psg() {
   ps wwwaux | egrep "($1|%CPU)" | grep -v grep
 }
 
-export psg
-
 # sweetness from tim pease
 p() {
   if [ -n "$1" ]; then
@@ -13,8 +11,6 @@ p() {
     ps -O ppid -U $USER
   fi
 }
-
-export p
 
 pkill() {
   if [ -z "$1" ]; then
@@ -33,5 +29,3 @@ pkill() {
     echo "Process \"$1\" not found."
   fi
 }
-
-export pkill

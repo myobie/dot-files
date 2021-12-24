@@ -6,8 +6,6 @@ xcode-path() {
   fi
 }
 
-export xcode-path
-
 alias ddd="rm -rf ~/Library/Developer/Xcode/DerivedData/*"
 
 if [[ -n $(which xcrun) ]]; then

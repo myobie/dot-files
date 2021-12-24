@@ -1,6 +1,8 @@
 #!/bin/bash
 
-cd dirname($0)
+set -eo pipefail
+
+cd $(dirname $0)
 
 os=unknown
 cpu=unknown
@@ -32,17 +34,25 @@ else
   exit 2
 fi
 
-${repo}/setup_bash.sh $os $cpu $repo
+1>&2 echo "**"
+1>&2 echo "** Install"
+1>&2 echo "** os: $os cpu: $cpu repo: $repo"
+1>&2 echo "**"
+
+# source our profile so basic paths are setup
+. ${repo}/bash_init $os $cpu $repo
+
+${repo}/setup_dots.sh $os $cpu $repo
 
 if [[ ${os} == "mac" ]]; then
   ${repo}/setup_brew.sh $repo $force
 fi
 
-${repo}/setup_dots.sh $os $arch $repo
+${repo}/setup_bash.sh $os $cpu $repo
 ${repo}/setup_elixir.sh $force
 ${repo}/setup_shfmt.sh $force
 ${repo}/setup_rust.sh $force
 ${repo}/setup_git_lfs.sh
 ${repo}/setup_hub.sh $force
-${repo}/setup_gpg.sh $os $arch $repo
+${repo}/setup_gpg.sh $os $cpu $repo
 ${repo}/setup_vim.sh $repo $force

@@ -1,0 +1,27 @@
+os=unknown
+cpu=unknown
+selfpath=$(stat -F ~/.bash_profile | awk '{ print $(NF) }')
+repo=$(cd $(dirname ${selfpath})/../.. && pwd)
+
+if [[ $OSTYPE == "linux-gnu"* ]]; then
+  os=linux
+
+  if [[ $(uname -a | awk '{ print $(NF-1) }') == "x86_64"* ]]; then
+    cpu=x86
+  else
+    cpu=arm
+  fi
+elif [[ $OSTYPE == "darwin"* ]]; then
+  os=mac
+
+  if [[ $(uname -a | awk '{ print $(NF) }') == "arm"* ]]; then
+    cpu=arm
+  else
+    cpu=x86
+  fi
+else
+  1>&2 echo "Cannot install on this OS: ${OSTYPE}"
+  exit 2
+fi
+
+. ${repo}/bash_init $os $cpu $repo
