@@ -5,16 +5,18 @@ set -eo pipefail
 force=$1
 
 if [[ -z ${force} ]]; then
-  1>&2 echo "Incorrect arguments given to setup_elixir.sh; force: $force"
+  echo 1>&2 "Incorrect arguments given to setup_elixir.sh; force: $force"
   exit 1
 fi
 
-1>&2 echo "**"
-1>&2 echo "** Setup elixir"
-1>&2 echo "**"
+echo 1>&2 "**"
+echo 1>&2 "** Setup elixir"
+echo 1>&2 "**"
 
-if [[ ${force} == "1" ]]; then
-  echo 'Y' | mix local.hex --force
-else
-  echo 'Y' | mix local.hex --if-missing
+if [[ -n $(which mix) ]]; then
+  if [[ ${force} == "1" ]]; then
+    echo 'Y' | mix local.hex --force
+  else
+    echo 'Y' | mix local.hex --if-missing
+  fi
 fi
