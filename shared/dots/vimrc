@@ -1,0 +1,261 @@
+if &compatible
+  set nocompatible
+endif
+
+" cursor
+let &t_SI.="\e[4 q" "SI = INSERT mode
+let &t_SR.="\e[4 q" "SR = REPLACE mode
+let &t_EI.="\e[4 q" "EI = NORMAL mode (ELSE)
+
+set cursorline
+set cursorcolumn
+
+" basics
+set encoding=utf-8
+set ruler
+set number
+set title
+
+if has("mouse")
+  set mouse=a
+  set sidescroll=1
+  set ttymouse=sgr
+endif
+
+" sometimes when switching open buffers I lose syntax highlighting and set
+" hidden somehow fixes that
+set hidden
+
+" whitespace
+set nowrap
+set tabstop=2
+set softtabstop=2
+set expandtab
+set shiftwidth=2
+set list listchars=tab:\ \ ,trail:·
+
+" for wrapper things like markdown
+command! -nargs=* Wrap set wrap linebreak nolist
+
+" allow backspacing over everything in insert mode
+set backspace=indent,eol,start
+
+" searching
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+nnoremap <cr> :nohlsearch<cr>
+
+" statusbar
+set laststatus=2
+set showcmd
+
+" don't show press ENTER…
+set shortmess=a
+set cmdheight=1
+
+" spellcheck
+let g:lexical#spelllang = ['en_us',]
+command Sp setlocal spell
+command Spoff setlocal nospell
+
+" tab completion
+" set wildmenu
+set wildmode=list:longest,list:full
+set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,node_modules,target,_build,deps
+
+" remember last location in file
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+    \| exe "normal g'\"" | endif
+endif
+
+" directories for swp files
+set backupdir=~/.vim/backup
+set directory=~/.vim/backup
+
+" I must have this shortcut for hash rockets
+imap <C-l> <Space>=><Space>
+
+" reload externally modified files
+set autoread
+
+" plug
+call plug#begin()
+
+Plug 'myobie/vim-toothpaste'
+Plug 'sheerun/vim-polyglot' " lots of languages
+  let g:javascript_plugin_jsdoc = 1 " highlight jsdocs
+  set re=0 " Use the latest regular expressions
+
+Plug 'kana/vim-textobj-user'
+Plug 'reedes/vim-textobj-quote'
+  augroup textobj_quote
+    autocmd!
+    autocmd FileType markdown call textobj#quote#init()
+    autocmd FileType textile call textobj#quote#init()
+    autocmd FileType text call textobj#quote#init({'educate': 0})
+  augroup END
+
+  map <silent> <leader>qc <Plug>ReplaceWithCurly
+  map <silent> <leader>qs <Plug>ReplaceWithStraight
+
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-ragtag' " HTML tags
+Plug 'tpope/vim-fugitive' " git support
+Plug 'tpope/vim-rhubarb' " github support for vim-fugitive
+Plug 'tpope/vim-dadbod' " DB console
+Plug 'tpope/vim-eunuch' " Unix utilities like :SudoWrite
+Plug 'tomtom/tcomment_vim' " gc
+Plug 'powerman/vim-plugin-AnsiEsc'
+Plug 'b4b4r07/vim-hcl'
+Plug 'jph00/swift-apple'
+Plug 'embear/vim-localvimrc'
+
+" File explorer
+Plug 'preservim/nerdtree'
+  " Exit if NERDTree is the only window left
+  autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+
+" line stuff up
+Plug 'tommcdo/vim-lion'
+  let g:lion_squeeze_spaces = 1
+
+Plug 'fatih/vim-go'
+  let g:go_def_mode='gopls'
+  let g:go_info_mode='gopls'
+
+Plug 'mileszs/ack.vim'
+  " ack.vim should use ripgrep
+  if executable("rg")
+    let g:ackprg = 'rg --vimgrep --no-heading'
+  endif
+
+Plug 'mattn/gist-vim'
+  let g:gist_open_browser_after_post = 1
+  let g:gist_detect_filetype = 2
+  let g:gist_post_private = 1
+  if has('macunix')
+    let g:gist_clip_command = 'pbcopy'
+  endif
+
+Plug 'GrzegorzKozub/vim-elixirls'
+
+Plug 'myobie/ale', { 'branch': 'deno-config' }
+  let g:ale_completion_enabled = 1
+
+  " move to the next ALE warning / error
+  nnoremap ]r :ALENextWrap<CR>
+  " move to the previous ALE warning / error
+  nnoremap [r :ALEPreviousWrap<CR>
+
+  " TODO
+  " * css
+  " * markdown
+  " * sql
+  " * text
+  " * yaml
+
+  let g:ale_linters = {
+  \  'sh': ['language_server', 'shell'],
+  \  'elixir': ['elixir-ls'],
+  \  'html': ['tidy'],
+  \  'javascript': ['deno'],
+  \  'json': ['jsonlint'],
+  \  'go': ['gofmt', 'gobuild', 'gopls'],
+  \  'rust': ['rls', 'rustc'],
+  \  'typescript': ['deno'],
+  \  'typescriptreact': ['deno']
+  \}
+
+  let g:ale_fixers = {
+  \  '*': ['remove_trailing_lines', 'trim_whitespace'],
+  \  'elixir': ['mix_format'],
+  \  'javascript': ['dprint'],
+  \  'json': ['dprint'],
+  \  'typescript': ['dprint'],
+  \  'typescriptreact': ['dprint'],
+  \  'terraform': ['terraform'],
+  \  'go': ['gofmt', 'gomod'],
+  \  'sh': ['shfmt'],
+  \}
+
+  noremap <leader>h :ALEHover<CR>
+  noremap <leader>d :ALEDetail<CR>
+  noremap <leader>re :ALERename<CR>
+  noremap <leader>n :ALENextWrap<CR>
+  noremap <leader>] :ALEGoToDefinition<CR>
+  noremap <leader>\ :ALEFindReferences<CR>
+
+  " Use Google's style for shell files
+  let g:ale_sh_shfmt_options = '-i 2 -ci'
+  " Use the elixir-ls compiled by vim-elixirls
+  let g:ale_elixir_elixir_ls_release = expand('~/.vim/plugged/vim-elixirls/elixir-ls/release/')
+  " Setting the MIX_ENV to shared because sometimes things aren't in test
+  " which is the default
+  let g:ale_elixir_elixir_ls_config = {'elixirLS': {'dialyzerEnabled': v:true, 'mixEnv': 'shared'}}
+  let g:ale_rust_rls_toolchain = 'stable'
+
+  " let g:ale_lint_on_text_changed = 'never'
+  let g:ale_linters_explicit = 1
+  let g:ale_fix_on_save = 1
+  let g:ale_completion_enabled = 0
+  let g:ale_set_balloon = 1
+
+" I like asyncomplete better than ALE's completion, ALE's seems jittery and
+" shows the info window too often
+Plug 'prabirshrestha/asyncomplete.vim'
+  " Use ALE's function for asyncomplete defaults
+  au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#ale#get_source_options({
+      \ 'priority': 10,
+      \ }))
+
+  inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+  inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+  inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
+  inoremap <expr> <C-y>   pumvisible() ? asyncomplete#close_popup() : "\<C-y>"
+  inoremap <expr> <C-e>   pumvisible() ? asyncomplete#cancel_popup() : "\<C-e>"
+  set completeopt+=preview
+  autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+  nnoremap <silent> <leader>t :FZF<cr>
+  nnoremap <silent> <leader>b :Buffers<cr>
+
+call plug#end()
+
+" font and colors
+syntax on
+set ttyfast
+set ttimeoutlen=10
+
+set background=dark
+" color toothpaste
+
+hi CursorLine term=bold,underline cterm=bold,underline gui=bold,underline ctermbg=0 guibg=#222e33
+hi CursorLineNr term=bold cterm=None
+
+" go
+autocmd FileType go setlocal noexpandtab shiftwidth=4 tabstop=4 softtabstop=4 nolist
+
+" swift
+autocmd FileType swift setlocal noexpandtab shiftwidth=4 tabstop=4 softtabstop=4 nolist
+
+" js
+autocmd BufNewFile,BufRead *.js set ft=javascript
+autocmd BufNewFile,BufRead *.ts set ft=typescript
+autocmd BufNewFile,BufRead *.tsx set ft=typescriptreact
+autocmd BufNewFile,BufRead *.json set ft=json
+
+" elixir scripts
+autocmd BufNewFile,BufRead *.exs set ft=elixir
+
+" markdown
+autocmd FileType markdown setlocal wrap linebreak
+
+" terminal
+autocmd TerminalWinOpen * setlocal nonumber norelativenumber
+
+lang en_US

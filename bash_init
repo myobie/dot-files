@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+
+os=$1
+cpu=$2
+repo=$3
+
+if [[ -z ${os} || -z ${cpu} || -z ${repo} ]]; then
+  1>&2 echo "Incorrect arguments given to bash_profile; os: $os cpu: $cpu repo: $repo"
+  exit 1
+fi
+
+pushd ${repo}/shared/bash > /dev/null
+
+for filepath in *; do
+  if [[ -f ${filepath} ]]; then
+    . ${filepath}
+  fi
+done
+
+popd > /dev/null
+pushd ${repo}/${os}/bash > /dev/null
+
+for filepath in *; do
+  if [[ -f ${filepath} ]]; then
+    . ${filepath}
+  fi
+done
+
+popd > /dev/null
+pushd ${repo}/${os}-${cpu}/bash > /dev/null
+
+for filepath in *; do
+  if [[ -f ${filepath} ]]; then
+    . ${filepath}
+  fi
+done
+
+popd > /dev/null
+
+# extras that shouldn't be in the dot-files repo
+if [ -f ~/.bash_extras ]; then
+  . ~/.bash_extras
+fi
