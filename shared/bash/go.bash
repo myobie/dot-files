@@ -1,1 +1,1 @@
-export GOPATH=~
+export GOPATH=${HOME}
