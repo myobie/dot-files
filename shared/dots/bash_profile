@@ -25,3 +25,5 @@ else
 fi
 
 . ${repo}/bash_init $os $cpu $repo
+. ${repo}/bash-completion.bash
+. ${repo}/ps1.bash

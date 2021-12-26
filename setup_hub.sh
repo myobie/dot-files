@@ -16,7 +16,7 @@ fi
 if [[ -n $(which hub) ]]; then
   if [[ ! -f ~/.config/hub || ${force} == "1" ]]; then
     1>&2 echo "Authenticating with hub..."
-    hub api user > /dev/null
+    hub api user
   fi
 
   # TODO: setup ~/.netrc correctly
