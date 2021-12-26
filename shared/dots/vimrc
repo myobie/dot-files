@@ -111,6 +111,7 @@ Plug 'tomtom/tcomment_vim' " gc
 Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'b4b4r07/vim-hcl'
 Plug 'jph00/swift-apple'
+Plug 'embear/vim-localvimrc'
 
 " File explorer
 Plug 'preservim/nerdtree'
@@ -139,7 +140,7 @@ Plug 'mattn/gist-vim'
     let g:gist_clip_command = 'pbcopy'
   endif
 
-Plug 'myobie/vim-elixirls'
+Plug 'GrzegorzKozub/vim-elixirls'
 
 Plug 'myobie/ale', { 'branch': 'dprint-fixer' }
   let g:ale_completion_enabled = 1
@@ -170,6 +171,7 @@ Plug 'myobie/ale', { 'branch': 'dprint-fixer' }
   \}
 
   let g:ale_fixers = {
+  \  '*': ['remove_trailing_lines', 'trim_whitespace'],
   \  'sh': ['shfmt'],
   \  'elixir': ['mix_format'],
   \  'javascript': ['dprint'],
