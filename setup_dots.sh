@@ -7,44 +7,58 @@ cpu=$2
 repo=$3
 
 if [[ -z ${os} || -z ${cpu} || -z ${repo} ]]; then
-  1>&2 echo "Incorrect arguments given to setup_dots.sh; os: $os cpu: $cpu repo: $repo"
+  echo 1>&2 "Incorrect arguments given to setup_dots.sh; os: $os cpu: $cpu repo: $repo"
   exit 1
 fi
 
-1>&2 echo "**"
-1>&2 echo "** Setup dots"
-1>&2 echo "**"
+echo 1>&2 "**"
+echo 1>&2 "** Setup dots"
+echo 1>&2 "**"
 
-pushd ${repo}/shared/dots > /dev/null
+if [[ -d ${repo}/shared/dots ]]; then
+  pushd ${repo}/shared/dots >/dev/null
 
-for filepath in *; do
-  if [[ -f ${filepath} ]]; then
-    filename=$(basename ${filepath})
-    full=${repo}/shared/dots/${filename}
-    ln -v -f -s ${full} ~/.${filename}
-  fi
-done
+  for filepath in *; do
+    if [[ -f ${filepath} ]]; then
+      filename=$(basename ${filepath})
+      full=${repo}/shared/dots/${filename}
+      if [[ -f ${full} ]]; then
+        ln -v -f -s ${full} ~/.${filename}
+      fi
+    fi
+  done
 
-popd > /dev/null
-pushd ${repo}/${os}/dots > /dev/null
+  popd >/dev/null
+fi
 
-for filepath in *; do
-  if [[ -f ${filepath} ]]; then
-    filename=$(basename ${filepath})
-    full=${repo}/${os}/dots/${filename}
-    ln -v -f -s ${full} ~/.${filename}
-  fi
-done
+if [[ -d ${repo}/${os}/dots ]]; then
+  pushd ${repo}/${os}/dots >/dev/null
 
-popd > /dev/null
-pushd ${repo}/${os}-${cpu}/dots > /dev/null
+  for filepath in *; do
+    if [[ -f ${filepath} ]]; then
+      filename=$(basename ${filepath})
+      full=${repo}/${os}/dots/${filename}
+      if [[ -f ${full} ]]; then
+        ln -v -f -s ${full} ~/.${filename}
+      fi
+    fi
+  done
 
-for filepath in *; do
-  if [[ -f ${filepath} ]]; then
-    filename=$(basename ${filepath})
-    full=${repo}/${os}-${cpu}/dots/${filename}
-    ln -v -f -s ${full} ~/.${filename}
-  fi
-done
+  popd >/dev/null
+fi
 
-popd > /dev/null
+if [[ -d ${repo}/${os}-${cpu}/dots ]]; then
+  pushd ${repo}/${os}-${cpu}/dots >/dev/null
+
+  for filepath in *; do
+    if [[ -f ${filepath} ]]; then
+      filename=$(basename ${filepath})
+      full=${repo}/${os}-${cpu}/dots/${filename}
+      if [[ -f ${full} ]]; then
+        ln -v -f -s ${full} ~/.${filename}
+      fi
+    fi
+  done
+
+  popd >/dev/null
+fi

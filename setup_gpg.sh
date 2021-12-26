@@ -7,46 +7,60 @@ cpu=$2
 repo=$3
 
 if [[ -z ${os} || -z ${cpu} || -z ${repo} ]]; then
-  1>&2 echo "Incorrect arguments given to setup_gpg.sh; os: $os cpu: $cpu repo: $repo"
+  echo 1>&2 "Incorrect arguments given to setup_gpg.sh; os: $os cpu: $cpu repo: $repo"
   exit 1
 fi
 
-1>&2 echo "**"
-1>&2 echo "** Setup gpg"
-1>&2 echo "**"
+echo 1>&2 "**"
+echo 1>&2 "** Setup gpg"
+echo 1>&2 "**"
 
 mkdir -p ~/.gnupg
 
-pushd ${repo}/shared/gnupg > /dev/null
+if [[ -d ${repo}/shared/gnupg ]]; then
+  pushd ${repo}/shared/gnupg >/dev/null
 
-for filepath in *; do
-  if [[ -f ${filepath} ]]; then
-    filename=$(basename ${filepath})
-    full=${repo}/shared/gnupg/${filename}
-    ln -v -f -s ${full} ~/.gnupg/${filename}
-  fi
-done
+  for filepath in *; do
+    if [[ -f ${filepath} ]]; then
+      filename=$(basename ${filepath})
+      full=${repo}/shared/gnupg/${filename}
+      if [[ -f ${full} ]]; then
+        ln -v -f -s ${full} ~/.gnupg/${filename}
+      fi
+    fi
+  done
 
-popd > /dev/null
-pushd ${repo}/${os}/gnupg > /dev/null
+  popd >/dev/null
+fi
 
-for filepath in *; do
-  if [[ -f ${filepath} ]]; then
-    filename=$(basename ${filepath})
-    full=${repo}/${os}/gnupg/${filename}
-    ln -v -f -s ${full} ~/.gnupg/${filename}
-  fi
-done
+if [[ -d ${repo}/${os}/gnupg ]]; then
+  pushd ${repo}/${os}/gnupg >/dev/null
 
-popd > /dev/null
-pushd ${repo}/${os}-${cpu}/gnupg > /dev/null
+  for filepath in *; do
+    if [[ -f ${filepath} ]]; then
+      filename=$(basename ${filepath})
+      full=${repo}/${os}/gnupg/${filename}
+      if [[ -f ${full} ]]; then
+        ln -v -f -s ${full} ~/.gnupg/${filename}
+      fi
+    fi
+  done
 
-for filepath in *; do
-  if [[ -f ${filepath} ]]; then
-    filename=$(basename ${filepath})
-    full=${repo}/${os}-${cpu}/gnupg/${filename}
-    ln -v -f -s ${full} ~/.gnupg/${filename}
-  fi
-done
+  popd >/dev/null
+fi
 
-popd > /dev/null
+if [[ -d ${repo}/${os}-${cpu}/gnupg ]]; then
+  pushd ${repo}/${os}-${cpu}/gnupg >/dev/null
+
+  for filepath in *; do
+    if [[ -f ${filepath} ]]; then
+      filename=$(basename ${filepath})
+      full=${repo}/${os}-${cpu}/gnupg/${filename}
+      if [[ -f ${full} ]]; then
+        ln -v -f -s ${full} ~/.gnupg/${filename}
+      fi
+    fi
+  done
+
+  popd >/dev/null
+fi

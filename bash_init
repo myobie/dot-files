@@ -5,37 +5,45 @@ cpu=$2
 repo=$3
 
 if [[ -z ${os} || -z ${cpu} || -z ${repo} ]]; then
-  1>&2 echo "Incorrect arguments given to bash_profile; os: $os cpu: $cpu repo: $repo"
+  echo 1>&2 "Incorrect arguments given to bash_profile; os: $os cpu: $cpu repo: $repo"
   exit 1
 fi
 
-pushd ${repo}/shared/bash > /dev/null
+if [[ -d ${repo}/shared/bash ]]; then
+  pushd ${repo}/shared/bash >/dev/null
 
-for filepath in *; do
-  if [[ -f ${filepath} ]]; then
-    . ${filepath}
-  fi
-done
+  for filepath in *; do
+    if [[ -f ${filepath} ]]; then
+      . ${filepath}
+    fi
+  done
 
-popd > /dev/null
-pushd ${repo}/${os}/bash > /dev/null
+  popd >/dev/null
+fi
 
-for filepath in *; do
-  if [[ -f ${filepath} ]]; then
-    . ${filepath}
-  fi
-done
+if [[ -d ${repo}/${os}/bash ]]; then
+  pushd ${repo}/${os}/bash >/dev/null
 
-popd > /dev/null
-pushd ${repo}/${os}-${cpu}/bash > /dev/null
+  for filepath in *; do
+    if [[ -f ${filepath} ]]; then
+      . ${filepath}
+    fi
+  done
 
-for filepath in *; do
-  if [[ -f ${filepath} ]]; then
-    . ${filepath}
-  fi
-done
+  popd >/dev/null
+fi
 
-popd > /dev/null
+if [[ -d ${repo}/${os}-${cpu}/bash ]]; then
+  pushd ${repo}/${os}-${cpu}/bash >/dev/null
+
+  for filepath in *; do
+    if [[ -f ${filepath} ]]; then
+      . ${filepath}
+    fi
+  done
+
+  popd >/dev/null
+fi
 
 # extras that shouldn't be in the dot-files repo
 if [ -f ~/.bash_extras ]; then
