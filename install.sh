@@ -55,7 +55,4 @@ ${repo}/setup_rust.sh $force
 ${repo}/setup_git_lfs.sh
 ${repo}/setup_hub.sh $force
 ${repo}/setup_gpg.sh $os $cpu $repo
-
-if [[ ${os} == "mac" ]]; then
-  ${repo}/setup_vim.sh $repo $force
-fi
+${repo}/setup_vim.sh $repo $force
