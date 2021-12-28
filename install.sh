@@ -13,7 +13,7 @@ if [[ $1 == "force" || $1 == "--force" ]]; then
   force=1
 fi
 
-if [[ $OSTYPE == "linux-gnu"* ]]; then
+if [[ $OSTYPE == "linux-"* ]]; then
   os=linux
 
   if [[ $(uname -a | awk '{ print $(NF-1) }') == "x86_64"* ]]; then
