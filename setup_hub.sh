@@ -5,17 +5,17 @@ set -eo pipefail
 force=$1
 
 if [[ -z ${force} ]]; then
-  1>&2 echo "Incorrect arguments given to setup_elixir.sh; force: $force"
+  echo 1>&2 "Incorrect arguments given to setup_elixir.sh; force: $force"
   exit 1
 fi
 
-1>&2 echo "**"
-1>&2 echo "** Setup hub"
-1>&2 echo "**"
+echo 1>&2 "**"
+echo 1>&2 "** Setup hub"
+echo 1>&2 "**"
 
 if [[ -n $(which hub) ]]; then
   if [[ ! -f ~/.config/hub || ${force} == "1" ]]; then
-    1>&2 echo "Authenticating with hub..."
+    echo 1>&2 "Authenticating with hub..."
     hub api user
   fi
 
