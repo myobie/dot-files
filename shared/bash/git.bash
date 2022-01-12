@@ -1,4 +1,4 @@
-if [[ -z "$(which hub)" ]]; then
+if [[ -n "$(which hub)" ]]; then
   alias git=hub
 fi
 
