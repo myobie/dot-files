@@ -1,5 +1,5 @@
 if [[ -n "$(which hub)" ]]; then
-  alias git=hub
+  eval "$(hub alias -s)"
 fi
 
 search-history() {
@@ -10,7 +10,7 @@ clone() {
   org=$(echo $1 | awk -F/ '{ print $1 }')
   mkdir -p ~/src/github.com/$org
   path=~/src/github.com/$1
-  git clone $@ $path
+  hub clone $@ $path
   cd $path
 }
 
