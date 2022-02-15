@@ -81,7 +81,6 @@ set autoread
 " plug
 call plug#begin()
 
-Plug 'myobie/vim-toothpaste'
 Plug 'sheerun/vim-polyglot' " lots of languages
   let g:javascript_plugin_jsdoc = 1 " highlight jsdocs
   set re=0 " Use the latest regular expressions
