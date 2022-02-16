@@ -3,9 +3,9 @@ if &compatible
 endif
 
 " cursor
-let &t_SI.="\e[4 q" "SI = INSERT mode
-let &t_SR.="\e[4 q" "SR = REPLACE mode
-let &t_EI.="\e[4 q" "EI = NORMAL mode (ELSE)
+" let &t_SI.="\e[4 q" "SI = INSERT mode
+" let &t_SR.="\e[4 q" "SR = REPLACE mode
+" let &t_EI.="\e[4 q" "EI = NORMAL mode (ELSE)
 
 " basics
 set encoding=utf-8
