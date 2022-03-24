@@ -157,12 +157,12 @@ Plug 'myobie/ale', { 'branch': 'deno-config' }
   \  'sh': ['language_server', 'shell'],
   \  'elixir': ['elixir-ls'],
   \  'html': ['tidy'],
-  \  'javascript': ['deno'],
+  \  'javascript': ['deno', 'dprint'],
   \  'json': ['jsonlint'],
   \  'go': ['gofmt', 'gobuild', 'gopls'],
   \  'rust': ['rls', 'rustc'],
-  \  'typescript': ['deno'],
-  \  'typescriptreact': ['deno']
+  \  'typescript': ['deno', 'dprint'],
+  \  'typescriptreact': ['deno', 'dprint']
   \}
 
   let g:ale_fixers = {
