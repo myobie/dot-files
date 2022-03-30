@@ -138,13 +138,14 @@ Plug 'mattn/gist-vim'
 
 Plug 'GrzegorzKozub/vim-elixirls'
 
-Plug 'myobie/ale', { 'branch': 'deno-config' }
-  let g:ale_completion_enabled = 1
+" TODO: look into https://github.com/autozimu/LanguageClient-neovim
 
+let g:ale_completion_enabled = 1
+Plug 'myobie/ale', { 'branch': 'deno-config' }
   " move to the next ALE warning / error
-  nnoremap ]r :ALENextWrap<CR>
+  nnoremap ]n :ALENextWrap<CR>
   " move to the previous ALE warning / error
-  nnoremap [r :ALEPreviousWrap<CR>
+  nnoremap [n :ALEPreviousWrap<CR>
 
   " TODO
   " * css
@@ -194,27 +195,27 @@ Plug 'myobie/ale', { 'branch': 'deno-config' }
   let g:ale_elixir_elixir_ls_config = {'elixirLS': {'dialyzerEnabled': v:true, 'mixEnv': 'shared'}}
   let g:ale_rust_rls_toolchain = 'stable'
 
-  " let g:ale_lint_on_text_changed = 'never'
+  " I hate how it comes and goes
+  let g:ale_sign_column_always = 1
   let g:ale_linters_explicit = 1
   let g:ale_fix_on_save = 1
-  let g:ale_completion_enabled = 0
-  let g:ale_set_balloon = 1
+  let g:ale_lint_on_save = 1
+  set completeopt=menu,menuone,popup,noselect,noinsert
 
-" I like asyncomplete better than ALE's completion, ALE's seems jittery and
-" shows the info window too often
-Plug 'prabirshrestha/asyncomplete.vim'
-  " Use ALE's function for asyncomplete defaults
-  au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#ale#get_source_options({
-      \ 'priority': 10,
-      \ }))
+  " Fix ctrl-n
+  function! SmartInsertCompletion() abort
+    " Use the default CTRL-N in completion menus
+    if pumvisible()
+      return "\<C-n>"
+    endif
+    " Exit and re-enter insert mode, and use insert completion
+    return "\<C-c>a\<C-n>"
+  endfunction
+  inoremap <silent> <C-n> <C-R>=SmartInsertCompletion()<CR>
 
   inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
   inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
   inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
-  inoremap <expr> <C-y>   pumvisible() ? asyncomplete#close_popup() : "\<C-y>"
-  inoremap <expr> <C-e>   pumvisible() ? asyncomplete#cancel_popup() : "\<C-e>"
-  set completeopt+=preview
-  autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
