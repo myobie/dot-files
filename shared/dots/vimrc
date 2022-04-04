@@ -222,6 +222,8 @@ Plug 'junegunn/fzf.vim'
   nnoremap <silent> <leader>t :FZF<cr>
   nnoremap <silent> <leader>b :Buffers<cr>
 
+Plug 'rizzatti/dash.vim'
+
 call plug#end()
 
 " font and colors
