@@ -84,6 +84,9 @@ call plug#begin()
 Plug 'sheerun/vim-polyglot' " lots of languages
   let g:javascript_plugin_jsdoc = 1 " highlight jsdocs
   set re=0 " Use the latest regular expressions
+  let g:polyglot_disabled = ['yats.plugin']
+
+Plug 'HerringtonDarkholme/yats.vim' " the latest yats has something polyglot doens't have yet
 
 Plug 'kana/vim-textobj-user'
 Plug 'reedes/vim-textobj-quote'
@@ -156,22 +159,25 @@ Plug 'myobie/ale', { 'branch': 'deno-config' }
 
   let g:ale_linters = {
   \  'sh': ['language_server', 'shell'],
+  \  'css': ['dprint'],
   \  'elixir': ['elixir-ls'],
   \  'html': ['tidy'],
   \  'javascript': ['deno', 'dprint'],
   \  'json': ['jsonlint'],
   \  'go': ['gofmt', 'gobuild', 'gopls'],
-  \  'rust': ['rls', 'rustc'],
+  \  'rust': ['analyzer'],
   \  'typescript': ['deno', 'dprint'],
   \  'typescriptreact': ['deno', 'dprint']
   \}
 
   let g:ale_fixers = {
   \  '*': ['remove_trailing_lines', 'trim_whitespace'],
+  \  'css': ['dprint'],
   \  'elixir': ['mix_format'],
   \  'javascript': ['dprint'],
   \  'json': ['dprint'],
   \  'markdown': ['dprint'],
+  \  'rust': ['rustfmt'],
   \  'typescript': ['dprint'],
   \  'typescriptreact': ['dprint'],
   \  'terraform': ['terraform'],
