@@ -2,11 +2,6 @@ if &compatible
   set nocompatible
 endif
 
-" cursor
-" let &t_SI.="\e[4 q" "SI = INSERT mode
-" let &t_SR.="\e[4 q" "SR = REPLACE mode
-" let &t_EI.="\e[4 q" "EI = NORMAL mode (ELSE)
-
 " basics
 set encoding=utf-8
 set ruler
@@ -64,8 +59,8 @@ set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,node_modules,tar
 
 " remember last location in file
 if has("autocmd")
-  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
-    \| exe "normal g'\"" | endif
+  autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+        \| exe "normal g'\"" | endif
 endif
 
 " directories for swp files
@@ -82,23 +77,23 @@ set autoread
 call plug#begin()
 
 Plug 'sheerun/vim-polyglot' " lots of languages
-  let g:javascript_plugin_jsdoc = 1 " highlight jsdocs
-  set re=0 " Use the latest regular expressions
-  let g:polyglot_disabled = ['yats.plugin']
+let g:javascript_plugin_jsdoc = 1 " highlight jsdocs
+set re=0 " Use the latest regular expressions
+let g:polyglot_disabled = ['yats.plugin']
 
 Plug 'HerringtonDarkholme/yats.vim' " the latest yats has something polyglot doens't have yet
 
 Plug 'kana/vim-textobj-user'
 Plug 'reedes/vim-textobj-quote'
-  augroup textobj_quote
-    autocmd!
-    autocmd FileType markdown call textobj#quote#init()
-    autocmd FileType textile call textobj#quote#init()
-    autocmd FileType text call textobj#quote#init({'educate': 0})
-  augroup END
+augroup textobj_quote
+  autocmd!
+  autocmd FileType markdown call textobj#quote#init()
+  autocmd FileType textile call textobj#quote#init()
+  autocmd FileType text call textobj#quote#init({'educate': 0})
+augroup END
 
-  map <silent> <leader>qc <Plug>ReplaceWithCurly
-  map <silent> <leader>qs <Plug>ReplaceWithStraight
+map <silent> <leader>qc <Plug>ReplaceWithCurly
+map <silent> <leader>qs <Plug>ReplaceWithStraight
 
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-ragtag' " HTML tags
@@ -139,89 +134,52 @@ Plug 'mattn/gist-vim'
     let g:gist_clip_command = 'pbcopy'
   endif
 
-Plug 'GrzegorzKozub/vim-elixirls'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
+  autocmd BufWrite *.ex :LspDocumentFormat
+  autocmd BufWrite *.exs :LspDocumentFormat
+  autocmd BufWrite *.rs :LspDocumentFormat
+  autocmd BufWrite *.tf :LspDocumentFormat
+  autocmd BufWrite *.go :LspDocumentFormat
 
-" TODO: look into https://github.com/autozimu/LanguageClient-neovim
+  nnoremap ]n :LspNextDiagnostic<CR>
+  nnoremap [n :LspPreviousDiagnostic<CR>
+  noremap <leader>h :LspHover<CR>
+  noremap <leader>re :LspRename<CR>
+  noremap <leader>] :LspDefinition<CR>
+  noremap <leader>\ :LspReferences<CR>
 
-let g:ale_completion_enabled = 1
-Plug 'myobie/ale', { 'branch': 'deno-config' }
-  " move to the next ALE warning / error
-  nnoremap ]n :ALENextWrap<CR>
-  " move to the previous ALE warning / error
-  nnoremap [n :ALEPreviousWrap<CR>
-
-  " TODO
-  " * css
-  " * markdown
-  " * sql
-  " * text
-  " * yaml
-
-  let g:ale_linters = {
-  \  'sh': ['language_server', 'shell'],
-  \  'css': ['dprint'],
-  \  'elixir': ['elixir-ls'],
-  \  'html': ['tidy'],
-  \  'javascript': ['deno', 'dprint'],
-  \  'json': ['jsonlint'],
-  \  'go': ['gofmt', 'gobuild', 'gopls'],
-  \  'rust': ['analyzer'],
-  \  'typescript': ['deno', 'dprint'],
-  \  'typescriptreact': ['deno', 'dprint']
-  \}
-
-  let g:ale_fixers = {
-  \  '*': ['remove_trailing_lines', 'trim_whitespace'],
-  \  'css': ['dprint'],
-  \  'elixir': ['mix_format'],
-  \  'javascript': ['dprint'],
-  \  'json': ['dprint'],
-  \  'markdown': ['dprint'],
-  \  'rust': ['rustfmt'],
-  \  'typescript': ['dprint'],
-  \  'typescriptreact': ['dprint'],
-  \  'terraform': ['terraform'],
-  \  'go': ['gofmt', 'gomod'],
-  \  'sh': ['shfmt'],
-  \}
-
-  noremap <leader>h :ALEHover<CR>
-  noremap <leader>d :ALEDetail<CR>
-  noremap <leader>re :ALERename<CR>
-  noremap <leader>n :ALENextWrap<CR>
-  noremap <leader>] :ALEGoToDefinition<CR>
-  noremap <leader>\ :ALEFindReferences<CR>
-
-  " Use Google's style for shell files
-  let g:ale_sh_shfmt_options = '-i 2 -ci'
-  " Use the elixir-ls compiled by vim-elixirls
-  let g:ale_elixir_elixir_ls_release = expand('~/.vim/plugged/vim-elixirls/elixir-ls/release/')
-  " Setting the MIX_ENV to shared because sometimes things aren't in test
-  " which is the default
-  let g:ale_elixir_elixir_ls_config = {'elixirLS': {'dialyzerEnabled': v:true, 'mixEnv': 'shared'}}
-  let g:ale_rust_rls_toolchain = 'stable'
-
-  " I hate how it comes and goes
-  let g:ale_sign_column_always = 1
-  let g:ale_linters_explicit = 1
-  let g:ale_fix_on_save = 1
-  let g:ale_lint_on_save = 1
-  set completeopt=menu,menuone,popup,noselect,noinsert
-
-  " Fix ctrl-n
-  function! SmartInsertCompletion() abort
-    " Use the default CTRL-N in completion menus
-    if pumvisible()
-      return "\<C-n>"
-    endif
-    " Exit and re-enter insert mode, and use insert completion
-    return "\<C-c>a\<C-n>"
-  endfunction
-  inoremap <silent> <C-n> <C-R>=SmartInsertCompletion()<CR>
-
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
   inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
   inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-  inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
+  inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
+
+Plug 'vim-autoformat/vim-autoformat'
+  autocmd BufWrite *.js :Autoformat
+  autocmd BufWrite *.jsx :Autoformat
+  autocmd BufWrite *.ts :Autoformat
+  autocmd BufWrite *.tsx :Autoformat
+  autocmd BufWrite *.json :Autoformat
+  autocmd BufWrite *.css :Autoformat
+  autocmd BufWrite *.md :Autoformat
+  autocmd BufWrite *.sh :Autoformat
+  autocmd BufWrite sh :Autoformat
+
+  let g:formatters = []
+  let g:formatters_vim = []
+
+  let g:formatdef_shfmt = '"shfmt -i 2 -ci -filename ".@%." -"'
+  let g:formatters_sh = ['shfmt']
+  let g:formatters_bash = ['shfmt']
+
+  let g:formatdef_dprint = '"dprint fmt --stdin ".@%'
+  let g:formatters_javascript = ['dprint']
+  let g:formatters_typescript = ['dprint']
+  let g:formatters_typescriptreact = ['dprint']
+  let g:formatters_json = ['dprint']
+  let g:formatters_markdown = ['dprint']
+  let g:formatters_css = ['dprint']
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -251,8 +209,12 @@ autocmd FileType swift setlocal noexpandtab shiftwidth=4 tabstop=4 softtabstop=4
 " js
 autocmd BufNewFile,BufRead *.js set ft=javascript
 autocmd BufNewFile,BufRead *.ts set ft=typescript
+autocmd BufNewFile,BufRead *.jsx set ft=typescriptreact
 autocmd BufNewFile,BufRead *.tsx set ft=typescriptreact
 autocmd BufNewFile,BufRead *.json set ft=json
+
+" terraform
+autocmd BufNewFile,BufRead *.tf set ft=terraform
 
 " elixir scripts
 autocmd BufNewFile,BufRead *.exs set ft=elixir
