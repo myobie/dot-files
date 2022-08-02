@@ -136,6 +136,8 @@ Plug 'mattn/gist-vim'
 
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
+  let g:lsp_diagnostics_float_cursor = 1
+
   autocmd BufWrite *.ex :LspDocumentFormat
   autocmd BufWrite *.exs :LspDocumentFormat
   autocmd BufWrite *.rs :LspDocumentFormat
