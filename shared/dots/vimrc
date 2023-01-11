@@ -150,6 +150,7 @@ Plug 'mattn/vim-lsp-settings'
   noremap <leader>re :LspRename<CR>
   noremap <leader>] :LspDefinition<CR>
   noremap <leader>\ :LspReferences<CR>
+  noremap <leader>a :LspCodeAction<CR>
 
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
@@ -164,7 +165,7 @@ Plug 'vim-autoformat/vim-autoformat'
   autocmd BufWrite *.tsx :Autoformat
   autocmd BufWrite *.json :Autoformat
   autocmd BufWrite *.css :Autoformat
-  autocmd BufWrite *.md :Autoformat
+  " autocmd BufWrite *.md :Autoformat
   autocmd BufWrite *.sh :Autoformat
   autocmd BufWrite sh :Autoformat
 
@@ -180,7 +181,7 @@ Plug 'vim-autoformat/vim-autoformat'
   let g:formatters_typescript = ['dprint']
   let g:formatters_typescriptreact = ['dprint']
   let g:formatters_json = ['dprint']
-  let g:formatters_markdown = ['dprint']
+  " let g:formatters_markdown = ['dprint']
   let g:formatters_css = ['dprint']
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
