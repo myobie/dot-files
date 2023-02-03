@@ -137,18 +137,21 @@ Plug 'mattn/gist-vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
   let g:lsp_diagnostics_float_cursor = 1
+  let g:lsp_format_sync_timeout = 1000
 
-  autocmd BufWrite *.ex :LspDocumentFormat
-  autocmd BufWrite *.exs :LspDocumentFormat
-  autocmd BufWrite *.rs :LspDocumentFormat
-  autocmd BufWrite *.tf :LspDocumentFormat
-  autocmd BufWrite *.go :LspDocumentFormat
+  autocmd! BufWritePre *.ex  call execute('LspDocumentFormatSync')
+  autocmd! BufWritePre *.exs call execute('LspDocumentFormatSync')
+  autocmd! BufWritePre *.rs  call execute('LspDocumentFormatSync')
+  autocmd! BufWritePre *.tf  call execute('LspDocumentFormatSync')
+  autocmd! BufWritePre *.go  call execute('LspDocumentFormatSync')
 
-  nnoremap ]n :LspNextDiagnostic<CR>
-  nnoremap [n :LspPreviousDiagnostic<CR>
+  noremap [n :LspPreviousDiagnostic<CR>
+  noremap ]n :LspNextDiagnostic<CR>
   noremap <leader>h :LspHover<CR>
+  noremap K :LspHover<CR>
   noremap <leader>re :LspRename<CR>
   noremap <leader>] :LspDefinition<CR>
+  noremap gd :LspDefinition<CR>
   noremap <leader>\ :LspReferences<CR>
   noremap <leader>a :LspCodeAction<CR>
 
@@ -159,15 +162,14 @@ Plug 'prabirshrestha/asyncomplete-lsp.vim'
   inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
 
 Plug 'vim-autoformat/vim-autoformat'
-  autocmd BufWrite *.js :Autoformat
-  autocmd BufWrite *.jsx :Autoformat
-  autocmd BufWrite *.ts :Autoformat
-  autocmd BufWrite *.tsx :Autoformat
-  autocmd BufWrite *.json :Autoformat
-  autocmd BufWrite *.css :Autoformat
-  " autocmd BufWrite *.md :Autoformat
-  autocmd BufWrite *.sh :Autoformat
-  autocmd BufWrite sh :Autoformat
+  autocmd! BufWritePre *.js   call execute('Autoformat')
+  autocmd! BufWritePre *.jsx  call execute('Autoformat')
+  autocmd! BufWritePre *.ts   call execute('Autoformat')
+  autocmd! BufWritePre *.tsx  call execute('Autoformat')
+  autocmd! BufWritePre *.json call execute('Autoformat')
+  autocmd! BufWritePre *.css  call execute('Autoformat')
+  autocmd! BufWritePre *.sh   call execute('Autoformat')
+  autocmd! BufWritePre sh     call execute('Autoformat')
 
   let g:formatters = []
   let g:formatters_vim = []
@@ -181,7 +183,6 @@ Plug 'vim-autoformat/vim-autoformat'
   let g:formatters_typescript = ['dprint']
   let g:formatters_typescriptreact = ['dprint']
   let g:formatters_json = ['dprint']
-  " let g:formatters_markdown = ['dprint']
   let g:formatters_css = ['dprint']
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
