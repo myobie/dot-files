@@ -9,7 +9,7 @@ recent-branch() {
     awk '{ print $3 }' | # extract 3rd column
     awk ' !x[$0]++' | # Removes duplicates.  See http://stackoverflow.com/questions/11532157
     egrep -v '^[a-f0-9]{40}$' | # remove hash results
-    fzf
+    fzf +m
   )
 
   git switch $branch
