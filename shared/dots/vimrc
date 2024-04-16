@@ -8,6 +8,8 @@ set ruler
 set number
 set title
 
+noremap <leader>r :redraw!<CR>
+
 if has("mouse")
   set mouse=a
   set sidescroll=1
@@ -95,6 +97,7 @@ augroup END
 map <silent> <leader>qc <Plug>ReplaceWithCurly
 map <silent> <leader>qs <Plug>ReplaceWithStraight
 
+Plug 'christoomey/vim-titlecase'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-ragtag' " HTML tags
 Plug 'tpope/vim-fugitive' " git support
@@ -102,6 +105,7 @@ Plug 'tpope/vim-rhubarb' " github support for vim-fugitive
 Plug 'tpope/vim-dadbod' " DB console
 Plug 'tpope/vim-eunuch' " Unix utilities like :SudoWrite
 Plug 'tomtom/tcomment_vim' " gc
+Plug 'jonsmithers/vim-html-template-literals'
 Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'b4b4r07/vim-hcl'
 Plug 'jph00/swift-apple'
@@ -135,7 +139,14 @@ Plug 'mattn/gist-vim'
   endif
 
 Plug 'prabirshrestha/vim-lsp'
+  " let g:lsp_log_verbose = 1
+  " let g:lsp_log_file = expand('~/vim-lsp.log')
+
+Plug 'rhysd/vim-healthcheck'
+  " provides a health check for vim-lsp
+
 Plug 'mattn/vim-lsp-settings'
+  let g:lsp_diagnostics_virtual_text_enabled = 0
   let g:lsp_diagnostics_float_cursor = 1
   let g:lsp_format_sync_timeout = 1000
 
