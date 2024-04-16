@@ -2,6 +2,19 @@ search-history() {
   git log --pretty=format:'%h was %an, %ar, message: %s' | grep $@ | less
 }
 
+# Inspried by: https://gist.github.com/jordan-brough/48e2803c0ffa6dc2e0bd
+recent-branch() {
+  branch=$(git reflog |
+    egrep -io "moving from ([^[:space:]]+)" |
+    awk '{ print $3 }' | # extract 3rd column
+    awk ' !x[$0]++' | # Removes duplicates.  See http://stackoverflow.com/questions/11532157
+    egrep -v '^[a-f0-9]{40}$' | # remove hash results
+    fzf
+  )
+
+  git switch $branch
+}
+
 clone() {
   org=$(echo $1 | awk -F/ '{ print $1 }')
   mkdir -p ~/src/github.com/$org
