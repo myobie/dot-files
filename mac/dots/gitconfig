@@ -25,7 +25,7 @@
 	conflictstyle = zdiff3
 	tool = vimdiff
 [commit]
-	gpgsign = true
+	# gpgsign = true
 [fetch]
 	prune = true
 [gpg]
