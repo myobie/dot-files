@@ -109,7 +109,7 @@ Plug 'jonsmithers/vim-html-template-literals'
 Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'b4b4r07/vim-hcl'
 Plug 'jph00/swift-apple'
-Plug 'embear/vim-localvimrc'
+Plug 'embear/vim-localvimrc', { 'branch': 'main' }
 
 " File explorer
 Plug 'preservim/nerdtree'
@@ -190,11 +190,13 @@ Plug 'vim-autoformat/vim-autoformat'
   let g:formatters_bash = ['shfmt']
 
   let g:formatdef_dprint = '"dprint fmt --stdin ".@%'
-  let g:formatters_javascript = ['dprint']
-  let g:formatters_typescript = ['dprint']
-  let g:formatters_typescriptreact = ['dprint']
-  let g:formatters_json = ['dprint']
-  let g:formatters_css = ['dprint']
+  let g:formatdef_prettier = '"npm exec -c \"prettier --stdin-filepath ".@%."\""'
+
+  let g:formatters_javascript = ['dprint', 'prettier']
+  let g:formatters_typescript = ['dprint', 'prettier']
+  let g:formatters_typescriptreact = ['dprint', 'prettier']
+  let g:formatters_json = ['dprint', 'prettier']
+  let g:formatters_css = ['dprint', 'prettier']
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
