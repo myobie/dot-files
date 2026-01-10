@@ -1,0 +1,12 @@
+[[language]]
+name = "elixir"
+auto-format = true
+
+[[language]]
+name = "python"
+auto-format = true
+
+[[language]]
+name = "swift"
+auto-format = true
+language-servers = ["sourcekit-lsp"]
