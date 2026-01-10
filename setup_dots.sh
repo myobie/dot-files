@@ -31,6 +31,25 @@ if [[ -d ${repo}/shared/dots ]]; then
   popd >/dev/null
 fi
 
+if [[ -d ${repo}/shared/dots/config ]]; then
+  pushd ${repo}/shared/dots/config >/dev/null
+
+  for appdir in */; do
+    appname=$(basename ${appdir})
+    mkdir -p ~/.config/${appname}
+
+    for filepath in ${appdir}*; do
+      if [[ -f ${filepath} ]]; then
+        filename=$(basename ${filepath})
+        full=${repo}/shared/dots/config/${appname}/${filename}
+        ln -v -f -s ${full} ~/.config/${appname}/${filename}
+      fi
+    done
+  done
+
+  popd >/dev/null
+fi
+
 if [[ -d ${repo}/${os}/dots ]]; then
   pushd ${repo}/${os}/dots >/dev/null
 
@@ -47,6 +66,25 @@ if [[ -d ${repo}/${os}/dots ]]; then
   popd >/dev/null
 fi
 
+if [[ -d ${repo}/${os}/dots/config ]]; then
+  pushd ${repo}/${os}/dots/config >/dev/null
+
+  for appdir in */; do
+    appname=$(basename ${appdir})
+    mkdir -p ~/.config/${appname}
+
+    for filepath in ${appdir}*; do
+      if [[ -f ${filepath} ]]; then
+        filename=$(basename ${filepath})
+        full=${repo}/${os}/dots/config/${appname}/${filename}
+        ln -v -f -s ${full} ~/.config/${appname}/${filename}
+      fi
+    done
+  done
+
+  popd >/dev/null
+fi
+
 if [[ -d ${repo}/${os}-${cpu}/dots ]]; then
   pushd ${repo}/${os}-${cpu}/dots >/dev/null
 
@@ -58,6 +96,25 @@ if [[ -d ${repo}/${os}-${cpu}/dots ]]; then
         ln -v -f -s ${full} ~/.${filename}
       fi
     fi
+  done
+
+  popd >/dev/null
+fi
+
+if [[ -d ${repo}/${os}-${cpu}/dots/config ]]; then
+  pushd ${repo}/${os}-${cpu}/dots/config >/dev/null
+
+  for appdir in */; do
+    appname=$(basename ${appdir})
+    mkdir -p ~/.config/${appname}
+
+    for filepath in ${appdir}*; do
+      if [[ -f ${filepath} ]]; then
+        filename=$(basename ${filepath})
+        full=${repo}/${os}-${cpu}/dots/config/${appname}/${filename}
+        ln -v -f -s ${full} ~/.config/${appname}/${filename}
+      fi
+    done
   done
 
   popd >/dev/null

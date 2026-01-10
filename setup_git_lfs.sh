@@ -7,5 +7,5 @@ set -eo pipefail
 1>&2 echo "**"
 
 if [[ -n $(which git) ]]; then
-  git lfs install --system
+  git lfs install --system || echo "Well we tried"
 fi

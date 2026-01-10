@@ -40,19 +40,37 @@ echo 1>&2 "** os: $os cpu: $cpu repo: $repo"
 echo 1>&2 "**"
 
 # source our profile so basic paths are setup
+echo ". ${repo}/bash_init $os $cpu $repo"
 . ${repo}/bash_init $os $cpu $repo
+
+echo $?
+echo "Sourced."
 
 ${repo}/setup_dots.sh $os $cpu $repo
 
+echo "Dots setup."
+
 if [[ ${os} == "mac" ]]; then
   ${repo}/setup_brew.sh $repo $force
+  echo "brew setup."
 fi
 
 ${repo}/setup_bash.sh $os $cpu $repo
+echo "bash setup."
+
 ${repo}/setup_elixir.sh $force
+echo "elixir setup."
+
 ${repo}/setup_shfmt.sh $force
+echo "shfmt setup."
+
 ${repo}/setup_rust.sh $force
+echo "rust setup."
+
 ${repo}/setup_git_lfs.sh
-${repo}/setup_hub.sh $force
-${repo}/setup_gpg.sh $os $cpu $repo
-${repo}/setup_vim.sh $repo $force
+echo "git lfs setup."
+
+${repo}/setup_coding_agents.sh
+echo "coding agents setup."
+
+echo "Done."

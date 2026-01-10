@@ -14,14 +14,16 @@
   required = true
 [alias]
   difff = diff -W --minimal --word-diff=color
-  wdiff = diff -w —word-diff=color
-  root = rev-parse —show-toplevel
-  branches = for-each-ref —sort=-committerdate —format="%(color:blue)%(authordate:relative)\t%(color:red)%(authorname)\t%(color:white)%(color:bold)%(refname:short)" refs/remotes
-  mru = for-each-ref —sort=-committerdate —count=10 refs/heads/ —format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'
-  noedit = commit —amend —no-edit
+  wdiff = diff -w --word-diff=color
+  root = rev-parse --show-toplevel
+  branches = for-each-ref --sort=-committerdate --format="%(color:blue)%(authordate:relative)\t%(color:red)%(authorname)\t%(color:white)%(color:bold)%(refname:short)" refs/remotes
+  mru = for-each-ref --sort=-committerdate --count=10 refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'
+  noedit = commit --amend --no-edit
 [merge]
   conflictstyle = diff3
 [fetch]
   prune = true
+[pull]
+  rebase = true
 [init]
   defaultBranch = main

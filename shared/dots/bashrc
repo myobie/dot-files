@@ -1,2 +1,5 @@
 [ -f ~/.bash_profile ] && source ~/.bash_profile
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# opencode
+export PATH=/Users/nathanherald/.opencode/bin:$PATH

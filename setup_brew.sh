@@ -21,7 +21,7 @@ fi
 ln -f -s ${repo}/mac/Brewfile ~/.Brewfile
 
 if [[ ${force} == "1" ]]; then
-  brew bundle --verbose --global --no-lock
+  brew bundle install --verbose --file=~/.Brewfile
 else
-  brew bundle --verbose --global --no-upgrade --no-lock
+  brew bundle install --verbose --no-upgrade --file=~/.Brewfile
 fi
