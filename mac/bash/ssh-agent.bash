@@ -14,4 +14,7 @@ function use_1password_ssh_agent() {
   fi
 }
 
-use_1password_ssh_agent
+# Only use 1Password agent if no agent is already forwarded
+if [ -z "$SSH_AUTH_SOCK" ]; then
+  use_1password_ssh_agent
+fi
