@@ -1,0 +1,13 @@
+keybinds {
+    shared {
+        bind "Alt ]" { GoToNextTab; }
+        bind "Alt [" { GoToPreviousTab; }
+    }
+
+    normal {
+        bind "Ctrl Up"    { MoveFocus "Up"; }
+        bind "Ctrl Down"  { MoveFocus "Down"; }
+        bind "Ctrl Left"  { MoveFocus "Left"; }
+        bind "Ctrl Right" { MoveFocus "Right"; }
+    }
+}

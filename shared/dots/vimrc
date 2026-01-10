@@ -192,11 +192,11 @@ Plug 'vim-autoformat/vim-autoformat'
   let g:formatdef_dprint = '"dprint fmt --stdin ".@%'
   let g:formatdef_prettier = '"npm exec -c \"prettier --stdin-filepath ".@%."\""'
 
-  let g:formatters_javascript = ['dprint', 'biome', 'prettier']
-  let g:formatters_typescript = ['dprint', 'biome', 'prettier']
-  let g:formatters_typescriptreact = ['dprint', 'biome', 'prettier']
-  let g:formatters_json = ['dprint', 'biome', 'prettier']
-  let g:formatters_css = ['dprint', 'biome', 'prettier']
+  let g:formatters_javascript = ['dprint', 'prettier']
+  let g:formatters_typescript = ['dprint', 'prettier']
+  let g:formatters_typescriptreact = ['dprint', 'prettier']
+  let g:formatters_json = ['dprint', 'prettier']
+  let g:formatters_css = ['dprint', 'prettier']
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
