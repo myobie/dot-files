@@ -1,0 +1,5 @@
+# Broot configuration
+# https://dystroy.org/broot/
+
+# Open with preview panel by default
+default_flags = "-c :open_preview"
