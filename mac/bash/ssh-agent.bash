@@ -1,11 +1,3 @@
-function use_secretive_ssh_agent() {
-  sock_path=${HOME}/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
-
-  if [[ -r ${sock_path} ]]; then
-    export SSH_AUTH_SOCK="${sock_path}"
-  fi
-}
-
 function use_1password_ssh_agent() {
   one_p_path="${HOME}/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
 
@@ -14,7 +6,7 @@ function use_1password_ssh_agent() {
   fi
 }
 
-# Only use 1Password agent if no agent is already forwarded
-if [ -z "$SSH_AUTH_SOCK" ]; then
+# Only use 1Password agent if not in an SSH session (allow agent forwarding)
+if [ -z "$SSH_CONNECTION" ]; then
   use_1password_ssh_agent
 fi
