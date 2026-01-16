@@ -32,7 +32,7 @@
 [init]
 	defaultBranch = main
 [core]
-	pager = delta
+	pager = delta -s
 [interactive]
 	diffFilter = delta --color-only
 [delta]
