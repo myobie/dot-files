@@ -73,4 +73,7 @@ echo "git lfs setup."
 ${repo}/setup_coding_agents.sh
 echo "coding agents setup."
 
+${repo}/setup_zellij.sh
+echo "zellij setup."
+
 echo "Done."

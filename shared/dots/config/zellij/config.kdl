@@ -10,4 +10,7 @@ keybinds {
         bind "Ctrl Left"  { MoveFocus "Left"; }
         bind "Ctrl Right" { MoveFocus "Right"; }
     }
+
+    // Disable tmux mode keybindings
+    tmux clear-defaults=true {}
 }
