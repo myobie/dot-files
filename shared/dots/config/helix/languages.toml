@@ -1,12 +1,45 @@
+[language-server.deno-lsp]
+command = "deno"
+args = ["lsp"]
+config.deno.enable = true
+
 [[language]]
 name = "elixir"
 auto-format = true
+formatter = { command = "mix", args = ["format", "-"] }
 
 [[language]]
-name = "python"
+name = "nix"
+formatter = { command = "nixfmt" }
 auto-format = true
 
 [[language]]
-name = "swift"
+name = "javascript"
+roots = ["deno.json", "deno.jsonc", "package.json"]
+file-types = ["js", "jsx"]
 auto-format = true
-language-servers = ["sourcekit-lsp"]
+formatter = { command = "dprint", args = ["fmt", "--stdin", "jsx"] }
+language-servers = ["deno-lsp"]
+
+[[language]]
+name = "typescript"
+roots = ["deno.json", "deno.jsonc", "package.json"]
+file-types = ["ts", "tsx"]
+auto-format = true
+formatter = { command = "dprint", args = ["fmt", "--stdin", "tsx"] }
+language-servers = ["deno-lsp"]
+
+[[language]]
+name = "json"
+formatter = { command = "dprint", args = ["fmt", "--stdin", "json"] }
+auto-format = true
+
+[[language]]
+name = "toml"
+formatter = { command = "dprint", args = ["fmt", "--stdin", "toml"] }
+auto-format = true
+
+[[language]]
+name = "yaml"
+formatter = { command = "dprint", args = ["fmt", "--stdin", "yaml"] }
+auto-format = true
