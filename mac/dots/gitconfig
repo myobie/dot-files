@@ -17,6 +17,8 @@
 	process = git-lfs filter-process
 	required = true
 [alias]
+    diff1 = -c delta.side-by-side=false diff
+    log1 = -c delta.side-by-side=false log -p
     difff = diff -W --minimal --word-diff=color
     wdiff = diff -w --word-diff=color
     root = rev-parse --show-toplevel
@@ -32,9 +34,10 @@
 [init]
 	defaultBranch = main
 [core]
-	pager = delta -s
+	pager = delta
 [interactive]
 	diffFilter = delta --color-only
 [delta]
 	navigate = true
+	side-by-side = true
 
