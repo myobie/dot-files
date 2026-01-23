@@ -1,4 +1,14 @@
 # Inspired by https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh
+
+# Capture exit code before anything else runs
+PROMPT_COMMAND='__last_exit=$?'
+
+function last_exit_code {
+  if [[ $__last_exit != 0 ]]; then
+    echo -n "[$__last_exit] "
+  fi
+}
+
 function count_git_ahead_behind {
   local count
   local commits
@@ -41,12 +51,14 @@ function number_of_background_jobs {
 
 export GIT_PS1_SHOWDIRTYSTATE=true
 
-PS1='`number_of_background_jobs`\[\033[00;33m\]$\[\033[00m\] '
+PS1='\[\033[00;31m\]$(last_exit_code)\[\033[00m\]'
+PS1+='$(number_of_background_jobs)'
+PS1+='\[\033[00;33m\]$\[\033[00m\] '
 
 if [[ "$(type -t __git_ps1)" == "function" ]]; then
   PS1="\$(__git_ps1 \"git(%s\$(count_git_ahead_behind)) \")${PS1}"
 fi
 
-PS1="\`pwd\` ${PS1}"
+PS1="\$(pwd) ${PS1}"
 
 export PS1
