@@ -1,0 +1,21 @@
+{
+  "name": "local",
+  "owner": {
+    "name": "Nathan"
+  },
+  "metadata": {
+    "description": "Local claude plugins"
+  },
+  "plugins": [
+    {
+      "name": "codex",
+      "description": "Skills powered by the codex CLI",
+      "version": "0.1.0",
+      "author": {
+        "name": "Nathan"
+      },
+      "source": "./plugins/codex",
+      "strict": false
+    }
+  ]
+}

@@ -70,7 +70,7 @@ echo "rust setup."
 ${repo}/setup_git_lfs.sh
 echo "git lfs setup."
 
-${repo}/setup_coding_agents.sh
+${repo}/setup_coding_agents.sh $repo
 echo "coding agents setup."
 
 ${repo}/setup_zellij.sh

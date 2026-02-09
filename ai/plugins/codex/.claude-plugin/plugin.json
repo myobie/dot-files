@@ -1,0 +1,8 @@
+{
+  "name": "codex",
+  "version": "0.1.0",
+  "description": "Use codex CLI to review, explain, fix, and refactor complex code.",
+  "author": {
+    "name": "Nathan"
+  }
+}
