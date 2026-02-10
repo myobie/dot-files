@@ -1,6 +1,6 @@
 ---
 name: review
-description: Run consistent, findings-first code reviews with Codex CLI for any target: uncommitted/dirty working tree, current branch vs base branch, specific commit SHA, or pull request. Use when asked to review bugs, risks, regressions, and test gaps with actionable file/line findings.
+description: "Run consistent, findings-first code reviews with Codex CLI for any target: uncommitted/dirty working tree, current branch vs base branch, specific commit SHA, or pull request. Use when asked to review bugs, risks, regressions, and test gaps with actionable file/line findings."
 ---
 
 # Codex Review
