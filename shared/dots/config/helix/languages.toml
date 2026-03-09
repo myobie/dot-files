@@ -1,7 +1,11 @@
 [language-server.deno-lsp]
 command = "deno"
 args = ["lsp"]
-config.deno.enable = true
+required-root-patterns = ["deno.*"]
+
+[language-server.deno-lsp.config.deno]
+enable = true
+unstable = true
 
 [[language]]
 name = "elixir"
