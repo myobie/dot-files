@@ -119,3 +119,14 @@ if [[ -d ${repo}/${os}-${cpu}/dots/config ]]; then
 
   popd >/dev/null
 fi
+
+# Kitty kittens (subdirectories need special handling)
+
+# Search kitten
+if [[ -d ${repo}/shared/dots/config/kitty/kittens/search ]]; then
+  mkdir -p ~/.config/kitty/kittens/search
+  for filepath in ${repo}/shared/dots/config/kitty/kittens/search/*.py; do
+    filename=$(basename ${filepath})
+    ln -v -f -s ${filepath} ~/.config/kitty/kittens/search/${filename}
+  done
+fi
