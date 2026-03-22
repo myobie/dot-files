@@ -1,0 +1,8 @@
+{
+  "name": "mlx-whisper",
+  "version": "0.1.0",
+  "description": "Transcribe audio files to text using mlx_whisper on Apple Silicon.",
+  "author": {
+    "name": "Nathan"
+  }
+}

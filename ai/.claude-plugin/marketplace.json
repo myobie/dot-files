@@ -16,6 +16,16 @@
       },
       "source": "./plugins/codex",
       "strict": false
+    },
+    {
+      "name": "mlx-whisper",
+      "description": "Transcribe audio files using mlx_whisper on Apple Silicon",
+      "version": "0.1.0",
+      "author": {
+        "name": "Nathan"
+      },
+      "source": "./plugins/mlx-whisper",
+      "strict": false
     }
   ]
 }

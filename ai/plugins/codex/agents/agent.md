@@ -1,5 +1,5 @@
 ---
-name: codex
+name: agent
 description: General-purpose Codex CLI agent for code review, explanation, bug diagnosis, and refactoring. Selects the appropriate skill based on the task.
 ---
 
