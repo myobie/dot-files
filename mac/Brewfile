@@ -1,9 +1,11 @@
+tap "chase/tap"
 tap "hashicorp/tap"
 tap "noborus/tap"
 
 brew "bash"
 brew "bash-completion@2"
 brew "bat"
+brew "chawan"
 brew "broot"
 brew "deno"
 brew "doctl"
@@ -38,6 +40,8 @@ brew "wget"
 brew "wrk"
 
 cask "1password-cli"
+
+brew "chase/tap/awrit"
 
 brew "hashicorp/tap/consul"
 brew "hashicorp/tap/packer"

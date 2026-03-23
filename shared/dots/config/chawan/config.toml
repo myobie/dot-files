@@ -1,0 +1,13 @@
+[buffer]
+scripting = false
+
+[omnirule.kagi]
+match = '^kagi:'
+substitute-url = 'x => "https://kagi.com/html/search?q=" + encodeURIComponent(x.split(":").slice(1).join(":")) + "&html=lite"'
+
+[page]
+'C-k' = '() => pager.load("kagi:")'
+
+[siteconf.kagi]
+host = '(.*\.)?kagi\.com'
+cookie = "save"
