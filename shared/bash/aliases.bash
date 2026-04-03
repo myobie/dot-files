@@ -1,4 +1,6 @@
 alias cls='printf "\033c"'
+
+export BAT_THEME="ansi"
 alias ll='ls -lah'
 alias flush_deno_file_cache='rm -rf $HOME/Library/Caches/deno/gen/file'
 
