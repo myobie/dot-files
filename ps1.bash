@@ -49,9 +49,16 @@ function number_of_background_jobs {
   fi
 }
 
+function keychain_locked_indicator {
+  if ! security show-keychain-info ~/Library/Keychains/login.keychain-db &>/dev/null 2>&1; then
+    echo -n "🔒 "
+  fi
+}
+
 export GIT_PS1_SHOWDIRTYSTATE=true
 
-PS1='\[\033[00;31m\]$(last_exit_code)\[\033[00m\]'
+PS1='\[\033[00;31m\]$(keychain_locked_indicator)\[\033[00m\]'
+PS1+='\[\033[00;31m\]$(last_exit_code)\[\033[00m\]'
 PS1+='$(number_of_background_jobs)'
 PS1+='\[\033[00;33m\]$\[\033[00m\] '
 
